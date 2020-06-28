@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import ReactMarkdown from "react-markdown";
 import { GetStaticProps } from "next";
 
+import { Column } from "@/Column";
 import { Layout } from "@/Layout";
 import { List } from "@/List";
 import { getEntries } from "@utils";
@@ -16,9 +17,13 @@ const Home: FunctionComponent<Props> = props => {
 
 	return (
 		<Layout>
-			<ReactMarkdown source={content} escapeHtml={false} />
+			<Column>
+				<ReactMarkdown source={content} escapeHtml={false} />
+			</Column>
 
-			<List entries={projects}></List>
+			<Column>
+				<List entries={projects}></List>
+			</Column>
 		</Layout>
 	);
 };
