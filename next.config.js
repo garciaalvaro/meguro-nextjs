@@ -14,9 +14,9 @@ const { site_title, site_description, site_logo } = JSON.parse(
 
 module.exports = withStylus({
 	env: {
-		site_title,
-		site_description,
-		site_logo,
+		site_title: site_title || "",
+		site_description: site_description || "",
+		site_logo: site_logo || null,
 
 		content_dir,
 

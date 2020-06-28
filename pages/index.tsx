@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from "react";
-import ReactMarkdown from "react-markdown";
 import { GetStaticProps } from "next";
 
 import { Layout } from "@/Layout";
-import { List } from "@/List";
+import { Home } from "@/Home";
 import { getEntries } from "@utils";
 
 interface Props {
@@ -11,19 +10,17 @@ interface Props {
 	content: Entry["content"];
 }
 
-const Home: FunctionComponent<Props> = props => {
+const Page: FunctionComponent<Props> = props => {
 	const { content, projects } = props;
 
 	return (
 		<Layout>
-			<ReactMarkdown source={content} escapeHtml={false} />
-
-			<List entries={projects}></List>
+			<Home content={content} projects={projects} />
 		</Layout>
 	);
 };
 
-export default Home;
+export default Page;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const projects = getEntries(process.env.projects_dir);

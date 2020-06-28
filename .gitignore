@@ -2,7 +2,7 @@
 .next
 .env*
 .todo
-content
+/content
 node_modules
 public
 out
