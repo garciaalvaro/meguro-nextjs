@@ -1,6 +1,8 @@
 import React, { FunctionComponent, Fragment } from "react";
 import Head from "next/head";
 
+import "./Layout.styl";
+
 interface Props {
 	page_title?: string;
 }
