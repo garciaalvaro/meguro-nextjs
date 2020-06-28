@@ -17,18 +17,3 @@ a
 	&:focus
 	&:hover
 		color inherit
-
-	&:before
-		content ""
-		position absolute
-		bottom 0
-		left 0
-		width 100%
-		height 4px
-		background-color var(--color)
-		transition transform .15s var(--ease_deceleration)
-		transform-origin bottom
-		transform scaleY(.5) translateZ(0)
-
-	&:hover:before
-		transform scaleY(1) translateZ(0)
