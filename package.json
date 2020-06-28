@@ -1,0 +1,48 @@
+{
+	"name": "meguro-nextjs",
+	"version": "0.0.1",
+	"description": "Portfolio site using Next.js",
+	"author": "Alvaro Garcia",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"dev": "node server.js",
+		"build": "next build",
+		"start": "cross-env NODE_ENV=production node server.js",
+		"test": "npm run type-check && npm run lint && npm run prettier && jest",
+		"type-check": "tsc",
+		"jest": "jest --watch",
+		"lint": "eslint '**/*.{ts,tsx}'",
+		"prettier": "prettier --check '**/*.{ts,tsx}'"
+	},
+	"dependencies": {
+		"next": "^9.4.4",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-markdown": "^4.3.1"
+	},
+	"devDependencies": {
+		"@types/enzyme": "^3.10.5",
+		"@types/jest": "^25.2.3",
+		"@types/react": "^16.9.35",
+		"@types/react-dom": "^16.9.8",
+		"@typescript-eslint/eslint-plugin": "^3.1.0",
+		"@typescript-eslint/parser": "^3.1.0",
+		"@zeit/next-stylus": "^1.0.1",
+		"cross-env": "^7.0.2",
+		"enzyme": "^3.11.0",
+		"enzyme-adapter-react-16": "^1.15.2",
+		"eslint": "^7.2.0",
+		"eslint-config-prettier": "^6.11.0",
+		"eslint-plugin-prettier": "^3.1.3",
+		"eslint-plugin-react": "^7.20.0",
+		"express": "^4.17.1",
+		"gray-matter": "^4.0.2",
+		"jest": "^26.0.1",
+		"jest-environment-enzyme": "^7.1.2",
+		"jest-enzyme": "^7.1.2",
+		"prettier": "^2.0.5",
+		"stylus": "^0.54.7",
+		"typescript": "^3.9.5"
+	}
+}
