@@ -21,7 +21,7 @@ const Home: FunctionComponent<Props> = props => {
 			<Column>
 				<Header
 					title={process.env.site_title}
-					subtitle={process.env.site_subtitle}
+					subtitle={process.env.site_description}
 					href="/"
 				/>
 
