@@ -5,7 +5,9 @@ import { GetStaticProps } from "next";
 import { Header } from "@/Header";
 import { Column } from "@/Column";
 import { Layout } from "@/Layout";
+import { Content } from "@/Content";
 import { List } from "@/List";
+import { Main } from "@/Main";
 import { getEntries } from "@utils";
 
 interface Props {
@@ -18,19 +20,23 @@ const Home: FunctionComponent<Props> = props => {
 
 	return (
 		<Layout>
-			<Column>
-				<Header
-					title={process.env.site_title}
-					subtitle={process.env.site_description}
-					href="/"
-				/>
+			<Main>
+				<Column>
+					<Header
+						title={process.env.site_title}
+						subtitle={process.env.site_description}
+						href="/"
+					/>
 
-				<ReactMarkdown source={content} escapeHtml={false} />
-			</Column>
+					<Content>
+						<ReactMarkdown source={content} escapeHtml={false} />
+					</Content>
+				</Column>
 
-			<Column>
-				<List entries={projects}></List>
-			</Column>
+				<Column>
+					<List entries={projects}></List>
+				</Column>
+			</Main>
 		</Layout>
 	);
 };

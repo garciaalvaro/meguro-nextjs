@@ -4,6 +4,8 @@ import { GetStaticProps, GetStaticPaths } from "next";
 
 import { Layout } from "@/Layout";
 import { Sidebar } from "@/Sidebar";
+import { Main } from "@/Main";
+import { Content } from "@/Content";
 import { getEntries, code } from "@utils";
 
 type Props = {
@@ -20,13 +22,17 @@ const Page: FunctionComponent<Props> = props => {
 		<Layout page_title={frontmatter.title}>
 			<Sidebar entries={[...pages, ...projects]} />
 
-			<ReactMarkdown
-				source={content}
-				escapeHtml={false}
-				renderers={{
-					code,
-				}}
-			/>
+			<Main>
+				<Content>
+					<ReactMarkdown
+						source={content}
+						escapeHtml={false}
+						renderers={{
+							code,
+						}}
+					/>
+				</Content>
+			</Main>
 		</Layout>
 	);
 };
