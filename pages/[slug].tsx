@@ -1,38 +1,27 @@
 import React, { FunctionComponent } from "react";
-import ReactMarkdown from "react-markdown";
 import { GetStaticProps, GetStaticPaths } from "next";
 
 import { Layout } from "@/Layout";
 import { Sidebar } from "@/Sidebar";
-import { Main } from "@/Main";
-import { Content } from "@/Content";
-import { getEntries, code } from "@utils";
+import { Single } from "@/Single";
+import { getEntries } from "@utils";
 
 type Props = {
 	projects: Entry[];
 	pages: Entry[];
 	frontmatter: Entry["frontmatter"];
 	content: Entry["content"];
+	slug: Entry["slug"];
 };
 
 const Page: FunctionComponent<Props> = props => {
-	const { content, frontmatter, projects, pages } = props;
+	const { content, frontmatter, slug, projects, pages } = props;
 
 	return (
 		<Layout page_title={frontmatter.title}>
-			<Sidebar entries={[...pages, ...projects]} />
+			{/* <Sidebar entries={[...pages, ...projects]} /> */}
 
-			<Main>
-				<Content>
-					<ReactMarkdown
-						source={content}
-						escapeHtml={false}
-						renderers={{
-							code,
-						}}
-					/>
-				</Content>
-			</Main>
+			<Single content={content} frontmatter={frontmatter} slug={slug} />
 		</Layout>
 	);
 };
@@ -56,6 +45,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 			pages: pages.filter(({ slug }) => slug !== "home"),
 			content,
 			frontmatter,
+			slug: params?.slug,
 		},
 	};
 };
