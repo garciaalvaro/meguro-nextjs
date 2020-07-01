@@ -4,6 +4,20 @@
 
 .container
 	overflow-y auto
+	flex-basis 40rem
+	flex-grow 1
+	flex-shrink 0
+
+	+ .container
+		flex-basis 90rem
+		flex-shrink 1
+
+		.content
+			padding 8rem
+
+			img + img
+				padding-top 8rem
 
 .content
 	padding 5.5rem
+	min-height 100%

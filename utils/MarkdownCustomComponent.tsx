@@ -11,21 +11,15 @@ export const code: FunctionComponent<{ value: string; language: string }> = ({
 }) => {
 	if (language === "images") {
 		return (
-			<div>
-				<ReactMarkdown
-					source={value}
-					escapeHtml={false}
-					renderers={{
-						paragraph,
-					}}
-				/>
-			</div>
+			<ReactMarkdown
+				source={value}
+				escapeHtml={false}
+				renderers={{
+					paragraph,
+				}}
+			/>
 		);
 	}
 
-	return (
-		<div>
-			<ReactMarkdown source={value} escapeHtml={false} />
-		</div>
-	);
+	return <ReactMarkdown source={value} escapeHtml={false} />;
 };

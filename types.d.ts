@@ -6,6 +6,7 @@ interface Entry {
 		title: string;
 		subtitle: string;
 		thumb_img: string;
+		description_width?: number;
 		[key: string]: string | number;
 	};
 }

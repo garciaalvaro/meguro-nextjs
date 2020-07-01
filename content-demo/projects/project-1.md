@@ -2,6 +2,7 @@
 title: "Project 1"
 subtitle: "Aconsec adipiscin"
 thumb_img: "/img/joel-filipe-2BLsWpau-GQ-unsplash.jpg"
+description_width: 600
 custom_property_url: "https://example.com"
 custom_property_number: 2020
 custom_property_array: ["element-1", "element-2", "element-3"]
