@@ -9,6 +9,7 @@ import { Context } from "@context";
 import styles from "./Page.styl";
 
 interface Props {
+	entry_type: EntryType;
 	path: Entry["path"];
 	slug: Entry["slug"];
 	frontmatter: Entry["frontmatter"];
@@ -23,8 +24,9 @@ interface Components extends Record<"Column" | "Header", FunctionComponent> {
 
 export const Page: FunctionComponent<Props> = props => {
 	const {
-		path,
+		entry_type,
 		slug,
+		path,
 		frontmatter,
 		frontmatter_mobile,
 		projects,
@@ -35,13 +37,30 @@ export const Page: FunctionComponent<Props> = props => {
 
 	const has_mobile_content = !!frontmatter_mobile;
 
-	const Content = dynamic(async () =>
-		import(`${process.env.pages_dir}/${slug}.md`)
-	);
+	let Content = null;
+	let ContentMobile = null;
 
-	const ContentMobile = has_mobile_content
-		? dynamic(() => import(`${process.env.pages_dir}/${slug}.mobile.md`))
-		: null;
+	if (entry_type === "page") {
+		Content = dynamic(async () =>
+			import(`${process.env.pages_dir}/${slug}.md`)
+		);
+
+		if (has_mobile_content) {
+			ContentMobile = dynamic(() =>
+				import(`${process.env.pages_dir}/${slug}.mobile.md`)
+			);
+		}
+	} else {
+		Content = dynamic(async () =>
+			import(`${process.env.projects_dir}/${slug}.md`)
+		);
+
+		if (has_mobile_content) {
+			ContentMobile = dynamic(() =>
+				import(`${process.env.projects_dir}/${slug}.mobile.md`)
+			);
+		}
+	}
 
 	const components: Components = {
 		Column,

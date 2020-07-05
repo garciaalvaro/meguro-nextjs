@@ -9,7 +9,7 @@ export const getEntries = (directory?: string): Entry[] => {
 	const files = readdirSync(directory);
 
 	const slugs = files.reduce<string[]>((acc, file) => {
-		if (!file.match(/\.md$/)) {
+		if (!file.match(/\.md$/) || file.match(/\.mobile\.md$/)) {
 			return acc;
 		}
 

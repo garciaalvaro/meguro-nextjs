@@ -23,3 +23,5 @@ declare namespace NodeJS {
 		pages_dir: string;
 	}
 }
+
+type EntryType = "project" | "page";
