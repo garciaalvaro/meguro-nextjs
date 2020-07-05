@@ -1,6 +1,7 @@
 const withStylus = require("@zeit/next-stylus");
 const { existsSync, readFileSync } = require("fs");
 const path = require("path");
+const unwrap = require("remark-unwrap-images");
 
 const use_demo = !existsSync(path.resolve(__dirname, "./content"));
 
@@ -45,7 +46,14 @@ module.exports = withStylus({
 
 		config.module.rules.push({
 			test: /\.mdx?$/,
-			use: ["babel-loader", "@mdx-js/loader", "mdx-frontmatter"],
+			use: [
+				"babel-loader",
+				{
+					loader: "@mdx-js/loader",
+					options: { remarkPlugins: [unwrap] },
+				},
+				"mdx-frontmatter",
+			],
 		});
 
 		if (!isServer) {

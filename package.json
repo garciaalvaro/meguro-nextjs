@@ -46,6 +46,7 @@
 		"jest-environment-enzyme": "^7.1.2",
 		"jest-enzyme": "^7.1.2",
 		"prettier": "^2.0.5",
+		"remark-unwrap-images": "^2.0.0",
 		"stylus": "^0.54.7",
 		"typescript": "^3.9.5"
 	}
