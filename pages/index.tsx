@@ -2,8 +2,9 @@ import React, { FunctionComponent } from "react";
 import { GetStaticProps } from "next";
 import { existsSync } from "fs";
 
+import { Main } from "@/Main";
 import { Layout } from "@/Layout";
-import { Page } from "@/Page";
+import { Content } from "@/Content";
 import { getEntries } from "@utils";
 
 interface Props {
@@ -19,15 +20,17 @@ const Home: FunctionComponent<Props> = props => {
 
 	return (
 		<Layout>
-			<Page
-				entry_type="page"
-				path="/"
-				slug={slug}
-				frontmatter={frontmatter}
-				frontmatter_mobile={frontmatter_mobile}
-				projects={projects}
-				pages={pages}
-			/>
+			<Main>
+				<Content
+					entry_type="page"
+					path="/"
+					slug={slug}
+					frontmatter={frontmatter}
+					frontmatter_mobile={frontmatter_mobile}
+					projects={projects}
+					pages={pages}
+				/>
+			</Main>
 		</Layout>
 	);
 };

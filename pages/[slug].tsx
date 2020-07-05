@@ -2,8 +2,10 @@ import React, { FunctionComponent } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { existsSync } from "fs";
 
+import { Main } from "@/Main";
 import { Layout } from "@/Layout";
-import { Page } from "@/Page";
+import { Content } from "@/Content";
+import { Sidebar } from "@/Sidebar";
 import { getEntries } from "@utils";
 
 interface Props {
@@ -16,7 +18,7 @@ interface Props {
 	pages: Entry[];
 }
 
-const Home: FunctionComponent<Props> = props => {
+const Page: FunctionComponent<Props> = props => {
 	const {
 		entry_type,
 		path,
@@ -29,23 +31,27 @@ const Home: FunctionComponent<Props> = props => {
 
 	return (
 		<Layout>
-			<Page
-				entry_type={entry_type}
-				path={path}
-				slug={slug}
-				frontmatter={frontmatter}
-				frontmatter_mobile={frontmatter_mobile}
-				projects={projects}
-				pages={pages}
-			/>
+			<Main>
+				<Content
+					entry_type={entry_type}
+					path={path}
+					slug={slug}
+					frontmatter={frontmatter}
+					frontmatter_mobile={frontmatter_mobile}
+					projects={projects}
+					pages={pages}
+				/>
+			</Main>
+
+			<Sidebar entries={[...pages, ...projects]} />
 		</Layout>
 	);
 };
 
-export default Home;
+export default Page;
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-	const slug = context.params?.slug;
+	const slug = context.params?.slug as string;
 	const path = `/${slug}`;
 	const projects = getEntries(process.env.projects_dir);
 	const pages = getEntries(process.env.pages_dir);
