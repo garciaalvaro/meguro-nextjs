@@ -14,7 +14,7 @@ export const Sidebar: FunctionComponent<Props> = props => {
 	const site_logo = process.env.site_logo;
 
 	return (
-		<div className={styles.container}>
+		<nav className={styles.container}>
 			<List entries={entries}>
 				<li>
 					<Link href="/">
@@ -26,6 +26,6 @@ export const Sidebar: FunctionComponent<Props> = props => {
 					</Link>
 				</li>
 			</List>
-		</div>
+		</nav>
 	);
 };

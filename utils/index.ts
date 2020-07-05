@@ -1,2 +1,2 @@
 export { getEntries } from "./getEntries";
-export { code } from "./MarkdownCustomComponent";
+export { useWindowSize } from "./useWindowSize";

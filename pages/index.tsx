@@ -1,38 +1,66 @@
 import React, { FunctionComponent } from "react";
 import { GetStaticProps } from "next";
+import { existsSync } from "fs";
 
+import { Main } from "@/Main";
 import { Layout } from "@/Layout";
-import { Home } from "@/Home";
+import { Content } from "@/Content";
 import { getEntries } from "@utils";
 
 interface Props {
+	slug: Entry["slug"];
+	frontmatter: Entry["frontmatter"];
+	frontmatter_mobile: Entry["frontmatter"] | null;
 	projects: Entry[];
-	content: Entry["content"];
+	pages: Entry[];
 }
 
-const Page: FunctionComponent<Props> = props => {
-	const { content, projects } = props;
+const Home: FunctionComponent<Props> = props => {
+	const { slug, frontmatter, frontmatter_mobile, projects, pages } = props;
 
 	return (
 		<Layout>
-			<Home content={content} projects={projects} />
+			<Main>
+				<Content
+					entry_type="page"
+					path="/"
+					slug={slug}
+					frontmatter={frontmatter}
+					frontmatter_mobile={frontmatter_mobile}
+					projects={projects}
+					pages={pages}
+				/>
+			</Main>
 		</Layout>
 	);
 };
 
-export default Page;
+export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
+	const slug = "home";
 	const projects = getEntries(process.env.projects_dir);
-
 	const pages = getEntries(process.env.pages_dir);
+	const { frontmatter } = await import(`${process.env.pages_dir}/${slug}.md`);
+	const file_path_mobile = `${process.env.pages_dir}/${slug}.mobile.md`;
+	let frontmatter_mobile: null | Entry["frontmatter"] = null;
+	const has_mobile_content = await existsSync(file_path_mobile);
 
-	const { content } = pages.find(({ slug }) => slug === "home") as Entry;
+	if (has_mobile_content) {
+		const mobile = await import(
+			`${process.env.pages_dir}/${slug}.mobile.md`
+		);
+
+		frontmatter_mobile = mobile.frontmatter;
+	}
 
 	return {
 		props: {
+			slug,
+			frontmatter,
+			frontmatter_mobile,
 			projects,
-			content,
+			pages,
 		},
 	};
 };

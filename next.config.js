@@ -38,9 +38,14 @@ module.exports = withStylus({
 	},
 
 	webpack: (config, { isServer }) => {
+		config.resolveLoader.modules = [
+			...config.resolveLoader.modules,
+			path.resolve(__dirname, "webpack-loaders"),
+		];
+
 		config.module.rules.push({
-			test: /\.md$/,
-			use: "raw-loader",
+			test: /\.mdx?$/,
+			use: ["babel-loader", "@mdx-js/loader", "mdx-frontmatter"],
 		});
 
 		if (!isServer) {
@@ -51,6 +56,7 @@ module.exports = withStylus({
 
 		config.resolve.alias["@"] = path.join(__dirname, "components");
 		config.resolve.alias["@utils"] = path.join(__dirname, "utils");
+		config.resolve.alias["@context"] = path.join(__dirname, "context");
 
 		return config;
 	},
