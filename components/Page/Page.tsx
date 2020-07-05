@@ -47,7 +47,14 @@ export const Page: FunctionComponent<Props> = props => {
 		Column,
 
 		// eslint-disable-next-line react/display-name
-		Header: () => <Header {...frontmatter} href={path} />,
+		Header: () => (
+			<Header
+				{...(is_mobile && frontmatter_mobile
+					? frontmatter_mobile
+					: frontmatter)}
+				href={path}
+			/>
+		),
 
 		// eslint-disable-next-line react/display-name
 		List: ({ type }) => (
