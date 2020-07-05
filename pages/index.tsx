@@ -6,16 +6,17 @@ import { Home } from "@/Home";
 import { getEntries } from "@utils";
 
 interface Props {
+	slug: Entry["slug"];
+	frontmatter: Entry["frontmatter"];
 	projects: Entry[];
-	content: Entry["content"];
 }
 
 const Page: FunctionComponent<Props> = props => {
-	const { content, projects } = props;
+	const { projects, slug } = props;
 
 	return (
 		<Layout>
-			<Home content={content} projects={projects} />
+			<Home slug={slug} projects={projects} />
 		</Layout>
 	);
 };
@@ -23,16 +24,11 @@ const Page: FunctionComponent<Props> = props => {
 export default Page;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
+	const slug = "home";
+	const { frontmatter } = await import(`${process.env.pages_dir}/${slug}.md`);
 	const projects = getEntries(process.env.projects_dir);
 
-	const pages = getEntries(process.env.pages_dir);
-
-	const { content } = pages.find(({ slug }) => slug === "home") as Entry;
-
 	return {
-		props: {
-			projects,
-			content,
-		},
+		props: { slug, frontmatter, projects },
 	};
 };

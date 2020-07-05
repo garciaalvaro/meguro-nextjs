@@ -1,5 +1,4 @@
-import React, { FunctionComponent, Fragment } from "react";
-import ReactMarkdown from "react-markdown";
+import React, { FunctionComponent } from "react";
 
 import styles from "./Home.styl";
 import { Header } from "@/Header";
@@ -9,32 +8,28 @@ import { List } from "@/List";
 import { Main } from "@/Main";
 
 interface Props {
+	slug: Entry["slug"];
 	projects: Entry[];
-	content: Entry["content"];
 }
 
 export const Home: FunctionComponent<Props> = props => {
-	const { content, projects } = props;
+	const { slug, projects } = props;
 
 	return (
-		<Fragment>
-			<Main>
-				<Column>
-					<Header
-						title={process.env.site_title}
-						subtitle={process.env.site_description}
-						href="/"
-					/>
+		<Main>
+			<Column>
+				<Header
+					title={process.env.site_title}
+					subtitle={process.env.site_description}
+					href="/"
+				/>
 
-					<Content>
-						<ReactMarkdown source={content} escapeHtml={false} />
-					</Content>
-				</Column>
+				<Content slug={slug} />
+			</Column>
 
-				<Column>
-					<List className={styles.projects} entries={projects}></List>
-				</Column>
-			</Main>
-		</Fragment>
+			<Column>
+				<List className={styles.projects} entries={projects}></List>
+			</Column>
+		</Main>
 	);
 };
