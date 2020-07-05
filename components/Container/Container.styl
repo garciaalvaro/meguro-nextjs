@@ -1,0 +1,18 @@
+/**
+ * Container
+ */
+
+.container
+
+	> *:first-child
+		padding-top 0
+
+for num in (1..100)
+
+	.gap-{num} > *
+		padding-top (num / 10)rem
+
+for num in (10..200)
+
+	.padding-{num}
+		padding (num / 10)rem

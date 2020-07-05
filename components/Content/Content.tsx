@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { Column } from "@/Column";
 import { Header } from "@/Header";
 import { List } from "@/List";
+import { Container } from "@/Container";
 import { Context } from "@context";
 import styles from "./Content.styl";
 
@@ -18,7 +19,7 @@ interface Props {
 	pages: Entry[];
 }
 
-interface Components extends Record<"Column" | "Header", FunctionComponent> {
+interface Components extends Record<"Column" | 'Container' | "Header", FunctionComponent> {
 	List: FunctionComponent<{ type: ("projects" | "pages")[] }>;
 }
 
@@ -64,6 +65,7 @@ export const Content: FunctionComponent<Props> = props => {
 
 	const components: Components = {
 		Column,
+		Container,
 
 		// eslint-disable-next-line react/display-name
 		Header: () => (
