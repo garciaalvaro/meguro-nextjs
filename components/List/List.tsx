@@ -5,7 +5,7 @@ import styles from "./List.styl";
 
 interface Props {
 	entries: Entry[];
-	className: string;
+	className?: string;
 }
 
 export const List: FunctionComponent<Props> = props => {

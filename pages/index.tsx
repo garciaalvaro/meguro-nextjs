@@ -2,33 +2,43 @@ import React, { FunctionComponent } from "react";
 import { GetStaticProps } from "next";
 
 import { Layout } from "@/Layout";
-import { Home } from "@/Home";
+import { Page } from "@/Page";
 import { getEntries } from "@utils";
 
 interface Props {
+	path: Entry["path"];
 	slug: Entry["slug"];
 	frontmatter: Entry["frontmatter"];
 	projects: Entry[];
+	pages: Entry[];
 }
 
-const Page: FunctionComponent<Props> = props => {
-	const { projects, slug } = props;
+const Home: FunctionComponent<Props> = props => {
+	const { path, slug, frontmatter, projects, pages } = props;
 
 	return (
 		<Layout>
-			<Home slug={slug} projects={projects} />
+			<Page
+				path={path}
+				slug={slug}
+				frontmatter={frontmatter}
+				projects={projects}
+				pages={pages}
+			/>
 		</Layout>
 	);
 };
 
-export default Page;
+export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
+	const path = "/";
 	const slug = "home";
 	const { frontmatter } = await import(`${process.env.pages_dir}/${slug}.md`);
 	const projects = getEntries(process.env.projects_dir);
+	const pages = getEntries(process.env.pages_dir);
 
 	return {
-		props: { slug, frontmatter, projects },
+		props: { path, slug, frontmatter, projects, pages },
 	};
 };
