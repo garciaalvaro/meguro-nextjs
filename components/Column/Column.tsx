@@ -1,21 +1,26 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useRef } from "react";
 
 import styles from "./Column.styl";
 
 interface Props {
-	flexBasis?: number;
+	width?: number;
+	shrink?: number;
+	grow?: number;
 }
 
 export const Column: FunctionComponent<Props> = props => {
-	const { flexBasis, children } = props;
+	const { width, shrink, grow, children } = props;
 
-	const style = {
-		flexBasis: flexBasis ? `${flexBasis}rem` : undefined,
-	};
-
-	return (
-		<div className={styles.container} style={style}>
-			<div className={styles.content}>{children}</div>
-		</div>
+	const classNames = useRef(
+		[
+			styles.container,
+			width !== undefined ? styles[`width-${width}`] : null,
+			shrink !== undefined ? styles[`shrink-${shrink}`] : null,
+			grow !== undefined ? styles[`grow-${grow}`] : null,
+		]
+			.filter(className => className)
+			.join(" ")
 	);
+
+	return <div className={classNames.current}>{children}</div>;
 };
