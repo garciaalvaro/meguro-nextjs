@@ -4,9 +4,11 @@ import Link from "next/link";
 import styles from "./Header.styl";
 
 interface Props {
+	href: string;
 	title: string;
 	subtitle?: string;
-	href: string;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	[prop: string]: any;
 }
 
 export const Header: FunctionComponent<Props> = props => {
