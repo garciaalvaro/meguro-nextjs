@@ -1,7 +1,8 @@
-import React, { FunctionComponent, Fragment } from "react";
+import React, { FunctionComponent } from "react";
 import Head from "next/head";
 
 import "./Layout.styl";
+import { ContextProvider } from "@context";
 
 interface Props {
 	page_title?: string;
@@ -18,7 +19,7 @@ export const Layout: FunctionComponent<Props> = props => {
 	// TODO: Complete meta tags
 
 	return (
-		<Fragment>
+		<ContextProvider>
 			<Head>
 				<title>{title}</title>
 				<meta property="description" content={site_description} />
@@ -26,6 +27,6 @@ export const Layout: FunctionComponent<Props> = props => {
 			</Head>
 
 			{props.children}
-		</Fragment>
+		</ContextProvider>
 	);
 };
