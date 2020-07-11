@@ -1,0 +1,77 @@
+/**
+ * Generic styles
+ */
+
+.has_child_separation > *:first-child
+	margin-top 0
+
+for num in (1..1000)
+
+	if num <= 100
+
+		.child_separation-{num} > *
+			margin-top (num / 10)rem
+
+	if num >= 100// && num % 10 == 0
+
+		.min_width-{num}
+			flex-basis (num / 10)rem
+			min-width (num / 10)rem
+
+	if num <= 20
+
+		.grow-{num}
+			flex-grow num
+
+	if num <= 10
+
+		.border-{num}
+			border (num / 10)rem solid
+
+		.border_top-{num}
+			border-top (num / 10)rem solid
+
+		.border_bottom-{num}
+			border-bottom (num / 10)rem solid
+
+		.border_left-{num}
+			border-left (num / 10)rem solid
+
+		.border_right-{num}
+			border-right (num / 10)rem solid
+
+	if num >= 10 && num <= 200
+
+		// Padding
+
+		.padding-{num}
+			padding (num / 10)rem
+
+		.padding_top-{num}
+			padding-top (num / 10)rem
+
+		.padding_bottom-{num}
+			padding-bottom (num / 10)rem
+
+		.padding_left-{num}
+			padding-left (num / 10)rem
+
+		.padding_right-{num}
+			padding-right (num / 10)rem
+
+		// Margin
+
+		.margin-{num}
+			margin (num / 10)rem
+
+		.margin_top-{num}
+			margin-top (num / 10)rem
+
+		.margin_bottom-{num}
+			margin-bottom (num / 10)rem
+
+		.margin_left-{num}
+			margin-left (num / 10)rem
+
+		.margin_right-{num}
+			margin-right (num / 10)rem
