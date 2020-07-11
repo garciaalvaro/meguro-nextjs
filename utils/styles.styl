@@ -23,6 +23,9 @@ for num in (1..1000)
 		.grow-{num}
 			flex-grow num
 
+		.shrink-{num}
+			flex-shrink num
+
 	if num <= 10
 
 		.border-{num}
@@ -39,6 +42,14 @@ for num in (1..1000)
 
 		.border_right-{num}
 			border-right (num / 10)rem solid
+
+	if num <= 200
+
+		.row_separation-{num}
+			grid-row-gap (num / 10)rem
+
+		.column_separation-{num}
+			grid-column-gap (num / 10)rem
 
 	if num >= 10 && num <= 200
 

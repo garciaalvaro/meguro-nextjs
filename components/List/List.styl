@@ -2,8 +2,17 @@
  * List
  */
 
-.link
-	display block
+.container
+	display grid
+	grid-template-columns auto auto
+
+	.link
+		display block
+		font-style inherit
+		width 100%
+
+		&:before
+			content normal
 
 .image_container
 	position relative

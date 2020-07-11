@@ -11,6 +11,7 @@ export interface ContainerProps {
 	background_color?: string;
 	min_width?: number;
 	grow?: number;
+	shrink?: number;
 	margin?: number;
 	margin_top?: number;
 	margin_bottom?: number;
@@ -39,6 +40,7 @@ export const Container: FunctionComponent<ContainerProps> = props => {
 		background_color: backgroundColor,
 		min_width,
 		grow,
+		shrink,
 		margin,
 		margin_top,
 		margin_bottom,
@@ -67,6 +69,7 @@ export const Container: FunctionComponent<ContainerProps> = props => {
 				: null,
 			styles[`min_width-${min_width}`],
 			styles[`grow-${grow}`],
+			styles[`shrink-${shrink}`],
 			styles[`padding-${padding}`],
 			styles[`padding_top-${padding_top}`],
 			styles[`padding_bottom-${padding_bottom}`],
