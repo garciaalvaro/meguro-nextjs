@@ -67,8 +67,9 @@ export const Content: FunctionComponent<Props> = props => {
 		Info: (props) => <Container {...props} type="info" />,
 
 		// eslint-disable-next-line react/display-name
-		List: ({ type }) => (
+		List: ({ type, ...props }) => (
 			<List
+				{...props}
 				entries={[
 					...(type.indexOf("pages") === 0 ? pages : []),
 					...(type.includes("projects") ? projects : []),
