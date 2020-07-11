@@ -10,34 +10,22 @@ import { getEntries } from "@utils";
 
 interface Props {
 	entry_type: EntryType;
-	path: Entry["path"];
 	slug: Entry["slug"];
-	frontmatter: Entry["frontmatter"];
-	frontmatter_mobile: Entry["frontmatter"] | null;
+	has_mobile_content: boolean;
 	projects: Entry[];
 	pages: Entry[];
 }
 
 const Page: FunctionComponent<Props> = props => {
-	const {
-		entry_type,
-		path,
-		slug,
-		frontmatter,
-		frontmatter_mobile,
-		projects,
-		pages,
-	} = props;
+	const { entry_type, slug, has_mobile_content, projects, pages } = props;
 
 	return (
 		<Layout>
 			<Main>
 				<Content
 					entry_type={entry_type}
-					path={path}
 					slug={slug}
-					frontmatter={frontmatter}
-					frontmatter_mobile={frontmatter_mobile}
+					has_mobile_content={has_mobile_content}
 					projects={projects}
 					pages={pages}
 				/>
@@ -52,47 +40,28 @@ export default Page;
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
 	const slug = context.params?.slug as string;
-	const path = `/${slug}`;
 	const projects = getEntries(process.env.projects_dir);
 	const pages = getEntries(process.env.pages_dir);
-	let frontmatter_mobile = null;
-	let entry = pages.find(entry => entry.slug === slug);
-	const entry_type = entry ? "page" : "project";
-	entry = projects.find(entry => entry.slug === slug) as Entry;
+	let has_mobile_content = false;
+	const entry_type = pages.find(entry => entry.slug === slug)
+		? "page"
+		: "project";
 
 	if (entry_type === "page") {
-		const has_mobile_content = await existsSync(
+		has_mobile_content = await existsSync(
 			`${process.env.pages_dir}/${slug}.mobile.md`
 		);
-
-		if (has_mobile_content) {
-			const mobile = await import(
-				`${process.env.pages_dir}/${slug}.mobile.md`
-			);
-
-			frontmatter_mobile = mobile.frontmatter;
-		}
 	} else {
-		const has_mobile_content = await existsSync(
+		has_mobile_content = await existsSync(
 			`${process.env.projects_dir}/${slug}.mobile.md`
 		);
-
-		if (has_mobile_content) {
-			const mobile = await import(
-				`${process.env.projects_dir}/${slug}.mobile.md`
-			);
-
-			frontmatter_mobile = mobile.frontmatter;
-		}
 	}
 
 	return {
 		props: {
 			entry_type,
-			path,
 			slug,
-			frontmatter: entry.frontmatter,
-			frontmatter_mobile,
+			has_mobile_content,
 			projects,
 			pages,
 		},
