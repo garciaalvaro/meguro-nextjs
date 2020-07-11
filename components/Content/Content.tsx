@@ -37,22 +37,22 @@ export const Content: FunctionComponent<Props> = props => {
 
 	if (entry_type === "page") {
 		Content = dynamic(async () =>
-			import(`${process.env.pages_dir}/${slug}.md`)
+			import(`${process.env.pages_dir}/${slug}/index.md`)
 		);
 
 		if (has_mobile_content) {
 			ContentMobile = dynamic(() =>
-				import(`${process.env.pages_dir}/${slug}.mobile.md`)
+				import(`${process.env.pages_dir}/${slug}/index.mobile.md`)
 			);
 		}
 	} else {
 		Content = dynamic(async () =>
-			import(`${process.env.projects_dir}/${slug}.md`)
+			import(`${process.env.projects_dir}/${slug}/index.md`)
 		);
 
 		if (has_mobile_content) {
 			ContentMobile = dynamic(() =>
-				import(`${process.env.projects_dir}/${slug}.mobile.md`)
+				import(`${process.env.projects_dir}/${slug}/index.mobile.md`)
 			);
 		}
 	}

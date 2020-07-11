@@ -6,18 +6,10 @@ export const getEntries = (directory?: string): Entry[] => {
 		return [];
 	}
 
-	const files = readdirSync(directory);
-
-	const slugs = files.reduce<string[]>((acc, file) => {
-		if (!file.match(/\.md$/) || file.match(/\.mobile\.md$/)) {
-			return acc;
-		}
-
-		return [...acc, file.replace(/\.md$/, "")];
-	}, []);
+	const slugs = readdirSync(directory);
 
 	const entries = slugs.reduce<Entry[]>((acc, slug) => {
-		const entry = readFileSync(`${directory}/${slug}.md`, "utf8");
+		const entry = readFileSync(`${directory}/${slug}/index.md`, "utf8");
 
 		const { data: frontmatter, content } = matter(entry);
 

@@ -49,11 +49,11 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 
 	if (entry_type === "page") {
 		has_mobile_content = await existsSync(
-			`${process.env.pages_dir}/${slug}.mobile.md`
+			`${process.env.pages_dir}/${slug}/index.mobile.md`
 		);
 	} else {
 		has_mobile_content = await existsSync(
-			`${process.env.projects_dir}/${slug}.mobile.md`
+			`${process.env.projects_dir}/${slug}/index.mobile.md`
 		);
 	}
 

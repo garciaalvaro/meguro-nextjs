@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	const slug = "home";
 	const projects = getEntries(process.env.projects_dir);
 	const pages = getEntries(process.env.pages_dir);
-	const file_path_mobile = `${process.env.pages_dir}/${slug}.mobile.md`;
+	const file_path_mobile = `${process.env.pages_dir}/${slug}/index.mobile.md`;
 	const has_mobile_content = await existsSync(file_path_mobile);
 
 	return {
