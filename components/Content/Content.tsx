@@ -2,41 +2,35 @@ import React, { FunctionComponent, useContext } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import dynamic from "next/dynamic";
 
-import { Column } from "@/Column";
-import { Header } from "@/Header";
 import { List } from "@/List";
-import { Container } from "@/Container";
+import { Container, ContainerProps } from "@/Container";
 import { Context } from "@context";
-import styles from "./Content.styl";
 
 interface Props {
 	entry_type: EntryType;
-	path: Entry["path"];
 	slug: Entry["slug"];
-	frontmatter: Entry["frontmatter"];
-	frontmatter_mobile: Entry["frontmatter"] | null;
+	has_mobile_content: boolean;
 	projects: Entry[];
 	pages: Entry[];
 }
 
-interface Components extends Record<"Column" | 'Container' | "Header", FunctionComponent> {
-	List: FunctionComponent<{ type: ("projects" | "pages")[] }>;
+interface Components {
+	List: FunctionComponent<{ type: "projects" | "pages" }>;
+	Container: FunctionComponent<ContainerProps>;
+	Info: FunctionComponent<ContainerProps>;
+	Column: FunctionComponent<ContainerProps>;
 }
 
 export const Content: FunctionComponent<Props> = props => {
 	const {
 		entry_type,
 		slug,
-		path,
-		frontmatter,
-		frontmatter_mobile,
+		has_mobile_content,
 		projects,
 		pages,
 	} = props;
 
 	const { is_mobile } = useContext(Context);
-
-	const has_mobile_content = !!frontmatter_mobile;
 
 	let Content = null;
 	let ContentMobile = null;
@@ -64,18 +58,13 @@ export const Content: FunctionComponent<Props> = props => {
 	}
 
 	const components: Components = {
-		Column,
 		Container,
 
 		// eslint-disable-next-line react/display-name
-		Header: () => (
-			<Header
-				{...(is_mobile && frontmatter_mobile
-					? frontmatter_mobile
-					: frontmatter)}
-				href={path}
-			/>
-		),
+		Column: (props) => <Container {...props} type="column" />,
+
+		// eslint-disable-next-line react/display-name
+		Info: (props) => <Container {...props} type="info" />,
 
 		// eslint-disable-next-line react/display-name
 		List: ({ type }) => (
@@ -90,7 +79,7 @@ export const Content: FunctionComponent<Props> = props => {
 	};
 
 	return (
-		<MDXProvider className={styles.container} components={components}>
+		<MDXProvider components={components}>
 			{is_mobile && ContentMobile ? <ContentMobile /> : <Content />}
 		</MDXProvider>
 	);
