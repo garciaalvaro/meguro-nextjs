@@ -11,7 +11,12 @@ interface Entry {
 	};
 }
 
-declare module "*.styl";
+type EntryType = "project" | "page";
+
+declare module "*.styl" {
+	const classNames: Record<string, string>;
+	export = classNames;
+}
 
 declare namespace NodeJS {
 	export interface ProcessEnv {
@@ -23,5 +28,3 @@ declare namespace NodeJS {
 		pages_dir: string;
 	}
 }
-
-type EntryType = "project" | "page";
