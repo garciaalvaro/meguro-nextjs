@@ -2,8 +2,9 @@
  * Generic styles
  */
 
-.has_child_separation > *:first-child
-	margin-top 0
+.grid
+	display grid
+	align-content baseline
 
 .align-right
 	margin-left auto
@@ -53,10 +54,7 @@ for num in (1..1000)
 		.column_separation-{num}
 			grid-column-gap (num / 10)rem
 
-		.child_separation-{num} > *
-			margin-top (num / 10)rem
-
-	if num >= 10 && num <= 200
+	if num <= 200// && num >= 10
 
 		// Padding
 
