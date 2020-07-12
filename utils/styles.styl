@@ -5,26 +5,28 @@
 .has_child_separation > *:first-child
 	margin-top 0
 
+.align-right
+	margin-left auto
+
+.align-center
+	margin-left auto
+	margin-right auto
+
 for num in (1..1000)
-
-	if num <= 100
-
-		.child_separation-{num} > *
-			margin-top (num / 10)rem
 
 	if num >= 100// && num % 10 == 0
 
 		.min_width-{num}
-			flex-basis (num / 10)rem
 			min-width (num / 10)rem
 
-	if num <= 20
+			div&
+				flex-basis (num / 10)rem
 
-		.grow-{num}
-			flex-grow num
+		.max_width-{num}
+			max-width (num / 10)rem
 
-		.shrink-{num}
-			flex-shrink num
+			div&
+				flex-basis 100%
 
 	if num <= 10
 
@@ -50,6 +52,9 @@ for num in (1..1000)
 
 		.column_separation-{num}
 			grid-column-gap (num / 10)rem
+
+		.child_separation-{num} > *
+			margin-top (num / 10)rem
 
 	if num >= 10 && num <= 200
 

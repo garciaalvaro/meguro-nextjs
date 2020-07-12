@@ -1,17 +1,19 @@
 import React, { FunctionComponent, useRef } from "react";
 
-import styles_component from "./Container.styl";
 import styles_utils from "@utils/styles.styl";
+import styles_component from "./Container.styl";
 
 export interface ContainerProps {
 	type?: "info" | "column";
+	html_tag?: "hr" | "h1" | "ul"; // TODO
 	child_separation?: number;
 	li_separator?: "|" | "-";
 	color?: string;
 	background_color?: string;
 	min_width?: number;
-	grow?: number;
-	shrink?: number;
+	max_width?: number;
+	content_max_width?: number;
+	content_align?: "left" | "right" | "center";
 	margin?: number;
 	margin_top?: number;
 	margin_bottom?: number;
@@ -39,8 +41,9 @@ export const Container: FunctionComponent<ContainerProps> = props => {
 		color,
 		background_color: backgroundColor,
 		min_width,
-		grow,
-		shrink,
+		max_width,
+		content_max_width,
+		content_align,
 		margin,
 		margin_top,
 		margin_bottom,
@@ -61,15 +64,18 @@ export const Container: FunctionComponent<ContainerProps> = props => {
 	const classNames = useRef(
 		[
 			styles.container,
-			child_separation ? styles.has_child_separation : null,
 			styles[`type-${type}`],
-			styles[`child_separation-${child_separation}`],
+			!content_max_width && child_separation
+				? styles.has_child_separation
+				: null,
+			!content_max_width && child_separation
+				? styles[`child_separation-${child_separation}`]
+				: null,
 			li_separator !== undefined
 				? styles[`li_separator-${li_separator === "|" ? "7C" : "2D"}`]
 				: null,
 			styles[`min_width-${min_width}`],
-			styles[`grow-${grow}`],
-			styles[`shrink-${shrink}`],
+			styles[`max_width-${max_width}`],
 			styles[`padding-${padding}`],
 			styles[`padding_top-${padding_top}`],
 			styles[`padding_bottom-${padding_bottom}`],
@@ -92,9 +98,33 @@ export const Container: FunctionComponent<ContainerProps> = props => {
 
 	const style = useRef({ color, backgroundColor });
 
+	const content_classNames = useRef(
+		[
+			styles.content,
+			styles[`max_width-${content_max_width}`],
+			styles[`align-${content_align}`],
+			child_separation ? styles.has_child_separation : null,
+			styles[`child_separation-${child_separation}`],
+		]
+			.filter(className => className)
+			.join(" ")
+	);
+
+	const Tag = props.html_tag || "div";
+
+	if (props.html_tag === "hr") {
+		return <hr className={classNames.current} />;
+	}
+
 	return (
-		<div className={classNames.current} style={style.current}>
-			{props.children}
-		</div>
+		<Tag className={classNames.current} style={style.current}>
+			{content_max_width && (
+				<div className={content_classNames.current}>
+					{props.children}
+				</div>
+			)}
+
+			{!content_max_width && props.children}
+		</Tag>
 	);
 };
