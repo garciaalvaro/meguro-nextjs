@@ -19,6 +19,7 @@ import Description from "./description.md"
     padding_bottom={40}
     row_separation={40}
     column_separation={40}
+    column_min_width={150}
   />
 
 </Column>

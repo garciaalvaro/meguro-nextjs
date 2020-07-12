@@ -15,6 +15,9 @@
 
 for num in (1..1000)
 
+	.column_min_width-{num}
+		grid-template-columns repeat(auto-fit, minmax((num / 10)rem, auto))
+
 	if num >= 100// && num % 10 == 0
 
 		.min_width-{num}

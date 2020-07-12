@@ -5,6 +5,7 @@ import styles from "./styles.styl";
 export interface Props {
 	row_separation?: number;
 	column_separation?: number;
+	column_min_width?: number;
 	child_separation?: number;
 	li_separator?: "|" | "-";
 	color?: string;
@@ -39,6 +40,7 @@ export const useStyles = (
 } => {
 	const {
 		column_separation,
+		column_min_width,
 		child_separation,
 		color,
 		background_color: backgroundColor,
@@ -80,6 +82,7 @@ export const useStyles = (
 				: [styles.grid, styles[`row_separation-${row_separation}`]]),
 
 			styles[`column_separation-${column_separation}`],
+			styles[`column_min_width-${column_min_width}`],
 			styles[`li_separator-${li_separator}`],
 			styles[`min_width-${min_width}`],
 			styles[`max_width-${max_width}`],
