@@ -1,32 +1,19 @@
-import React, { FunctionComponent, useRef } from "react";
+import React, { FunctionComponent } from "react";
 import Link from "next/link";
 
-import styles_component from "./List.styl";
-import styles_utils from "@utils/styles.styl";
+import { Props as StylesProps } from "@utils/useStyles";
+import { Container } from "@/Container";
+import styles from "./List.styl";
 
-interface Props {
+interface Props extends StylesProps {
 	entries: Entry[];
-	row_separation?: number;
-	column_separation?: number;
 }
 
-const styles = { ...styles_component, ...styles_utils };
-
 export const List: FunctionComponent<Props> = props => {
-	const { entries, row_separation, column_separation } = props;
-
-	const classNames = useRef(
-		[
-			styles.container,
-			styles[`row_separation-${row_separation}`],
-			styles[`column_separation-${column_separation}`],
-		]
-			.filter(className => className)
-			.join(" ")
-	);
+	const { entries, ...rest } = props;
 
 	return (
-		<ul className={classNames.current}>
+		<Container {...rest} className={styles.container} html_tag="ul">
 			{props.children}
 
 			{entries.map(({ path, frontmatter }) => (
@@ -45,6 +32,6 @@ export const List: FunctionComponent<Props> = props => {
 					</Link>
 				</li>
 			))}
-		</ul>
+		</Container>
 	);
 };
