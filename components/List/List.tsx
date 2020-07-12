@@ -7,10 +7,11 @@ import styles from "./List.styl";
 
 interface Props extends StylesProps {
 	entries: Entry[];
+	show_subtitle?: boolean;
 }
 
 export const List: FunctionComponent<Props> = props => {
-	const { entries, ...rest } = props;
+	const { entries, show_subtitle, ...rest } = props;
 
 	return (
 		<Container {...rest} className={styles.container} html_tag="ul">
@@ -27,7 +28,15 @@ export const List: FunctionComponent<Props> = props => {
 								/>
 							</div>
 
-							<h3>{frontmatter.title}</h3>
+							<h3 className={styles.title}>
+								{frontmatter.title}
+							</h3>
+
+							{show_subtitle && (
+								<h5 className={styles.subtitle}>
+									{frontmatter.subtitle}
+								</h5>
+							)}
 						</a>
 					</Link>
 				</li>
