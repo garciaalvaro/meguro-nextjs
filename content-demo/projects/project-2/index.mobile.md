@@ -8,7 +8,7 @@ import Images from "./images.md"
     padding={40}
     padding_top={140}
     padding_bottom={80}
-    background_color="#41474a"
+    background_color="#c3c4c5"
     child_separation={25}
   >
 
@@ -22,7 +22,11 @@ import Images from "./images.md"
 
 
 
-  <Container>
+  <Container
+    child_separation={5}
+    padding={5}
+    background_color="#41474a"
+  >
 
   <Images />
 

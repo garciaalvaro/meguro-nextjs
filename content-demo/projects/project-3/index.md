@@ -1,5 +1,6 @@
 ---
 title: "Project 3"
+subtitle: "Minim veniam"
 thumb_img: "/img/joel-filipe-SIyGeJeWAcY-unsplash.jpg"
 ---
 
@@ -26,7 +27,6 @@ import Images2 from "./images-2.md"
 </Column>
 
 <Column
-  min_width={400}
   padding={80}
   child_separation={80}
   background_color="#e5ebec"
@@ -37,7 +37,6 @@ import Images2 from "./images-2.md"
 </Column>
 
 <Column
-  min_width={400}
   padding={80}
   child_separation={80}
   background_color="#e5ebec"

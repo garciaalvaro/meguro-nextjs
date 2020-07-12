@@ -1,5 +1,6 @@
 ---
 title: "Project 2"
+subtitle: "Ut enim veniam"
 thumb_img: "/img/joel-filipe-HiOgJdpg0qo-unsplash.jpg"
 ---
 

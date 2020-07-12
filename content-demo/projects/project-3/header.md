@@ -2,12 +2,12 @@
 
 ### Minim veniam
 
-<Info
+<Hr
   border_top={2}
   margin_top={150}
-  padding_top={25}
-  li_separator="|"
->
+/>
+
+<Info li_separator="|">
 
 - **Elit**: nostrud
 - **Resse**: 835

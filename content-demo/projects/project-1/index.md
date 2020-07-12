@@ -1,5 +1,6 @@
 ---
 title: "Project 1"
+subtitle: "Aconsec adipiscin"
 thumb_img: "/img/joel-filipe-2BLsWpau-GQ-unsplash.jpg"
 ---
 

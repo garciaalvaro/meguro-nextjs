@@ -5,18 +5,20 @@ import Description from "./description.md"
   padding={40}
   padding_top={140}
   padding_bottom={80}
+  child_separation={25}
 >
 
   <Header />
-
-  ---
 
   <Description />
 
   <List
     type={["projects"]}
-    row_separation={50}
-    column_separation={100}
+    show_subtitle={true}
+    padding_top={30}
+    padding_bottom={40}
+    row_separation={40}
+    column_separation={40}
   />
 
 </Column>
