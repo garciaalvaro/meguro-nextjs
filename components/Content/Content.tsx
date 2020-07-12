@@ -18,6 +18,7 @@ interface Components {
 	List: FunctionComponent<{ type: "projects" | "pages" }>;
 	Container: FunctionComponent<ContainerProps>;
 	Info: FunctionComponent<ContainerProps>;
+	Hr: FunctionComponent<ContainerProps>;
 	Column: FunctionComponent<ContainerProps>;
 }
 
@@ -65,6 +66,9 @@ export const Content: FunctionComponent<Props> = props => {
 
 		// eslint-disable-next-line react/display-name
 		Info: (props) => <Container {...props} type="info" />,
+
+		// eslint-disable-next-line react/display-name
+		Hr: (props) => <Container {...props} html_tag="hr" />,
 
 		// eslint-disable-next-line react/display-name
 		List: ({ type, ...props }) => (
