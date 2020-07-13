@@ -4,10 +4,11 @@ interface Entry {
 	content: string;
 	frontmatter: {
 		title: string;
-		subtitle: string;
+		subtitle?: string;
 		thumb_img: string;
-		description_width?: number;
-		[key: string]: string | number;
+	};
+	frontmatter_mobile: {
+		breakpoint_width?: string;
 	};
 }
 

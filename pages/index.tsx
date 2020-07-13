@@ -12,13 +12,20 @@ interface Props {
 	has_mobile_content: boolean;
 	projects: Entry[];
 	pages: Entry[];
+	frontmatter_mobile: Entry["frontmatter_mobile"];
 }
 
 const Home: FunctionComponent<Props> = props => {
-	const { slug, has_mobile_content, projects, pages } = props;
+	const {
+		slug,
+		has_mobile_content,
+		projects,
+		pages,
+		frontmatter_mobile,
+	} = props;
 
 	return (
-		<Layout>
+		<Layout breakpoint_width={frontmatter_mobile.breakpoint_width || 600}>
 			<Main>
 				<Content
 					entry_type="page"
@@ -40,11 +47,13 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	const pages = getEntries(process.env.pages_dir);
 	const file_path_mobile = `${process.env.pages_dir}/${slug}/index.mobile.md`;
 	const has_mobile_content = await existsSync(file_path_mobile);
+	const { frontmatter_mobile } = pages.find(page => page.slug === slug);
 
 	return {
 		props: {
 			slug,
 			has_mobile_content,
+			frontmatter_mobile: frontmatter_mobile as Entry["frontmatter"],
 			projects,
 			pages,
 		},

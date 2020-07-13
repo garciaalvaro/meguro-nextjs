@@ -7,20 +7,25 @@ import React, {
 
 import { useWindowSize } from "@utils";
 
-interface Props {
+interface ContextProps {
 	is_mobile: boolean;
 }
 
-export const Context = createContext<Props>({
+interface Props {
+	breakpoint_width: number;
+}
+
+export const Context = createContext<ContextProps>({
 	is_mobile: false,
 });
 
-export const ContextProvider: FunctionComponent = props => {
+export const ContextProvider: FunctionComponent<Props> = props => {
+	const { breakpoint_width } = props;
 	const { window_width } = useWindowSize();
-	const [is_mobile, setIsMobile] = useState(window_width < 600);
+	const [is_mobile, setIsMobile] = useState(window_width < breakpoint_width);
 
 	useEffect(() => {
-		setIsMobile(window_width < 600);
+		setIsMobile(window_width < breakpoint_width);
 	}, [window_width]);
 
 	return (

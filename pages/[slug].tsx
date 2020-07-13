@@ -14,13 +14,21 @@ interface Props {
 	has_mobile_content: boolean;
 	projects: Entry[];
 	pages: Entry[];
+	frontmatter_mobile: Entry["frontmatter_mobile"];
 }
 
 const Page: FunctionComponent<Props> = props => {
-	const { entry_type, slug, has_mobile_content, projects, pages } = props;
+	const {
+		entry_type,
+		slug,
+		has_mobile_content,
+		projects,
+		pages,
+		frontmatter_mobile,
+	} = props;
 
 	return (
-		<Layout>
+		<Layout breakpoint_width={frontmatter_mobile.breakpoint_width || 600}>
 			<Main>
 				<Content
 					entry_type={entry_type}
@@ -46,6 +54,9 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 	const entry_type = pages.find(entry => entry.slug === slug)
 		? "page"
 		: "project";
+	const { frontmatter_mobile } = [...pages, ...projects].find(
+		entry => entry.slug === slug
+	);
 
 	if (entry_type === "page") {
 		has_mobile_content = await existsSync(
@@ -62,6 +73,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 			entry_type,
 			slug,
 			has_mobile_content,
+			frontmatter_mobile,
 			projects,
 			pages,
 		},
