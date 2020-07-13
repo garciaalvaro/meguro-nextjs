@@ -3,7 +3,8 @@ import { MDXProvider } from "@mdx-js/react";
 import dynamic from "next/dynamic";
 
 import { List } from "@/List";
-import { Container, ContainerProps } from "@/Container";
+import { Container, } from "@/Container";
+import { Props as StylesProps, } from "@utils/useStyles";
 import { Context } from "@context";
 
 interface Props {
@@ -16,10 +17,10 @@ interface Props {
 
 interface Components {
 	List: FunctionComponent<{ type: "projects" | "pages" }>;
-	Container: FunctionComponent<ContainerProps>;
-	Info: FunctionComponent<ContainerProps>;
-	Hr: FunctionComponent<ContainerProps>;
-	Column: FunctionComponent<ContainerProps>;
+	Container: FunctionComponent<StylesProps>;
+	Info: FunctionComponent<StylesProps>;
+	Hr: FunctionComponent<StylesProps>;
+	Column: FunctionComponent<StylesProps>;
 }
 
 export const Content: FunctionComponent<Props> = props => {
