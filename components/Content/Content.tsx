@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useContext } from "react";
-import { MDXProvider } from "@mdx-js/react";
+import { MDXProvider, MDXProviderComponents } from "@mdx-js/react";
 import dynamic from "next/dynamic";
 
 import { List } from "@/List";
@@ -13,14 +13,6 @@ interface Props {
 	has_mobile_content: boolean;
 	projects: Entry[];
 	pages: Entry[];
-}
-
-interface Components {
-	List: FunctionComponent<{ type: "projects" | "pages" }>;
-	Container: FunctionComponent<StylesProps>;
-	Info: FunctionComponent<StylesProps>;
-	Hr: FunctionComponent<StylesProps>;
-	Column: FunctionComponent<StylesProps>;
 }
 
 export const Content: FunctionComponent<Props> = props => {
@@ -59,20 +51,20 @@ export const Content: FunctionComponent<Props> = props => {
 		}
 	}
 
-	const components: Components = {
+	const components: MDXProviderComponents = {
 		Container,
 
 		// eslint-disable-next-line react/display-name
-		Column: (props) => <Container {...props} type="column" />,
+		Column: (props: StylesProps) => <Container {...props} type="column" />,
 
 		// eslint-disable-next-line react/display-name
-		Info: (props) => <Container {...props} type="info" />,
+		Info: (props: StylesProps) => <Container {...props} type="info" />,
 
 		// eslint-disable-next-line react/display-name
-		Hr: (props) => <Container {...props} html_tag="hr" />,
+		Hr: (props: StylesProps) => <Container {...props} html_tag="hr" />,
 
 		// eslint-disable-next-line react/display-name
-		List: ({ type, ...props }) => (
+		List: ({ type, ...props }: StylesProps & { type: "projects" | "pages" }) => (
 			<List
 				{...props}
 				entries={[

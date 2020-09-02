@@ -47,13 +47,15 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	const pages = getEntries(process.env.pages_dir);
 	const file_path_mobile = `${process.env.pages_dir}/${slug}/index.mobile.md`;
 	const has_mobile_content = await existsSync(file_path_mobile);
-	const { frontmatter_mobile } = pages.find(page => page.slug === slug);
+	const { frontmatter_mobile } = pages.find(
+		page => page.slug === slug
+	) as Entry;
 
 	return {
 		props: {
 			slug,
 			has_mobile_content,
-			frontmatter_mobile: frontmatter_mobile as Entry["frontmatter"],
+			frontmatter_mobile,
 			projects,
 			pages,
 		},

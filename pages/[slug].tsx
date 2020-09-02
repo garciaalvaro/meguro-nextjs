@@ -51,12 +51,14 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 	const projects = getEntries(process.env.projects_dir);
 	const pages = getEntries(process.env.pages_dir);
 	let has_mobile_content = false;
+
 	const entry_type = pages.find(entry => entry.slug === slug)
 		? "page"
 		: "project";
+
 	const { frontmatter_mobile } = [...pages, ...projects].find(
 		entry => entry.slug === slug
-	);
+	) as Entry;
 
 	if (entry_type === "page") {
 		has_mobile_content = await existsSync(
