@@ -1,6 +1,6 @@
 import React, { Fragment, FunctionComponent } from "react";
 
-import { Container } from "@/Container";
+import { Column } from "@/Column";
 
 interface Props {
 	Header: FunctionComponent;
@@ -13,23 +13,22 @@ export const LayoutExample1: FunctionComponent<Props> = props => {
 
 	return (
 		<Fragment>
-			<Container
+			<Column
 				min_width={400}
 				max_width={600}
 				padding={50}
 				padding_top={90}
 				child_separation={25}
 				background_color="#b4b9bf"
-				type="column"
 			>
 				<Header />
 				<hr />
 				<Description />
-			</Container>
+			</Column>
 
-			<Container>
+			<Column>
 				<Images />
-			</Container>
+			</Column>
 		</Fragment>
 	);
 };

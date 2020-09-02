@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 
 import { List } from "@/List";
 import { Container, } from "@/Container";
+import { Column, } from "@/Column";
 import { Props as StylesProps, } from "@utils/useStyles";
 import { Context } from "@context";
 
@@ -55,7 +56,7 @@ export const Content: FunctionComponent<Props> = props => {
 		Container,
 
 		// eslint-disable-next-line react/display-name
-		Column: (props: StylesProps) => <Container {...props} type="column" />,
+		Column,
 
 		// eslint-disable-next-line react/display-name
 		Info: (props: StylesProps) => <Container {...props} type="info" />,
