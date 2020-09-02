@@ -8,7 +8,7 @@ interface Entry {
 		thumb_img: string;
 	};
 	frontmatter_mobile: {
-		breakpoint_width?: string;
+		breakpoint_width?: number;
 	};
 }
 
