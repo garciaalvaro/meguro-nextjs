@@ -31,7 +31,7 @@ export const getEntries = (directory?: string): Entry[] => {
 			...acc,
 			{
 				slug,
-				path: `/${slug}`,
+				path: `/${slug === "home" ? "" : slug}`,
 				frontmatter: frontmatter as Entry["frontmatter"],
 				frontmatter_mobile,
 				content,
