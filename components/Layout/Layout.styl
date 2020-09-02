@@ -20,3 +20,15 @@ html
 body
 :global(#__next)
 	height 100%
+
+
+:global(#__next)
+	display grid
+	grid-template-columns 9rem auto
+	grid-template-areas 'sidebar main'
+
+	> nav
+		grid-area sidebar
+
+	> main
+		grid-area main

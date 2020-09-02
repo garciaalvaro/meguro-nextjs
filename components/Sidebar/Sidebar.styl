@@ -2,5 +2,77 @@
  * Sidebar
  */
 
+$sidebar_width_open = 44rem
+$sidebar_width_closed = 9rem
+
 .container
-	color red
+	width $sidebar_width_closed
+	height 100%
+	position relative
+	cursor pointer
+
+	.is_open &
+	.is_closing &
+		width 100vw
+
+	ul
+		width $sidebar_width_open
+
+	a
+		height $sidebar_width_closed
+		display flex
+		align-items center
+		opacity .06
+		transition opacity .6s var(--ease_standard)
+
+		.is_open&
+			opacity 1
+
+		.no-is_open&
+		.is_opening&
+		.is_closing&
+			pointer-events none
+
+		> div
+			width $sidebar_width_closed
+			padding-bottom $sidebar_width_closed
+			flex-shrink 0
+
+		h3
+			padding 0 3.6em
+
+.list_container
+	width $sidebar_width_closed
+	height 100%
+	overflow hidden
+	transition width .6s var(--ease_standard)
+	transform translateZ(0)
+
+	.is_open &
+		width $sidebar_width_open
+
+.overlay
+	position absolute
+	top 0
+	left 0
+	width 100vw
+	height 100%
+	opacity 0
+	transition opacity .6s var(--ease_standard)
+	display none
+
+	.is_open &
+		opacity .8
+		animation appear .6s var(--ease_standard)
+
+	.is_open &
+	.is_closing &
+		display block
+
+@keyframes appear
+
+	0%
+		opacity 0
+
+	100%
+		opacity .8

@@ -14,7 +14,12 @@ export const List: FunctionComponent<Props> = props => {
 	const { entries, show_subtitle, ...rest } = props;
 
 	return (
-		<Container {...rest} className={styles.container} html_tag="ul">
+		<Container
+			{...rest}
+			className={styles.container}
+			html_tag="ul"
+			type="column"
+		>
 			{props.children}
 
 			{entries.map(({ path, frontmatter }) => (
