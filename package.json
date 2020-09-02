@@ -6,14 +6,16 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"dev": "node server.js",
+		"start": "npm run dev",
 		"build": "next build",
-		"start": "cross-env NODE_ENV=production node server.js",
-		"test": "npm run type-check && npm run lint && npm run prettier && jest",
-		"type-check": "tsc",
-		"jest": "jest --watch",
-		"lint": "eslint '**/*.{ts,tsx}'",
-		"prettier": "prettier --check '**/*.{ts,tsx}'"
+		"dev": "node server.js",
+		"serve": "cross-env NODE_ENV=production node server.js",
+		"test": "npm run test:type && npm run test:lint && npm run test:prettier && npm run test:unit",
+		"test:lint": "eslint \"**/*.{js,ts,tsx}\"",
+		"test:prettier": "prettier --check \"**/*.{js,ts,tsx}\"",
+		"test:types": "tsc",
+		"test:unit": "jest --watch",
+		"prettier": "prettier --write \"**/*.{js,ts,tsx}\""
 	},
 	"dependencies": {
 		"lodash.throttle": "^4.1.1",
