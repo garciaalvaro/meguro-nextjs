@@ -12,10 +12,10 @@
 		"serve": "cross-env NODE_ENV=production node server.js",
 		"test": "npm run test:type && npm run test:lint && npm run test:prettier && npm run test:unit",
 		"test:lint": "eslint \"**/*.{js,ts,tsx}\"",
-		"test:prettier": "prettier --check \"**/*.{js,ts,tsx}\"",
+		"test:prettier": "prettier --check \"**/*.{js,json,ts,tsx}\"",
 		"test:types": "tsc",
 		"test:unit": "jest --watch",
-		"prettier": "prettier --write \"**/*.{js,ts,tsx}\""
+		"prettier": "prettier --write \"**/*.{js,json,ts,tsx}\""
 	},
 	"dependencies": {
 		"lodash.throttle": "^4.1.1",
