@@ -1,10 +1,7 @@
----
-breakpoint_width: 800
----
-
 import Header from "./header.md"
 import Description from "./description.md"
-import Images from "./images.md"
+import Images1 from "./images-1.md"
+import Images2 from "./images-2.md"
 
 <Column>
 
@@ -12,8 +9,9 @@ import Images from "./images.md"
     padding={40}
     padding_top={140}
     padding_bottom={80}
-    background_color="#c3c4c5"
     child_separation={25}
+  	color="rgba(255,255,255,0.9)"
+  	background_color="#4f5356"
   >
 
   <Header />
@@ -26,13 +24,10 @@ import Images from "./images.md"
 
 
 
-  <Container
-    child_separation={5}
-    padding={5}
-    background_color="#41474a"
-  >
+  <Container padding={50} child_separation={50}>
 
-  <Images />
+  <Images1 />
+  <Images2 />
 
   </Container>
 

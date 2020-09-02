@@ -1,3 +1,7 @@
+---
+breakpoint_width: 800
+---
+
 import Header from "./header.md"
 import Description from "./description.md"
 

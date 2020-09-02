@@ -14,7 +14,7 @@ import Images from "./images.md"
   padding={50}
   padding_top={90}
   child_separation={25}
-  background_color="#cdd2d8"
+  background_color="#b4b9bf"
 >
 
   <Header />

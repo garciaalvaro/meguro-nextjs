@@ -1,6 +1,5 @@
 ---
-title: "Project 1"
-thumb_img: "/img/joel-filipe-2BLsWpau-GQ-unsplash.jpg"
+breakpoint_width: 800
 ---
 
 import Header from "./header.md"
