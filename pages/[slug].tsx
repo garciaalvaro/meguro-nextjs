@@ -84,8 +84,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	const projects = getEntries(process.env.projects_dir);
 	const pages = getEntries(process.env.pages_dir);
 
+	const paths = [...projects, ...pages].reduce<string[]>(
+		(acc, { path }) => (path === "/" ? acc : [...acc, path]),
+		[]
+	);
+
 	return {
-		paths: [...projects, ...pages].map(({ path }) => path),
+		paths,
 		fallback: false,
 	};
 };
