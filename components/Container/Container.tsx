@@ -23,7 +23,7 @@ export const Container: FunctionComponent<Props> = props => {
 	].join(" ");
 
 	if (HtmlTag === "hr") {
-		return <hr className={className} />;
+		return <hr className={className} style={style} />;
 	}
 
 	return (
