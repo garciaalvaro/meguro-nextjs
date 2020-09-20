@@ -3,9 +3,9 @@ import { MDXProvider, MDXProviderComponents } from "@mdx-js/react";
 import dynamic from "next/dynamic";
 
 import { List } from "@/List";
-import { Container, } from "@/Container";
-import { Column, } from "@/Column";
-import { Props as StylesProps, } from "@utils/useStyles";
+import { Container } from "@/Container";
+import { Column } from "@/Column";
+import { Props as StylesProps } from "@utils/useStyles";
 import { Context } from "@context";
 
 interface Props {
@@ -17,42 +17,43 @@ interface Props {
 }
 
 export const Content: FunctionComponent<Props> = props => {
-	const {
-		entry_type,
-		slug,
-		has_mobile_content,
-		projects,
-		pages,
-	} = props;
+	const { entry_type, slug, has_mobile_content, projects, pages } = props;
 
 	const { is_mobile } = useContext(Context);
 
-	let Content = null;
-	let ContentMobile = null;
+	const ContentDesktop = React.useRef<React.ComponentType>(
+		(() => {
+			if (entry_type === "page") {
+				return dynamic(async () =>
+					import(`${process.env.pages_dir}/${slug}/index.md`)
+				);
+			}
 
-	if (entry_type === "page") {
-		Content = dynamic(async () =>
-			import(`${process.env.pages_dir}/${slug}/index.md`)
-		);
-
-		if (has_mobile_content) {
-			ContentMobile = dynamic(() =>
-				import(`${process.env.pages_dir}/${slug}/index.mobile.md`)
+			return dynamic(async () =>
+				import(`${process.env.projects_dir}/${slug}/index.md`)
 			);
-		}
-	} else {
-		Content = dynamic(async () =>
-			import(`${process.env.projects_dir}/${slug}/index.md`)
-		);
+		})()
+	);
 
-		if (has_mobile_content) {
-			ContentMobile = dynamic(() =>
+	const ContentMobile = React.useRef<React.ComponentType>(
+		(() => {
+			if (!has_mobile_content) {
+				return null;
+			}
+
+			if (entry_type === "page") {
+				return dynamic(() =>
+					import(`${process.env.pages_dir}/${slug}/index.mobile.md`)
+				);
+			}
+
+			return dynamic(() =>
 				import(`${process.env.projects_dir}/${slug}/index.mobile.md`)
 			);
-		}
-	}
+		})()
+	);
 
-	const components: MDXProviderComponents = {
+	const components = React.useRef<MDXProviderComponents>({
 		Container,
 
 		// eslint-disable-next-line react/display-name
@@ -65,7 +66,10 @@ export const Content: FunctionComponent<Props> = props => {
 		Hr: (props: StylesProps) => <Container {...props} html_tag="hr" />,
 
 		// eslint-disable-next-line react/display-name
-		List: ({ type, ...props }: StylesProps & { type: "projects" | "pages" }) => (
+		List: ({
+			type,
+			...props
+		}: StylesProps & { type: "projects" | "pages" }) => (
 			<List
 				{...props}
 				entries={[
@@ -75,11 +79,16 @@ export const Content: FunctionComponent<Props> = props => {
 				]}
 			></List>
 		),
-	};
+	});
+
+	const Content =
+		is_mobile && ContentMobile.current
+			? ContentMobile.current
+			: ContentDesktop.current;
 
 	return (
-		<MDXProvider components={components}>
-			{is_mobile && ContentMobile ? <ContentMobile /> : <Content />}
+		<MDXProvider components={components.current}>
+			<Content />
 		</MDXProvider>
 	);
 };

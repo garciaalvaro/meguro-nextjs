@@ -25,7 +25,10 @@ const Home: FunctionComponent<Props> = props => {
 	} = props;
 
 	return (
-		<Layout breakpoint_width={frontmatter_mobile.breakpoint_width || 600}>
+		<Layout
+			breakpoint_width={frontmatter_mobile.breakpoint_width || 600}
+			url_path="/"
+		>
 			<Main>
 				<Content
 					entry_type="page"

@@ -35,3 +35,17 @@ hr.container
 	overflow-y auto
 	flex-grow 1
 	flex-basis 100%
+	height 100%
+
+	&
+		animation appear .3s var(--ease_standard)
+
+@keyframes appear
+
+	0%
+		opacity .8
+		transform translateY(.1rem) translateZ(0)
+
+	100%
+		opacity 1
+		transform translateZ(0)

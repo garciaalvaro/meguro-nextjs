@@ -7,6 +7,7 @@ import { ContextProvider } from "@context";
 interface Props {
 	page_title?: string;
 	breakpoint_width: number;
+	url_path: string;
 }
 
 export const Layout: FunctionComponent<Props> = props => {
@@ -14,13 +15,16 @@ export const Layout: FunctionComponent<Props> = props => {
 	// the string using the DefinePlugin
 	const site_title = process.env.site_title;
 	const site_description = process.env.site_description;
-	const { page_title, breakpoint_width } = props;
+	const { url_path, page_title, breakpoint_width } = props;
 	const title = page_title ? `${site_title} | ${page_title}` : site_title;
 
 	// TODO: Complete meta tags
 
 	return (
-		<ContextProvider breakpoint_width={breakpoint_width}>
+		<ContextProvider
+			breakpoint_width={breakpoint_width}
+			url_path={url_path}
+		>
 			<Head>
 				<title>{title}</title>
 				<meta property="description" content={site_description} />

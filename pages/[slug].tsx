@@ -28,9 +28,15 @@ const Page: FunctionComponent<Props> = props => {
 	} = props;
 
 	return (
-		<Layout breakpoint_width={frontmatter_mobile.breakpoint_width || 600}>
+		<Layout
+			breakpoint_width={frontmatter_mobile.breakpoint_width || 600}
+			url_path={`/${slug}`}
+		>
 			<Main>
 				<Content
+					// We pass the slug as key because otherwise
+					// no re-render is triggered
+					key={slug}
 					entry_type={entry_type}
 					slug={slug}
 					has_mobile_content={has_mobile_content}
