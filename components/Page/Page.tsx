@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import Head from "next/head";
 
-import "./Layout.styl";
+import "./Page.styl";
 import { ContextProvider } from "@context";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 	url_path: string;
 }
 
-export const Layout: FunctionComponent<Props> = props => {
+export const Page: FunctionComponent<Props> = props => {
 	// process can't be destructured as Webpack replaces
 	// the string using the DefinePlugin
 	const site_title = process.env.site_title;

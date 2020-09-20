@@ -3,7 +3,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { existsSync } from "fs";
 
 import { Main } from "@/Main";
-import { Layout } from "@/Layout";
+import { Page } from "@/Page";
 import { Content } from "@/Content";
 import { Sidebar } from "@/Sidebar";
 import { getEntries } from "@utils";
@@ -28,7 +28,7 @@ const Page: FunctionComponent<Props> = props => {
 	} = props;
 
 	return (
-		<Layout
+		<Page
 			breakpoint_width={frontmatter_mobile.breakpoint_width || 600}
 			url_path={`/${slug}`}
 		>
@@ -46,7 +46,7 @@ const Page: FunctionComponent<Props> = props => {
 			</Main>
 
 			<Sidebar entries={[...pages, ...projects]} />
-		</Layout>
+		</Page>
 	);
 };
 
