@@ -3,6 +3,6 @@
 ### Portfolio
 
 <Hr
-  border_top={2}
+  border={2}
   margin_top={100}
 />

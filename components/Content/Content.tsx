@@ -63,7 +63,14 @@ export const Content: FunctionComponent<Props> = props => {
 		Info: (props: StylesProps) => <Container {...props} type="info" />,
 
 		// eslint-disable-next-line react/display-name
-		Hr: (props: StylesProps) => <Container {...props} html_tag="hr" />,
+		Hr: (props: StylesProps) => (
+			<Container
+				{...props}
+				border={undefined}
+				border_top={props.border}
+				html_tag="hr"
+			/>
+		),
 
 		// eslint-disable-next-line react/display-name
 		List: ({

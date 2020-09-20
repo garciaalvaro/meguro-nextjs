@@ -3,7 +3,7 @@
 ### Minim veniam
 
 <Hr
-  border_top={2}
+  border={2}
   margin_top={150}
 />
 
@@ -13,6 +13,5 @@
 - **Resse**: 835
 - **Anim id**: enim, tempor, sed, dole
 - [Voluptate](https://example.com)
-
 
 </Info>
