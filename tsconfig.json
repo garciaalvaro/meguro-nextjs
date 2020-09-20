@@ -8,12 +8,27 @@
 		"jsx": "preserve",
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["components/*"],
-			"@utils": ["utils"],
-			"@utils/*": ["utils/*"],
-			"@context": ["context"]
+			"@/*": [
+				"components/*"
+			],
+			"@utils": [
+				"utils"
+			],
+			"@utils/*": [
+				"utils/*"
+			],
+			"@context": [
+				"context"
+			],
+			"@layouts": [
+				"layouts"
+			],
 		},
-		"lib": ["dom", "dom.iterable", "esnext"],
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext"
+		],
 		"allowJs": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
@@ -21,6 +36,12 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-	"exclude": ["node_modules"]
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx"
+	],
+	"exclude": [
+		"node_modules"
+	]
 }
