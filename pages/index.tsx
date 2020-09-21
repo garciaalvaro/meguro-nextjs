@@ -12,6 +12,7 @@ interface Props {
 	has_mobile_content: boolean;
 	projects: Entry[];
 	pages: Entry[];
+	frontmatter: Entry["frontmatter"];
 	frontmatter_mobile: Entry["frontmatter_mobile"];
 }
 
@@ -21,14 +22,12 @@ const Home: FunctionComponent<Props> = props => {
 		has_mobile_content,
 		projects,
 		pages,
+		frontmatter,
 		frontmatter_mobile,
 	} = props;
 
 	return (
-		<Page
-			breakpoint_width={frontmatter_mobile.breakpoint_width || 600}
-			url_path="/"
-		>
+		<Page layout_name={frontmatter.layout} url_path="/">
 			<Main>
 				<Content
 					entry_type="page"
@@ -50,7 +49,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	const pages = getEntries(process.env.pages_dir);
 	const file_path_mobile = `${process.env.pages_dir}/${slug}/index.mobile.md`;
 	const has_mobile_content = await existsSync(file_path_mobile);
-	const { frontmatter_mobile } = pages.find(
+	const { frontmatter, frontmatter_mobile } = pages.find(
 		page => page.slug === slug
 	) as Entry;
 
@@ -58,6 +57,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 		props: {
 			slug,
 			has_mobile_content,
+			frontmatter,
 			frontmatter_mobile,
 			projects,
 			pages,

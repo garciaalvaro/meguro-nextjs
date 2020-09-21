@@ -14,7 +14,7 @@ interface Props {
 	has_mobile_content: boolean;
 	projects: Entry[];
 	pages: Entry[];
-	frontmatter_mobile: Entry["frontmatter_mobile"];
+	frontmatter: Entry["frontmatter"];
 }
 
 const Page: FunctionComponent<Props> = props => {
@@ -24,14 +24,11 @@ const Page: FunctionComponent<Props> = props => {
 		has_mobile_content,
 		projects,
 		pages,
-		frontmatter_mobile,
+		frontmatter,
 	} = props;
 
 	return (
-		<PageContainer
-			breakpoint_width={frontmatter_mobile.breakpoint_width || 600}
-			url_path={`/${slug}`}
-		>
+		<PageContainer layout_name={frontmatter.layout} url_path={`/${slug}`}>
 			<Main>
 				<Content
 					// We pass the slug as key because otherwise
@@ -62,7 +59,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 		? "page"
 		: "project";
 
-	const { frontmatter_mobile } = [...pages, ...projects].find(
+	const { frontmatter } = [...pages, ...projects].find(
 		entry => entry.slug === slug
 	) as Entry;
 
@@ -81,7 +78,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 			entry_type,
 			slug,
 			has_mobile_content,
-			frontmatter_mobile,
+			frontmatter,
 			projects,
 			pages,
 		},

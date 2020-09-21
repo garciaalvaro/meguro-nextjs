@@ -6,6 +6,7 @@ interface Entry {
 		title: string;
 		subtitle?: string;
 		thumb_img: string;
+		layout?: string;
 	};
 	frontmatter_mobile: {
 		breakpoint_width?: number;
@@ -28,4 +29,11 @@ declare namespace NodeJS {
 		projects_dir: string;
 		pages_dir: string;
 	}
+}
+
+interface Layout {
+	name: string;
+	breakpoint: number;
+	components_desktop: Record<string, FunctionComponent<StylesProps>>;
+	components_mobile: Record<string, FunctionComponent<StylesProps>>;
 }

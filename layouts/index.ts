@@ -1,1 +1,3 @@
-export { Layout1 } from "./Layout1";
+import { meguro_1 } from "./meguro_1";
+
+export const layouts = [meguro_1];
