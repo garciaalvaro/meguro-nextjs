@@ -18,6 +18,11 @@ for num in (1..1000)
 	.column_min_width-{num}
 		grid-template-columns repeat(auto-fit, minmax((num / 10)rem, auto))
 
+	if num <= 100
+
+		.opacity-{num}
+			opacity (num / 100)
+
 	if num >= 100// && num % 10 == 0
 
 		.min_width-{num}
@@ -57,7 +62,7 @@ for num in (1..1000)
 		.column_separation-{num}
 			grid-column-gap (num / 10)rem
 
-	if num <= 200// && num >= 10
+	// if num <= 200// && num >= 10
 
 		// Padding
 

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./styles.styl";
 
@@ -19,6 +19,7 @@ export interface Props {
 	margin_bottom?: number;
 	margin_left?: number;
 	margin_right?: number;
+	opacity?: number;
 	padding?: number;
 	padding_top?: number;
 	padding_bottom?: number;
@@ -53,6 +54,7 @@ export const useStyles = (
 		margin_bottom,
 		margin_left,
 		margin_right,
+		opacity,
 		padding,
 		padding_top,
 		padding_bottom,
@@ -75,7 +77,7 @@ export const useStyles = (
 
 	const has_content_element = !!content_max_width;
 
-	const classNames = useRef(
+	const generateClassNames = () =>
 		[
 			...(has_content_element
 				? []
@@ -86,6 +88,7 @@ export const useStyles = (
 			styles[`li_separator-${li_separator}`],
 			styles[`min_width-${min_width}`],
 			styles[`max_width-${max_width}`],
+			styles[`opacity-${opacity}`],
 			styles[`padding-${padding}`],
 			styles[`padding_top-${padding_top}`],
 			styles[`padding_bottom-${padding_bottom}`],
@@ -103,10 +106,9 @@ export const useStyles = (
 			styles[`border_right-${border_right}`],
 		]
 			.filter(className => className)
-			.join(" ")
-	);
+			.join(" ");
 
-	const classNames_content = useRef(
+	const generateClassNamesContent = () =>
 		[
 			styles.grid,
 			styles[`max_width-${content_max_width}`],
@@ -114,18 +116,59 @@ export const useStyles = (
 			styles[`row_separation-${row_separation}`],
 		]
 			.filter(className => className)
-			.join(" ")
+			.join(" ");
+
+	const [classNames, setClassNames] = useState(generateClassNames());
+
+	const [classNames_content, setClassNamesContent] = useState(
+		generateClassNamesContent()
 	);
 
-	const style = useRef({ color, backgroundColor });
+	const [style, setStyle] = useState({ color, backgroundColor });
+
+	useEffect(() => {
+		setStyle({ color, backgroundColor });
+	}, [color, backgroundColor]);
+
+	useEffect(() => {
+		setClassNamesContent(generateClassNamesContent());
+	}, [content_max_width, content_align, row_separation]);
+
+	useEffect(() => {
+		setClassNames(generateClassNames());
+	}, [
+		column_separation,
+		column_min_width,
+		child_separation,
+		color,
+		backgroundColor,
+		min_width,
+		max_width,
+		content_max_width,
+		content_align,
+		margin,
+		margin_top,
+		margin_bottom,
+		margin_left,
+		margin_right,
+		opacity,
+		padding,
+		padding_top,
+		padding_bottom,
+		padding_left,
+		padding_right,
+		border,
+		border_top,
+		border_bottom,
+		border_left,
+		border_right,
+	]);
 
 	return {
-		style: style.current,
+		style,
 
-		classNames: classNames.current,
+		classNames,
 
-		classNames_content: !has_content_element
-			? ""
-			: classNames_content.current,
+		classNames_content: !has_content_element ? "" : classNames_content,
 	};
 };
