@@ -8,11 +8,10 @@ const Column1: FunctionComponent<StylesProps> = (props: StylesProps) => {
 	return (
 		<Column
 			min_width={400}
-			max_width={600}
-			padding={50}
-			padding_top={90}
+			padding_top={120}
+			padding_bottom={50}
+			padding_left={50}
 			child_separation={25}
-			background_color="#b4b9bf"
 			{...props}
 		/>
 	);
@@ -24,26 +23,31 @@ const Column1Mobile: FunctionComponent<StylesProps> = (props: StylesProps) => {
 			padding={40}
 			padding_top={140}
 			padding_bottom={80}
-			background_color="#cdd2d8"
+			child_separation={25}
 			{...props}
 		/>
 	);
 };
 
 const Column2: FunctionComponent<StylesProps> = (props: StylesProps) => {
-	return <Column {...props} />;
+	return <Column padding={70} {...props} />;
 };
 
 const Column2Mobile: FunctionComponent<StylesProps> = props => {
 	return (
-		<Container padding={10} child_separation={10}>
+		<Container
+			padding_left={40}
+			padding_right={0}
+			padding_bottom={0}
+			child_separation={25}
+		>
 			{props.children}
 		</Container>
 	);
 };
 
-export const meguro_1: Layout = {
-	name: "meguro_1",
+export const meguro_home: Layout = {
+	name: "meguro_home",
 	breakpoint: 800,
 	components_desktop: {
 		Column1,

@@ -21,36 +21,27 @@ const Column1: FunctionComponent<StylesProps> = (props: StylesProps) => {
 const Column1Mobile: FunctionComponent<StylesProps> = (props: StylesProps) => {
 	return (
 		<Container
-			padding={40}
-			padding_top={140}
-			padding_bottom={80}
-			background_color="#cdd2d8"
+			padding={50}
+			padding_top={90}
+			padding_bottom={90}
+			child_separation={25}
+			background_color="#b4b9bf"
 			{...props}
 		/>
 	);
 };
 
 const Column2: FunctionComponent<StylesProps> = (props: StylesProps) => {
-	return <Column {...props} />;
+	return <Column padding={5} child_separation={5} {...props} />;
 };
 
-const Column2Mobile: FunctionComponent<StylesProps> = props => {
-	return (
-		<Container padding={10} child_separation={10}>
-			{props.children}
-		</Container>
-	);
+const Column2Mobile: FunctionComponent<StylesProps> = (props: StylesProps) => {
+	return <Container padding={5} child_separation={5} {...props} />;
 };
 
-export const meguro_1: Layout = {
-	name: "meguro_1",
-	breakpoint: 800,
-	components_desktop: {
-		Column1,
-		Column2,
-	},
-	components_mobile: {
-		Column1: Column1Mobile,
-		Column2: Column2Mobile,
-	},
+export const meguro_4: Layout = {
+	name: "meguro_4",
+	breakpoint: 700,
+	components_desktop: { Column1, Column2 },
+	components_mobile: { Column1: Column1Mobile, Column2: Column2Mobile },
 };
