@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import throttle from "lodash.throttle";
 
+interface WindowSize {
+	window_width: number;
+	window_height: number;
+}
+
 // Due to SSR we can only use window or document after mount
-export const useWindowSize = (time = 300) => {
+export const useWindowSize = (time = 300): WindowSize => {
 	const [width, setWidth] = useState(
 		typeof window !== "undefined" ? window.innerWidth : 1
 	);
