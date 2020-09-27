@@ -17,9 +17,6 @@
 			"@utils/*": [
 				"utils/*"
 			],
-			"@context": [
-				"context"
-			],
 			"@layouts": [
 				"layouts"
 			],
