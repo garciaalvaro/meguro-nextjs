@@ -14,6 +14,7 @@ export interface Props {
 	max_width?: number;
 	content_max_width?: number;
 	content_align?: "left" | "right" | "center";
+	order?: number;
 	margin?: number;
 	margin_top?: number;
 	margin_bottom?: number;
@@ -49,6 +50,7 @@ export const useStyles = (
 		max_width,
 		content_max_width,
 		content_align,
+		order,
 		margin,
 		margin_top,
 		margin_bottom,
@@ -94,6 +96,7 @@ export const useStyles = (
 			styles[`padding_bottom-${padding_bottom}`],
 			styles[`padding_left-${padding_left}`],
 			styles[`padding_right-${padding_right}`],
+			styles[`order-${order}`],
 			styles[`margin-${margin}`],
 			styles[`margin_top-${margin_top}`],
 			styles[`margin_bottom-${margin_bottom}`],
@@ -146,6 +149,7 @@ export const useStyles = (
 		max_width,
 		content_max_width,
 		content_align,
+		order,
 		margin,
 		margin_top,
 		margin_bottom,
