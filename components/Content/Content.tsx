@@ -1,10 +1,4 @@
-import React, {
-	FunctionComponent,
-	useState,
-	useContext,
-	useEffect,
-	useRef,
-} from "react";
+import React, { FunctionComponent, useState, useEffect, useRef } from "react";
 import { MDXProvider, MDXProviderComponents } from "@mdx-js/react";
 import dynamic from "next/dynamic";
 
@@ -12,23 +6,35 @@ import { List } from "@/List";
 import { Container } from "@/Container";
 import { Column } from "@/Column";
 import { Props as StylesProps } from "@utils/useStyles";
-import { Context } from "@context";
-import { useIsFirstRender } from "@utils";
+import { useIsFirstRender, useIsMobile } from "@utils";
+import { layouts } from "@layouts";
 
 interface Props {
-	entry_type: EntryType;
+	is_page: Entry["is_page"];
 	slug: Entry["slug"];
-	has_mobile_content: boolean;
+	layout_name: Layout["name"];
 	projects: Entry[];
 	pages: Entry[];
 }
 
 export const Content: FunctionComponent<Props> = props => {
-	const { entry_type, slug, has_mobile_content, projects, pages } = props;
+	const { is_page, slug, layout_name, projects, pages } = props;
+
+	const { current: Entry } = useRef(
+		is_page
+			? dynamic(async () => import(`${process.env.pages_dir}/${slug}.md`))
+			: dynamic(
+					async () => import(`${process.env.projects_dir}/${slug}.md`)
+			  )
+	);
+
+	const { current: layout } = useRef(
+		layouts.find(({ name }) => name === layout_name) || layouts[0]
+	);
+
+	const is_mobile = useIsMobile(layout.breakpoint);
 
 	const is_first_render = useIsFirstRender();
-
-	const { is_mobile, layout } = useContext(Context);
 
 	const components = useRef<MDXProviderComponents>({
 		Container,
@@ -65,61 +71,26 @@ export const Content: FunctionComponent<Props> = props => {
 		),
 	});
 
-	const ContentDesktop = React.useRef<React.ComponentType>(
-		(() => {
-			if (entry_type === "page") {
-				return dynamic(async () =>
-					import(`${process.env.pages_dir}/${slug}/index.md`)
-				);
-			}
-
-			return dynamic(async () =>
-				import(`${process.env.projects_dir}/${slug}/index.md`)
-			);
-		})()
-	);
-
-	const ContentMobile = React.useRef<React.ComponentType>(
-		(() => {
-			if (!has_mobile_content) {
-				return null;
-			}
-
-			if (entry_type === "page") {
-				return dynamic(() =>
-					import(`${process.env.pages_dir}/${slug}/index.mobile.md`)
-				);
-			}
-
-			return dynamic(() =>
-				import(`${process.env.projects_dir}/${slug}/index.mobile.md`)
-			);
-		})()
-	);
-
-	const [layouts, setLayouts] = useState<MDXProviderComponents>(
-		is_mobile ? layout.components_mobile : layout.components_desktop
-	);
+	const [layout_components, setLayoutComponents] = useState<
+		MDXProviderComponents
+	>(is_mobile ? layout.components_mobile : layout.components_desktop);
 
 	useEffect(() => {
-		setLayouts(
+		setLayoutComponents(
 			is_mobile ? layout.components_mobile : layout.components_desktop
 		);
 	}, [is_mobile]);
 
-	const Content =
-		is_mobile && ContentMobile.current
-			? ContentMobile.current
-			: ContentDesktop.current;
-
 	return (
-		<MDXProvider components={{ ...components.current, ...layouts }}>
+		<MDXProvider
+			components={{ ...components.current, ...layout_components }}
+		>
 			{is_mobile && !is_first_render ? (
 				<Column>
-					<Content />
+					<Entry />
 				</Column>
 			) : (
-				<Content />
+				<Entry />
 			)}
 		</MDXProvider>
 	);

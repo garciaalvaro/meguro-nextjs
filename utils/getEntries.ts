@@ -1,40 +1,23 @@
 import matter from "gray-matter";
-import { readdirSync, readFileSync, existsSync } from "fs";
+import { readdirSync, readFileSync } from "fs";
 
-export const getEntries = (directory?: string): Entry[] => {
-	if (!directory) {
-		return [];
-	}
-
+export const getEntries = (directory: string): Entry[] => {
 	const slugs = readdirSync(directory);
 
-	const entries = slugs.reduce<Entry[]>((acc, slug) => {
-		const entry = readFileSync(`${directory}/${slug}/index.md`, "utf8");
-
-		const { data: frontmatter, content } = matter(entry);
-
-		let frontmatter_mobile: Entry["frontmatter_mobile"] = {};
-
-		const has_mobile = existsSync(`${directory}/${slug}/index.mobile.md`);
-
-		if (has_mobile) {
-			const entry_mobile = readFileSync(
-				`${directory}/${slug}/index.mobile.md`,
-				"utf8"
-			);
-
-			frontmatter_mobile = matter(entry_mobile)
-				.data as Entry["frontmatter_mobile"];
-		}
+	const entries = slugs.reduce<Entry[]>((acc, filename) => {
+		const entry = readFileSync(`${directory}/${filename}`, "utf8");
+		const { data: frontmatter } = matter(entry);
+		const slug = filename.replace(/\.md$/, "");
+		const path = `/${slug === "home" ? "" : slug}`;
+		const is_page = directory.includes("/pages/");
 
 		return [
 			...acc,
 			{
+				is_page,
 				slug,
-				path: `/${slug === "home" ? "" : slug}`,
+				path,
 				frontmatter: frontmatter as Entry["frontmatter"],
-				frontmatter_mobile,
-				content,
 			},
 		];
 	}, []);

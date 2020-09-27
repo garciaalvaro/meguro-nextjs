@@ -1,84 +1,67 @@
 import React, { FunctionComponent } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { existsSync } from "fs";
 
 import { Main } from "@/Main";
-import { Page as PageContainer } from "@/Page";
+import { Page } from "@/Page";
 import { Content } from "@/Content";
 import { Sidebar } from "@/Sidebar";
 import { getEntries } from "@utils";
 
 interface Props {
-	entry_type: EntryType;
 	slug: Entry["slug"];
-	has_mobile_content: boolean;
+	is_page: Entry["is_page"];
+	layout_name: Layout["name"];
 	projects: Entry[];
 	pages: Entry[];
-	frontmatter: Entry["frontmatter"];
 }
 
-const Page: FunctionComponent<Props> = props => {
-	const {
-		entry_type,
-		slug,
-		has_mobile_content,
-		projects,
-		pages,
-		frontmatter,
-	} = props;
+const Single: FunctionComponent<Props> = props => {
+	const { slug, is_page, layout_name, projects, pages } = props;
 
 	return (
-		<PageContainer layout_name={frontmatter.layout} url_path={`/${slug}`}>
+		<Page>
 			<Main>
 				<Content
-					// We pass the slug as key because otherwise
+					// We pass the slug as key otherwise
 					// no re-render is triggered
 					key={slug}
-					entry_type={entry_type}
 					slug={slug}
-					has_mobile_content={has_mobile_content}
+					is_page={is_page}
+					layout_name={layout_name}
 					projects={projects}
 					pages={pages}
 				/>
 			</Main>
 
 			<Sidebar entries={[...pages, ...projects]} />
-		</PageContainer>
+		</Page>
 	);
 };
 
-export default Page;
+export default Single;
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
 	const slug = context.params?.slug as string;
-	const projects = getEntries(process.env.projects_dir);
-	const pages = getEntries(process.env.pages_dir);
-	let has_mobile_content = false;
 
-	const entry_type = pages.find(entry => entry.slug === slug)
-		? "page"
-		: "project";
+	const projects = process.env.projects_dir
+		? getEntries(process.env.projects_dir)
+		: [];
 
-	const { frontmatter } = [...pages, ...projects].find(
-		entry => entry.slug === slug
-	) as Entry;
+	const pages = process.env.pages_dir
+		? getEntries(process.env.pages_dir)
+		: [];
 
-	if (entry_type === "page") {
-		has_mobile_content = await existsSync(
-			`${process.env.pages_dir}/${slug}/index.mobile.md`
-		);
-	} else {
-		has_mobile_content = await existsSync(
-			`${process.env.projects_dir}/${slug}/index.mobile.md`
-		);
-	}
+	let entry = pages.find(entry => entry.slug === slug);
+
+	const is_page = !!entry;
+
+	entry = entry || projects.find(entry => entry.slug === slug);
 
 	return {
 		props: {
-			entry_type,
-			slug,
-			has_mobile_content,
-			frontmatter,
+			slug: entry?.slug || "",
+			is_page,
+			layout_name: entry?.frontmatter.layout || "meguro_4",
 			projects,
 			pages,
 		},

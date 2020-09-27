@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react";
 import { GetStaticProps } from "next";
-import { existsSync } from "fs";
 
 import { Main } from "@/Main";
 import { Page } from "@/Page";
@@ -8,31 +7,21 @@ import { Content } from "@/Content";
 import { getEntries } from "@utils";
 
 interface Props {
-	slug: Entry["slug"];
-	has_mobile_content: boolean;
+	layout_name: Layout["name"];
 	projects: Entry[];
 	pages: Entry[];
-	frontmatter: Entry["frontmatter"];
-	frontmatter_mobile: Entry["frontmatter_mobile"];
 }
 
 const Home: FunctionComponent<Props> = props => {
-	const {
-		slug,
-		has_mobile_content,
-		projects,
-		pages,
-		frontmatter,
-		frontmatter_mobile,
-	} = props;
+	const { layout_name, projects, pages } = props;
 
 	return (
-		<Page layout_name={frontmatter.layout} url_path="/">
+		<Page>
 			<Main>
 				<Content
-					entry_type="page"
-					slug={slug}
-					has_mobile_content={has_mobile_content}
+					slug="home"
+					is_page={true}
+					layout_name={layout_name}
 					projects={projects}
 					pages={pages}
 				/>
@@ -47,18 +36,11 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	const slug = "home";
 	const projects = getEntries(process.env.projects_dir);
 	const pages = getEntries(process.env.pages_dir);
-	const file_path_mobile = `${process.env.pages_dir}/${slug}/index.mobile.md`;
-	const has_mobile_content = await existsSync(file_path_mobile);
-	const { frontmatter, frontmatter_mobile } = pages.find(
-		page => page.slug === slug
-	) as Entry;
+	const entry = [...pages, ...projects].find(entry => entry.slug === slug);
 
 	return {
 		props: {
-			slug,
-			has_mobile_content,
-			frontmatter,
-			frontmatter_mobile,
+			layout_name: entry?.frontmatter.layout || "meguro_4",
 			projects,
 			pages,
 		},

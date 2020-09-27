@@ -1,15 +1,12 @@
 interface Entry {
+	is_page: boolean;
 	path: string;
 	slug: string;
-	content: string;
 	frontmatter: {
 		title: string;
 		subtitle?: string;
 		thumb_img: string;
 		layout?: string;
-	};
-	frontmatter_mobile: {
-		breakpoint_width?: number;
 	};
 }
 
