@@ -1,6 +1,5 @@
 import React, { Fragment, FunctionComponent } from "react";
 
-import { Container } from "@/Container";
 import { Column } from "@/Column";
 import styles from "./components.styl";
 import { useIsMobile } from "@utils";
@@ -35,18 +34,10 @@ export const Column2: FunctionComponent = props => {
 	);
 };
 
-export const ContainerTitle: FunctionComponent = props => {
-	return (
-		<Container className={styles.column_2_title}>
-			{props.children}
-		</Container>
-	);
+export const Title: FunctionComponent = props => {
+	return <div className={styles.column_2_title}>{props.children}</div>;
 };
 
-export const ContainerDescription: FunctionComponent = props => {
-	return (
-		<Container className={styles.column_2_description}>
-			{props.children}
-		</Container>
-	);
+export const Description: FunctionComponent = props => {
+	return <div className={styles.column_2_description}>{props.children}</div>;
 };

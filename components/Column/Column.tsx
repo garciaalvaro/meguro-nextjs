@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react";
 
-import { Container } from "@/Container";
 import styles from "./Column.styl";
 
 interface Props {
@@ -21,9 +20,7 @@ export const Column: FunctionComponent<Props> = props => {
 
 	return (
 		<div className={className_container}>
-			<Container className={className_content}>
-				{props.children}
-			</Container>
+			<div className={className_content}>{props.children}</div>
 		</div>
 	);
 };

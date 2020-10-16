@@ -1,6 +1,1 @@
-export {
-	Column1,
-	Column2,
-	ContainerTitle,
-	ContainerDescription,
-} from "./components";
+export { Column1, Column2, Title, Description } from "./components";

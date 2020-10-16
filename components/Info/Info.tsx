@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react";
 
-import { Container } from "@/Container";
 import styles from "./Info.styl";
 
 interface Props {
@@ -19,5 +18,5 @@ export const Info: FunctionComponent<Props> = props => {
 		styles[`li_separator-${li_separator}`],
 	].join(" ");
 
-	return <Container className={className}>{props.children}</Container>;
+	return <div className={className}>{props.children}</div>;
 };

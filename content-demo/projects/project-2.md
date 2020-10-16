@@ -7,8 +7,8 @@ thumb_img: "/img/joel-filipe-SIyGeJeWAcY-unsplash.jpg"
 import {
 	Column1,
 	Column2,
-	ContainerTitle,
-	ContainerDescription,
+	Title,
+	Description,
 } from "@layouts/meguro_2";
 
 <Column1>
@@ -22,7 +22,7 @@ import {
 
 <Column2>
 
-<ContainerTitle
+<Title
 	padding={50}
 	padding_top={150}
 	child_separation={25}
@@ -46,9 +46,9 @@ import {
 
 </Info>
 
-</ContainerTitle>
+</Title>
 
-<ContainerDescription
+<Description
 	padding={50}
 	child_separation={25}
 	content_max_width={500}
@@ -66,6 +66,6 @@ Duisaute irure in [minim](https://example.com) et velit esse cillum dolore eu fu
 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duisaute irure in et velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-</ContainerDescription>
+</Description>
 
 </Column2>
