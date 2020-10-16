@@ -1,0 +1,17 @@
+/**
+ * Image
+ */
+
+.container
+	transition background-color .3s var(--ease_standard)
+	background-color transparent
+
+	&.is_loading
+		background-color rgba(0,0,0,0.1)
+
+.image
+	display block
+	transition opacity .3s var(--ease_standard)
+
+	.is_loading &
+		opacity 0
