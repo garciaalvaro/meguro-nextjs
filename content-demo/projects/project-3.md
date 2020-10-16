@@ -1,9 +1,10 @@
 ---
 title: "Project 3"
 subtitle: "Minim veniam"
-thumb_img: "/img/joel-filipe-SIyGeJeWAcY-unsplash.jpg"
-layout: "meguro_3"
+thumb_img: "/img/joel-filipe-FrSDv3rVG-E-unsplash.jpg"
 ---
+
+import { Column1, Column2, Column3 } from "@layouts/meguro_3"
 
 <Column1>
 
@@ -11,7 +12,7 @@ layout: "meguro_3"
 
 ### Minim veniam
 
-<Hr border={2} margin_top={150} />
+---
 
 <Info li_separator="|">
 
@@ -49,7 +50,10 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 <Column3>
 
-![This is the image description](/img/joel-filipe-FrSDv3rVG-E-unsplash.jpg)
+![This is the image description](/img/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
 ![This is the image description](/img/joel-filipe-HiOgJdpg0qo-unsplash.jpg)
+![This is the image description](/img/joel-filipe-SIyGeJeWAcY-unsplash.jpg)
+![This is the image description](/img/joel-filipe-FrSDv3rVG-E-unsplash.jpg)
+![This is the image description](/img/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
 
 </Column3>

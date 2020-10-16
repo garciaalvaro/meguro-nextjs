@@ -2,8 +2,14 @@
 title: "Project 2"
 subtitle: "Ut enim veniam"
 thumb_img: "/img/joel-filipe-SIyGeJeWAcY-unsplash.jpg"
-layout: "meguro_2"
 ---
+
+import {
+	Column1,
+	Column2,
+	ContainerTitle,
+	ContainerDescription,
+} from "@layouts/meguro_2";
 
 <Column1>
 
@@ -29,7 +35,7 @@ layout: "meguro_2"
 
 ### Ut enim veniam
 
-<Hr border={2} margin_top={150} />
+---
 
 <Info li_separator="|">
 
@@ -49,8 +55,6 @@ layout: "meguro_2"
 	content_align="center"
 	background_color="#c3c4c5"
 >
-
-<Hr border={1} opacity={30} />
 
 Duisaute irure in [minim](https://example.com) et velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 

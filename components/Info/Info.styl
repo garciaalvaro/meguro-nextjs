@@ -1,0 +1,29 @@
+/**
+ * Info
+ */
+
+.container
+
+	ul
+		display flex
+		flex-wrap wrap
+		list-style none
+		margin 0
+		padding 0
+
+	li:after
+		content ""
+		padding 0 .7em
+
+	&.li_separator-7C
+
+		li:after
+			content "\7C" // |
+
+	&.li_separator-2D
+
+		li:after
+			content "\2D" // -
+
+	li:last-child:after
+		content normal

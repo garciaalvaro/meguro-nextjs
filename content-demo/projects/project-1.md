@@ -2,8 +2,9 @@
 title: "Project 1"
 subtitle: "Aconsec adipiscin"
 thumb_img: "/img/joel-filipe-2BLsWpau-GQ-unsplash.jpg"
-layout: "meguro_1"
 ---
+
+import { Column1, Column2 } from "@layouts/meguro_1"
 
 <Column1>
 
@@ -11,7 +12,7 @@ layout: "meguro_1"
 
 ### Aconsec adipiscin
 
-<Hr border={2} margin_top={150} />
+---
 
 <Info li_separator="|">
 

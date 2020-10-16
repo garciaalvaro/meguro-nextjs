@@ -10,30 +10,20 @@ import { getEntries } from "@utils";
 interface Props {
 	slug: Entry["slug"];
 	is_page: Entry["is_page"];
-	layout_name: Layout["name"];
 	projects: Entry[];
 	pages: Entry[];
 }
 
 const Single: FunctionComponent<Props> = props => {
-	const { slug, is_page, layout_name, projects, pages } = props;
+	const { slug, is_page, projects, pages } = props;
 
 	return (
-		<Page>
+		<Page slug={slug} is_page={is_page} pages={pages} projects={projects}>
 			<Main>
-				<Content
-					// We pass the slug as key otherwise
-					// no re-render is triggered
-					key={slug}
-					slug={slug}
-					is_page={is_page}
-					layout_name={layout_name}
-					projects={projects}
-					pages={pages}
-				/>
+				<Content />
 			</Main>
 
-			<Sidebar entries={[...pages, ...projects]} />
+			<Sidebar />
 		</Page>
 	);
 };
@@ -61,7 +51,6 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 		props: {
 			slug: entry?.slug || "",
 			is_page,
-			layout_name: entry?.frontmatter.layout || "meguro_4",
 			projects,
 			pages,
 		},

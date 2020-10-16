@@ -7,24 +7,17 @@ import { Content } from "@/Content";
 import { getEntries } from "@utils";
 
 interface Props {
-	layout_name: Layout["name"];
-	projects: Entry[];
 	pages: Entry[];
+	projects: Entry[];
 }
 
 const Home: FunctionComponent<Props> = props => {
-	const { layout_name, projects, pages } = props;
+	const { pages, projects } = props;
 
 	return (
-		<Page>
-			<Main>
-				<Content
-					slug="home"
-					is_page={true}
-					layout_name={layout_name}
-					projects={projects}
-					pages={pages}
-				/>
+		<Page slug="home" is_page={true} pages={pages} projects={projects}>
+			<Main is_home={true}>
+				<Content />
 			</Main>
 		</Page>
 	);
@@ -33,16 +26,13 @@ const Home: FunctionComponent<Props> = props => {
 export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-	const slug = "home";
-	const projects = getEntries(process.env.projects_dir);
 	const pages = getEntries(process.env.pages_dir);
-	const entry = [...pages, ...projects].find(entry => entry.slug === slug);
+	const projects = getEntries(process.env.projects_dir);
 
 	return {
 		props: {
-			layout_name: entry?.frontmatter.layout || "meguro_4",
-			projects,
 			pages,
+			projects,
 		},
 	};
 };

@@ -1,9 +1,10 @@
 ---
 title: "Project 4"
 subtitle: "Minim veniam"
-thumb_img: "/img/joel-filipe-SIyGeJeWAcY-unsplash.jpg"
-layout: "meguro_4"
+thumb_img: "/img/joel-filipe-TmSYx44Y0QY-unsplash.jpg"
 ---
+
+import { Column1, Column2 } from "@layouts/meguro_4"
 
 <Column1>
 
@@ -11,7 +12,7 @@ layout: "meguro_4"
 
 ### Minim veniam
 
-<Hr border={2} margin_top={150} />
+---
 
 <Info li_separator="|">
 
@@ -21,8 +22,6 @@ layout: "meguro_4"
 - [Voluptate](https://example.com)
 
 </Info>
-
-<Hr border={1} opacity={30} />
 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duisaute irure in [minim](https://example.com) et velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
