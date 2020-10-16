@@ -8,7 +8,7 @@ export const useIsMobile = (breakpoint: number): boolean => {
 
 	useEffect(() => {
 		setIsMobile(window_width < breakpoint);
-	}, [window_width]);
+	}, [window_width, breakpoint]);
 
 	return is_mobile;
 };
