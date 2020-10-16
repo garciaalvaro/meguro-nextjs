@@ -18,6 +18,10 @@ $sidebar_width_closed = 9rem
 	ul
 		width $sidebar_width_open
 
+	li:first-child > a
+		opacity 1
+		pointer-events auto
+
 	a
 		height $sidebar_width_closed
 		display flex
@@ -33,13 +37,17 @@ $sidebar_width_closed = 9rem
 		.is_closing&
 			pointer-events none
 
-		> div
+		> div:last-child
+			flex 1
+			height 100%
+			align-items center
+			display flex
+			padding 0 3.5rem
+
+		> div:first-child
 			width $sidebar_width_closed
 			padding-bottom $sidebar_width_closed
 			flex-shrink 0
-
-		h3
-			padding 0 3.6em
 
 .list_container
 	width $sidebar_width_closed

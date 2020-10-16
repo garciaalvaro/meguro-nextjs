@@ -1,30 +1,14 @@
 import React, { FunctionComponent, useRef, useState, useEffect } from "react";
 
 import styles from "./Sidebar.styl";
-import { List } from "@/List";
+import { List } from "./List";
 
-interface Props {
-	entries: Entry[];
-}
-
-export const Sidebar: FunctionComponent<Props> = props => {
+export const Sidebar: FunctionComponent = () => {
 	const sidebar_background_color = process.env.sidebar_background_color;
-	const sidebar_color = process.env.sidebar_color;
-
 	const [is_open, setIsOpen] = useState(false);
 	const [is_opening, setIsOpening] = useState(false);
 	const [is_closing, setIsClosing] = useState(false);
 	const $overlay = useRef<HTMLDivElement | null>(null);
-
-	const entries_sorted = useRef(
-		props.entries.sort(a => {
-			if (a.path === "/") {
-				return -1;
-			}
-
-			return 0;
-		})
-	);
 
 	useEffect(() => {
 		if (!$overlay.current) return;
@@ -41,11 +25,9 @@ export const Sidebar: FunctionComponent<Props> = props => {
 	const className = [
 		styles.container,
 		is_open ? styles.is_open : styles["no-is_open"],
-		is_opening ? styles.is_opening : null,
-		is_closing ? styles.is_closing : null,
-	]
-		.filter(className => className)
-		.join(" ");
+		...(is_opening ? [styles.is_opening] : []),
+		...(is_closing ? [styles.is_closing] : []),
+	].join(" ");
 
 	return (
 		<nav
@@ -69,11 +51,7 @@ export const Sidebar: FunctionComponent<Props> = props => {
 			></div>
 
 			<div className={styles.list_container}>
-				<List
-					entries={entries_sorted.current}
-					color={sidebar_color}
-					background_color={sidebar_background_color}
-				></List>
+				<List />
 			</div>
 		</nav>
 	);
