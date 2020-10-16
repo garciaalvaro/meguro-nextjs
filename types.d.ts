@@ -28,9 +28,9 @@ declare namespace NodeJS {
 	}
 }
 
-interface Layout {
-	name: string;
-	breakpoint: number;
-	components_desktop: Record<string, FunctionComponent<StylesProps>>;
-	components_mobile: Record<string, FunctionComponent<StylesProps>>;
+interface ContextProps {
+	slug: Entry["slug"];
+	is_page: Entry["is_page"];
+	pages: Entry[];
+	projects: Entry[];
 }
