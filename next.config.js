@@ -41,7 +41,7 @@ module.exports = withStylus({
 		localIdentName:
 			process.env.NODE_ENV === "production"
 				? "[hash:base64]"
-				: "[name]__[local]-[hash:base64:1]",
+				: "[name]__[local]-[hash:base64:2]",
 	},
 
 	webpack: (config, { isServer }) => {
