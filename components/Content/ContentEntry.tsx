@@ -3,40 +3,70 @@ import React, {
 	useContext,
 	useState,
 	useEffect,
+	Fragment,
 } from "react";
 import dynamic from "next/dynamic";
 
 import { Context } from "@context";
+import { useIsFirstRender } from "@utils";
+
+export const Loading: FunctionComponent = props => {
+	const { setMdIsLoading } = useContext(Context);
+
+	useEffect(() => {
+		return () => setMdIsLoading(false);
+	}, []);
+
+	return <Fragment>{props.children}</Fragment>;
+};
 
 export const ContentEntry: FunctionComponent = () => {
-	const { slug, is_page } = useContext(Context);
-
-	const [EntryPrevious, setEntryPrevious] = useState<React.ComponentType>(
-		() => () => null
+	const { slug, is_page, md_is_loading, setMdIsLoading } = useContext(
+		Context
 	);
+
+	const is_first_render = useIsFirstRender();
 
 	const [Entry, setEntry] = useState<React.ComponentType>(
 		is_page
 			? dynamic(() => import(`${process.env.pages_dir}/${slug}.md`))
-			: dynamic(() => import(`${process.env.projects_dir}/${slug}.md`), {
-					loading: EntryPrevious,
-			  })
+			: dynamic(() => import(`${process.env.projects_dir}/${slug}.md`))
 	);
 
-	useEffect(() => {
-		setEntry(
-			is_page
-				? dynamic(() => import(`${process.env.pages_dir}/${slug}.md`))
-				: dynamic(
-						() => import(`${process.env.projects_dir}/${slug}.md`),
-						{
-							loading: EntryPrevious,
-						}
-				  )
-		);
+	const [EntryPrev, setEntryPrev] = useState<React.ComponentType>(Entry);
 
-		setEntryPrevious(Entry);
+	useEffect(() => {
+		if (is_first_render) return;
+
+		setMdIsLoading(true);
+
+		if (is_page) {
+			setEntry(
+				dynamic(() => import(`${process.env.pages_dir}/${slug}.md`), {
+					loading: Loading,
+				})
+			);
+		} else {
+			setEntry(
+				dynamic(
+					() => import(`${process.env.projects_dir}/${slug}.md`),
+					{ loading: Loading }
+				)
+			);
+		}
 	}, [is_page, slug]);
 
-	return <Entry />;
+	useEffect(() => {
+		if (md_is_loading) return;
+
+		setEntryPrev(Entry);
+	}, [md_is_loading]);
+
+	return (
+		<Fragment>
+			{md_is_loading && <Entry />}
+
+			<EntryPrev />
+		</Fragment>
+	);
 };

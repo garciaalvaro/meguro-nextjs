@@ -33,4 +33,6 @@ interface ContextProps {
 	is_page: Entry["is_page"];
 	pages: Entry[];
 	projects: Entry[];
+	setMdIsLoading: (is_loading: boolean) => void;
+	md_is_loading: boolean;
 }

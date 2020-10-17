@@ -4,8 +4,12 @@ import Head from "next/head";
 import { ContextProvider } from "@context";
 import "./Page.styl";
 
-interface Props extends ContextProps {
+interface Props {
 	page_title?: string;
+	slug: Entry["slug"];
+	is_page: Entry["is_page"];
+	pages: Entry[];
+	projects: Entry[];
 }
 
 export const Page: FunctionComponent<Props> = props => {
