@@ -5,7 +5,7 @@ import { Context } from "@context";
 import styles from "./List.styl";
 
 export const List: FunctionComponent = () => {
-	const background_color = process.env.sidebar_background_color;
+	const background_color = process.env.sidebar_background_color || "";
 
 	const { pages, projects, slug: active_slug } = useContext(Context);
 
@@ -22,11 +22,12 @@ export const List: FunctionComponent = () => {
 	return (
 		<ul
 			className={styles.container}
-			style={{ backgroundColor: background_color || "" }}
+			style={{ backgroundColor: background_color }}
 		>
 			{entries.map(({ path, frontmatter }) => (
 				<li
 					key={path}
+					style={{ backgroundColor: background_color }}
 					className={[
 						styles.item,
 						...(active_slug === path.slice(1)
