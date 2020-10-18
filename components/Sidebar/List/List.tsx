@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useRef, useContext } from "react";
-import Link from "next/link";
 
 import { Context } from "@context";
+import { ListItem } from "../ListItem";
 import styles from "./List.styl";
 
 export const List: FunctionComponent = () => {
 	const background_color = process.env.sidebar_background_color || "";
 
-	const { pages, projects, slug: active_slug } = useContext(Context);
+	const { pages, projects } = useContext(Context);
 
 	const { current: entries } = useRef(
 		[...pages, ...projects].sort(a => {
@@ -25,48 +25,12 @@ export const List: FunctionComponent = () => {
 			style={{ backgroundColor: background_color }}
 		>
 			{entries.map(({ path, frontmatter }) => (
-				<li
+				<ListItem
 					key={path}
-					style={{ backgroundColor: background_color }}
-					className={[
-						styles.item,
-						...(active_slug === path.slice(1)
-							? [styles.is_active]
-							: []),
-					].join(" ")}
-				>
-					<Link href={path}>
-						<a
-							className={styles.link}
-							onClick={e => {
-								// Do not open the sidebar if
-								// the clicked link is home.
-								if (path === "/") {
-									e.stopPropagation();
-								}
-							}}
-						>
-							<div className={styles.image_container}>
-								<img
-									className={styles.image}
-									src={frontmatter.thumb_img}
-								/>
-							</div>
-
-							<div className={styles.text_container}>
-								<h3 className={styles.title}>
-									{frontmatter.title}
-								</h3>
-
-								{frontmatter.subtitle && (
-									<h5 className={styles.subtitle}>
-										<span>{frontmatter.subtitle}</span>
-									</h5>
-								)}
-							</div>
-						</a>
-					</Link>
-				</li>
+					path={path}
+					frontmatter={frontmatter}
+					background_color={background_color}
+				/>
 			))}
 		</ul>
 	);

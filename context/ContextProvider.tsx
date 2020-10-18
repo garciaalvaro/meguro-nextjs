@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 
 import { Context } from "./Context";
 
@@ -14,6 +14,12 @@ export const ContextProvider: FunctionComponent<Props> = props => {
 
 	const [md_is_loading, setMdIsLoading] = useState(false);
 
+	const [active_path, setActivePath] = useState(`/${slug}`);
+
+	useEffect(() => {
+		setActivePath(`/${slug}`);
+	}, [slug]);
+
 	return (
 		<Context.Provider
 			value={{
@@ -23,6 +29,8 @@ export const ContextProvider: FunctionComponent<Props> = props => {
 				projects,
 				setMdIsLoading,
 				md_is_loading,
+				active_path,
+				setActivePath,
 			}}
 		>
 			{props.children}

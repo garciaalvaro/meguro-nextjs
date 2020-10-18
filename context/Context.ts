@@ -9,6 +9,10 @@ export const initial_props: ContextProps = {
 	// eslint-disable-next-line
 	setMdIsLoading: () => {},
 	md_is_loading: false,
+
+	// eslint-disable-next-line
+	setActivePath: () => {},
+	active_path: "",
 };
 
 export const Context = createContext<ContextProps>(initial_props);

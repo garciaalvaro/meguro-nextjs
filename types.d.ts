@@ -35,4 +35,6 @@ interface ContextProps {
 	projects: Entry[];
 	setMdIsLoading: (is_loading: boolean) => void;
 	md_is_loading: boolean;
+	setActivePath: (active_path: string) => void;
+	active_path: Entry["path"];
 }
