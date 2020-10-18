@@ -9,13 +9,17 @@ const content_dir = use_demo
 	? path.resolve(__dirname, "./content-demo")
 	: path.resolve(__dirname, "./content");
 
+const config = use_demo
+	? require("./content-demo/config")
+	: require("./content/config");
+
 const {
 	site_title,
 	site_description,
 	site_logo,
 	sidebar_color,
 	sidebar_background_color,
-} = JSON.parse(readFileSync(`${content_dir}/data.json`, "utf8"));
+} = config;
 
 module.exports = withStylus({
 	env: {

@@ -1,7 +1,7 @@
-{
+module.exports = {
 	"site_title": "Meguro",
 	"site_description": "Portfolio",
 	"site_logo": "/img/logo.png",
 	"sidebar_color": "rgba(255,255,255,0.85)",
-	"sidebar_background_color": "#191a1b"
+	"sidebar_background_color": "#191a1b",
 }
