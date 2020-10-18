@@ -36,7 +36,16 @@ export const List: FunctionComponent = () => {
 					].join(" ")}
 				>
 					<Link href={path}>
-						<a className={styles.link}>
+						<a
+							className={styles.link}
+							onClick={e => {
+								// Do not open the sidebar if
+								// the clicked link is home.
+								if (path === "/") {
+									e.stopPropagation();
+								}
+							}}
+						>
 							<div className={styles.image_container}>
 								<img
 									className={styles.image}
