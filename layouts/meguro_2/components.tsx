@@ -4,11 +4,12 @@ import { Column } from "@/Column";
 import styles from "./components.styl";
 import { useIsMobile } from "@utils";
 
-const breakpoint = 800;
+const breakpoint = 800 - 1;
 
 export const Column1: FunctionComponent = props => {
 	return (
 		<Column
+			breakpoint={breakpoint}
 			className_container={styles.column_1_container}
 			className_content={styles.column_1_content}
 		>
@@ -26,6 +27,7 @@ export const Column2: FunctionComponent = props => {
 
 	return (
 		<Column
+			breakpoint={breakpoint}
 			className_container={styles.column_2_container}
 			className_content={styles.column_2_content}
 		>
