@@ -26,9 +26,9 @@ export const ProjectsList: FunctionComponent = () => {
 								</h3>
 
 								{frontmatter.subtitle && (
-									<h5 className={styles.subtitle}>
-										<span>{frontmatter.subtitle}</span>
-									</h5>
+									<span className={styles.subtitle}>
+										{frontmatter.subtitle}
+									</span>
 								)}
 							</div>
 						</a>

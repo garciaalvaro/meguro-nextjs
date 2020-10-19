@@ -25,6 +25,9 @@ declare namespace NodeJS {
 		content_dir: string;
 		projects_dir: string;
 		pages_dir: string;
+		font_family_url: string;
+		body_font_family: string;
+		titles_font_family: string;
 	}
 }
 

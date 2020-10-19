@@ -1,5 +1,5 @@
 const withStylus = require("@zeit/next-stylus");
-const { existsSync, readFileSync } = require("fs");
+const { existsSync } = require("fs");
 const path = require("path");
 const unwrap = require("remark-unwrap-images");
 
@@ -19,6 +19,9 @@ const {
 	site_logo,
 	sidebar_color,
 	sidebar_background_color,
+	font_family_url,
+	body_font_family,
+	titles_font_family,
 } = config;
 
 module.exports = withStylus({
@@ -28,6 +31,9 @@ module.exports = withStylus({
 		site_logo: site_logo || null,
 		sidebar_color: sidebar_color || "",
 		sidebar_background_color: sidebar_background_color || "",
+		font_family_url: font_family_url || "",
+		body_font_family: body_font_family || "inherit",
+		titles_font_family: titles_font_family || "inherit",
 
 		content_dir,
 

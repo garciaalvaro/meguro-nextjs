@@ -50,12 +50,14 @@ export const ListItem: FunctionComponent<Props> = props => {
 					</div>
 
 					<div className={styles.text_container}>
-						<h3 className={styles.title}>{frontmatter.title}</h3>
+						<span className={styles.title}>
+							{frontmatter.title}
+						</span>
 
 						{frontmatter.subtitle && (
-							<h5 className={styles.subtitle}>
-								<span>{frontmatter.subtitle}</span>
-							</h5>
+							<span className={styles.subtitle}>
+								{frontmatter.subtitle}
+							</span>
 						)}
 					</div>
 				</a>
