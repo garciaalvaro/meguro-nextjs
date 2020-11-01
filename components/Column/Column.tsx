@@ -1,13 +1,14 @@
-import { useIsMobile } from "@utils";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, CSSProperties } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
 import styles from "./Column.styl";
+import { useIsMobile } from "@utils";
 
 interface Props {
 	className_container?: string;
 	className_content?: string;
 	breakpoint?: number;
+	style?: CSSProperties;
 }
 
 export const Column: FunctionComponent<Props> = props => {
@@ -25,7 +26,7 @@ export const Column: FunctionComponent<Props> = props => {
 
 	if (is_mobile) {
 		return (
-			<div className={className_container}>
+			<div className={className_container} style={props.style}>
 				<div className={className_content}>{props.children}</div>
 			</div>
 		);
@@ -39,7 +40,9 @@ export const Column: FunctionComponent<Props> = props => {
 			disableTracksWidthCompensation={true}
 			trackYProps={{ className: styles.scrollbar }}
 		>
-			<div className={className_content}>{props.children}</div>
+			<div className={className_content} style={props.style}>
+				{props.children}
+			</div>
 		</Scrollbar>
 	);
 };
