@@ -4,6 +4,11 @@ import Head from "next/head";
 import { ContextProvider } from "@context";
 import "./Page.styl";
 
+// If there are custom styles import them
+if (process.env.custom_css_file) {
+	require(process.env.custom_css_file);
+}
+
 interface Props {
 	page_title?: string;
 	slug: Entry["slug"];
@@ -18,8 +23,6 @@ export const Page: FunctionComponent<Props> = props => {
 	const site_title = process.env.site_title;
 	const site_description = process.env.site_description;
 	const font_family_url = process.env.font_family_url;
-	const body_font_family = process.env.body_font_family;
-	const titles_font_family = process.env.titles_font_family;
 	const { page_title, slug, is_page, pages, projects } = props;
 	const title = page_title ? `${site_title} | ${page_title}` : site_title;
 
@@ -44,13 +47,6 @@ export const Page: FunctionComponent<Props> = props => {
 							href={font_family_url}
 							rel="stylesheet"
 						></link>
-
-						<style key="font_family_style">
-							{[
-								`body{font-family:${body_font_family}}`,
-								`h1,h2,h3,h4,h5{font-family:${titles_font_family}}`,
-							].join("")}
-						</style>
 					</Fragment>
 				)}
 			</Head>

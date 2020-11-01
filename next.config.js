@@ -20,8 +20,6 @@ const {
 	sidebar_color,
 	sidebar_background_color,
 	font_family_url,
-	body_font_family,
-	titles_font_family,
 } = config;
 
 module.exports = withStylus({
@@ -32,10 +30,14 @@ module.exports = withStylus({
 		sidebar_color: sidebar_color || "",
 		sidebar_background_color: sidebar_background_color || "",
 		font_family_url: font_family_url || "",
-		body_font_family: body_font_family || "inherit",
-		titles_font_family: titles_font_family || "inherit",
 
 		content_dir,
+
+		custom_css_file: existsSync(
+			path.resolve(content_dir, "assets/css/index.styl")
+		)
+			? path.resolve(content_dir, "assets/css/index.styl")
+			: null,
 
 		projects_dir: existsSync(path.resolve(content_dir, "projects"))
 			? path.resolve(content_dir, "projects")
