@@ -7,15 +7,22 @@ import { Content } from "@/Content";
 import { getEntries } from "@utils";
 
 interface Props {
+	file_path: Entry["file_path"];
 	pages: Entry[];
 	projects: Entry[];
 }
 
 const Home: FunctionComponent<Props> = props => {
-	const { pages, projects } = props;
+	const { file_path, pages, projects } = props;
 
 	return (
-		<Page slug="home" is_page={true} pages={pages} projects={projects}>
+		<Page
+			slug="home"
+			file_path={file_path}
+			is_page={true}
+			pages={pages}
+			projects={projects}
+		>
 			<Main is_home={true}>
 				<Content />
 			</Main>
@@ -28,9 +35,11 @@ export default Home;
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const pages = getEntries(process.env.pages_dir);
 	const projects = getEntries(process.env.projects_dir);
+	const entry = pages.find(entry => entry.slug === "home");
 
 	return {
 		props: {
+			file_path: entry?.file_path || "",
 			pages,
 			projects,
 		},

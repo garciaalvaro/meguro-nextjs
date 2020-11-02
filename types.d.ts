@@ -1,6 +1,7 @@
 interface Entry {
 	is_page: boolean;
-	path: string;
+	url_path: string;
+	file_path: string;
 	slug: string;
 	frontmatter: {
 		title: string;
@@ -31,11 +32,12 @@ declare namespace NodeJS {
 
 interface ContextProps {
 	slug: Entry["slug"];
+	file_path: Entry["file_path"];
 	is_page: Entry["is_page"];
 	pages: Entry[];
 	projects: Entry[];
 	setMdIsLoading: (is_loading: boolean) => void;
 	md_is_loading: boolean;
-	setActivePath: (active_path: string) => void;
-	active_path: Entry["path"];
+	setActiveUrlPath: (active_url_path: string) => void;
+	active_url_path: Entry["url_path"];
 }

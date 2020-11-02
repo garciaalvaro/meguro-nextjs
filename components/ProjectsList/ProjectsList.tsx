@@ -9,9 +9,9 @@ export const ProjectsList: FunctionComponent = () => {
 
 	return (
 		<ul className={styles.container}>
-			{projects.map(({ path, frontmatter }) => (
-				<li key={path} className={styles.item}>
-					<Link href={path}>
+			{projects.map(({ url_path, frontmatter }) => (
+				<li key={url_path} className={styles.item}>
+					<Link href={url_path}>
 						<a className={styles.link}>
 							<div className={styles.image_container}>
 								<img

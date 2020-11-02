@@ -10,17 +10,17 @@ import { Context } from "@context";
 import styles from "./ListItem.styl";
 
 interface Props {
-	path: Entry["path"];
+	url_path: Entry["url_path"];
 	frontmatter: Entry["frontmatter"];
 	background_color: string;
 }
 
 export const ListItem: FunctionComponent<Props> = props => {
-	const { background_color, path, frontmatter } = props;
+	const { background_color, url_path, frontmatter } = props;
 
-	const { active_path, setActivePath } = useContext(Context);
+	const { active_url_path, setActiveUrlPath } = useContext(Context);
 
-	const is_active = active_path === path;
+	const is_active = active_url_path === url_path;
 
 	const className = [
 		styles.container,
@@ -29,16 +29,16 @@ export const ListItem: FunctionComponent<Props> = props => {
 
 	return (
 		<li style={{ backgroundColor: background_color }} className={className}>
-			<Link href={path}>
+			<Link href={url_path}>
 				<a
 					className={styles.link}
 					onClick={e => {
 						// Do not open the sidebar if
 						// the clicked link is home.
-						if (path === "/") {
+						if (url_path === "/") {
 							e.stopPropagation();
 						} else {
-							setActivePath(path);
+							setActiveUrlPath(url_path);
 						}
 					}}
 				>

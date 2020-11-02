@@ -11,7 +11,7 @@ export const List: FunctionComponent = () => {
 
 	const { current: entries } = useRef(
 		[...pages, ...projects].sort(a => {
-			if (a.path === "/") {
+			if (a.url_path === "/") {
 				return -1;
 			}
 
@@ -24,10 +24,10 @@ export const List: FunctionComponent = () => {
 			className={styles.container}
 			style={{ backgroundColor: background_color }}
 		>
-			{entries.map(({ path, frontmatter }) => (
+			{entries.map(({ url_path, frontmatter }) => (
 				<ListItem
-					key={path}
-					path={path}
+					key={url_path}
+					url_path={url_path}
 					frontmatter={frontmatter}
 					background_color={background_color}
 				/>

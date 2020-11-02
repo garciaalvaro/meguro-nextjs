@@ -12,6 +12,7 @@ if (process.env.custom_css_file) {
 interface Props {
 	page_title?: string;
 	slug: Entry["slug"];
+	file_path: Entry["file_path"];
 	is_page: Entry["is_page"];
 	pages: Entry[];
 	projects: Entry[];
@@ -23,7 +24,7 @@ export const Page: FunctionComponent<Props> = props => {
 	const site_title = process.env.site_title;
 	const site_description = process.env.site_description;
 	const font_family_url = process.env.font_family_url;
-	const { page_title, slug, is_page, pages, projects } = props;
+	const { file_path, page_title, slug, is_page, pages, projects } = props;
 	const title = page_title ? `${site_title} | ${page_title}` : site_title;
 
 	// TODO: Complete meta tags
@@ -31,6 +32,7 @@ export const Page: FunctionComponent<Props> = props => {
 	return (
 		<ContextProvider
 			slug={slug}
+			file_path={file_path}
 			is_page={is_page}
 			pages={pages}
 			projects={projects}

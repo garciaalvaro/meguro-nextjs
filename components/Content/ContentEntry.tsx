@@ -21,16 +21,20 @@ export const Loading: FunctionComponent = props => {
 };
 
 export const ContentEntry: FunctionComponent = () => {
-	const { slug, is_page, md_is_loading, setMdIsLoading } = useContext(
-		Context
-	);
+	const {
+		slug,
+		file_path,
+		is_page,
+		md_is_loading,
+		setMdIsLoading,
+	} = useContext(Context);
 
 	const is_first_render = useIsFirstRender();
 
 	const [Entry, setEntry] = useState<React.ComponentType>(
 		is_page
-			? dynamic(() => import(`${process.env.pages_dir}/${slug}.md`))
-			: dynamic(() => import(`${process.env.projects_dir}/${slug}.md`))
+			? dynamic(() => import(`${process.env.pages_dir}/${file_path}`))
+			: dynamic(() => import(`${process.env.projects_dir}/${file_path}`))
 	);
 
 	const [EntryPrev, setEntryPrev] = useState<React.ComponentType>(Entry);
@@ -42,14 +46,14 @@ export const ContentEntry: FunctionComponent = () => {
 
 		if (is_page) {
 			setEntry(
-				dynamic(() => import(`${process.env.pages_dir}/${slug}.md`), {
+				dynamic(() => import(`${process.env.pages_dir}/${file_path}`), {
 					loading: Loading,
 				})
 			);
 		} else {
 			setEntry(
 				dynamic(
-					() => import(`${process.env.projects_dir}/${slug}.md`),
+					() => import(`${process.env.projects_dir}/${file_path}`),
 					{ loading: Loading }
 				)
 			);

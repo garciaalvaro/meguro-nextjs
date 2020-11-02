@@ -9,16 +9,23 @@ import { getEntries } from "@utils";
 
 interface Props {
 	slug: Entry["slug"];
+	file_path: Entry["file_path"];
 	is_page: Entry["is_page"];
 	projects: Entry[];
 	pages: Entry[];
 }
 
 const Single: FunctionComponent<Props> = props => {
-	const { slug, is_page, projects, pages } = props;
+	const { slug, file_path, is_page, projects, pages } = props;
 
 	return (
-		<Page slug={slug} is_page={is_page} pages={pages} projects={projects}>
+		<Page
+			slug={slug}
+			file_path={file_path}
+			is_page={is_page}
+			pages={pages}
+			projects={projects}
+		>
 			<Main>
 				<Content />
 			</Main>
@@ -50,6 +57,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 	return {
 		props: {
 			slug: entry?.slug || "",
+			file_path: entry?.file_path || "",
 			is_page,
 			projects,
 			pages,
@@ -61,13 +69,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	const projects = getEntries(process.env.projects_dir);
 	const pages = getEntries(process.env.pages_dir);
 
-	const paths = [...projects, ...pages].reduce<string[]>(
-		(acc, { path }) => (path === "/" ? acc : [...acc, path]),
+	const url_paths = [...projects, ...pages].reduce<string[]>(
+		(acc, { url_path }) => (url_path === "/" ? acc : [...acc, url_path]),
 		[]
 	);
 
 	return {
-		paths,
+		paths: url_paths,
 		fallback: false,
 	};
 };
