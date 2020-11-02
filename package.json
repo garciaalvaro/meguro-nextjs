@@ -10,7 +10,7 @@
 		"build": "next build",
 		"dev": "node server.js",
 		"serve": "cross-env NODE_ENV=production node server.js",
-		"test": "npm run test:type && npm run test:lint && npm run test:prettier && npm run test:unit",
+		"test": "npm run test:types && npm run test:lint && npm run test:prettier && npm run test:unit",
 		"test:lint": "eslint \"**/*.{js,ts,tsx}\"",
 		"test:prettier": "prettier --check \"**/*.{js,json,ts,tsx}\"",
 		"test:types": "tsc",
