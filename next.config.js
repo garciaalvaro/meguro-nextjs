@@ -74,6 +74,15 @@ module.exports = withStylus({
 			],
 		});
 
+		config.module.rules.push({
+			test: /\.(png|jpe?g|gif)$/i,
+			use: [
+				{
+					loader: "file-loader",
+				},
+			],
+		});
+
 		if (!isServer) {
 			config.node = {
 				fs: "empty",
