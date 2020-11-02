@@ -20,7 +20,7 @@ export const ProjectsList: FunctionComponent = () => {
 								/>
 							</div>
 
-							<div className={styles.text_container}>
+							<div className={styles.title_container}>
 								<h3 className={styles.title}>
 									{frontmatter.title}
 								</h3>
