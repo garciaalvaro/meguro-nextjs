@@ -1,6 +1,6 @@
 ---
 title: "Meguro"
-thumb_img: "/img/logo.png"
+thumb_img: "/home/assets/logo.png"
 ---
 
 import { Column1, Column2 } from "@layouts/meguro_home"

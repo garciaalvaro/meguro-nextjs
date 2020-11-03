@@ -1,7 +1,7 @@
 ---
 title: "Project 1"
 subtitle: "Aconsec adipiscin"
-thumb_img: "/img/joel-filipe-2BLsWpau-GQ-unsplash.jpg"
+thumb_img: "/project-1/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg"
 ---
 
 import { Column1, Column2 } from "@layouts/meguro_1"
@@ -39,8 +39,8 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 <Column2>
 
-![This is the image description](/img/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
-![This is the image description](/img/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
-![This is the image description](/img/joel-filipe-HiOgJdpg0qo-unsplash.jpg)
+![This is the image description](/project-1/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
+![This is the image description](/project-1/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
+![This is the image description](/project-1/assets/joel-filipe-HiOgJdpg0qo-unsplash.jpg)
 
 </Column2>

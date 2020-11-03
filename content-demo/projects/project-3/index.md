@@ -1,7 +1,7 @@
 ---
 title: "Project 3"
 subtitle: "Minim veniam"
-thumb_img: "/img/joel-filipe-FrSDv3rVG-E-unsplash.jpg"
+thumb_img: "/project-3/assets/joel-filipe-FrSDv3rVG-E-unsplash.jpg"
 ---
 
 import { Column1, Column2, Column3 } from "@layouts/meguro_3"
@@ -40,20 +40,20 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 <Column2>
 
-![This is the image description](/img/joel-filipe-SIyGeJeWAcY-unsplash.jpg)
-![This is the image description](/img/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
-![This is the image description](/img/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
-![This is the image description](/img/joel-filipe-FrSDv3rVG-E-unsplash.jpg)
-![This is the image description](/img/joel-filipe-HiOgJdpg0qo-unsplash.jpg)
+![This is the image description](/project-3/assets/joel-filipe-SIyGeJeWAcY-unsplash.jpg)
+![This is the image description](/project-3/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
+![This is the image description](/project-3/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
+![This is the image description](/project-3/assets/joel-filipe-FrSDv3rVG-E-unsplash.jpg)
+![This is the image description](/project-3/assets/joel-filipe-HiOgJdpg0qo-unsplash.jpg)
 
 </Column2>
 
 <Column3>
 
-![This is the image description](/img/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
-![This is the image description](/img/joel-filipe-HiOgJdpg0qo-unsplash.jpg)
-![This is the image description](/img/joel-filipe-SIyGeJeWAcY-unsplash.jpg)
-![This is the image description](/img/joel-filipe-FrSDv3rVG-E-unsplash.jpg)
-![This is the image description](/img/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
+![This is the image description](/project-3/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
+![This is the image description](/project-3/assets/joel-filipe-HiOgJdpg0qo-unsplash.jpg)
+![This is the image description](/project-3/assets/joel-filipe-SIyGeJeWAcY-unsplash.jpg)
+![This is the image description](/project-3/assets/joel-filipe-FrSDv3rVG-E-unsplash.jpg)
+![This is the image description](/project-3/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
 
 </Column3>

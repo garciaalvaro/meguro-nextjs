@@ -1,7 +1,7 @@
 ---
 title: "Project 2"
 subtitle: "Ut enim veniam"
-thumb_img: "/img/joel-filipe-SIyGeJeWAcY-unsplash.jpg"
+thumb_img: "/project-2/assets/joel-filipe-SIyGeJeWAcY-unsplash.jpg"
 ---
 
 import {
@@ -13,10 +13,10 @@ import {
 
 <Column1>
 
-![This is the image description](/img/joel-filipe-FrSDv3rVG-E-unsplash.jpg)
-![This is the image description](/img/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
-![This is the image description](/img/joel-filipe-SIyGeJeWAcY-unsplash.jpg)
-![This is the image description](/img/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
+![This is the image description](/project-2/assets/joel-filipe-FrSDv3rVG-E-unsplash.jpg)
+![This is the image description](/project-2/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
+![This is the image description](/project-2/assets/joel-filipe-SIyGeJeWAcY-unsplash.jpg)
+![This is the image description](/project-2/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
 
 </Column1>
 
