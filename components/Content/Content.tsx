@@ -4,11 +4,13 @@ import { MDXProvider, MDXProviderComponents } from "@mdx-js/react";
 import { ProjectsList } from "@/ProjectsList";
 import { Image } from "@/Image";
 import { Column } from "@/Column";
+import { Columns } from "@/Columns";
 import { Info } from "@/Info";
 import { ContentEntry } from "./ContentEntry";
 
 const components: MDXProviderComponents = {
 	Column,
+	Columns,
 	Info,
 	ProjectsList,
 
