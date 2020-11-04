@@ -11,7 +11,9 @@ import {
 	Description,
 } from "@layouts/meguro_2";
 
-<Column1>
+<Column1
+	use_modal={true}
+>
 
 ![This is the image description](/project-2/assets/joel-filipe-FrSDv3rVG-E-unsplash.jpg)
 ![This is the image description](/project-2/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg)

@@ -38,7 +38,9 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 </Column1>
 
-<Column2>
+<Column2
+	use_modal={true}
+>
 
 ![This is the image description](/project-3/assets/joel-filipe-SIyGeJeWAcY-unsplash.jpg)
 ![This is the image description](/project-3/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
@@ -48,7 +50,9 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 </Column2>
 
-<Column3>
+<Column3
+	use_modal={true}
+>
 
 ![This is the image description](/project-3/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
 ![This is the image description](/project-3/assets/joel-filipe-HiOgJdpg0qo-unsplash.jpg)
