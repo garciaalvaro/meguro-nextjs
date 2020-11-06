@@ -4,7 +4,11 @@ import { Context } from "@context";
 import { ListItem } from "../ListItem";
 import styles from "./List.styl";
 
-export const List: FunctionComponent = () => {
+interface Props {
+	sidebar_is_open: boolean;
+}
+
+export const List: FunctionComponent<Props> = props => {
 	const background_color = process.env.sidebar_background_color || "";
 
 	const { pages, projects } = useContext(Context);
@@ -27,6 +31,7 @@ export const List: FunctionComponent = () => {
 			{entries.map(({ url_path, frontmatter }) => (
 				<ListItem
 					key={url_path}
+					sidebar_is_open={props.sidebar_is_open}
 					url_path={url_path}
 					frontmatter={frontmatter}
 					background_color={background_color}

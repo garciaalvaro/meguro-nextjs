@@ -24,26 +24,25 @@ export const Sidebar: FunctionComponent = () => {
 
 	const className = [
 		styles.container,
-		is_open ? styles.is_open : styles["no-is_open"],
+		is_open ? styles.is_open : styles.is_closed,
 		...(is_opening ? [styles.is_opening] : []),
 		...(is_closing ? [styles.is_closing] : []),
 	].join(" ");
 
+	const toggle = () => {
+		if (is_opening || is_closing) return;
+
+		setIsOpen(!is_open);
+
+		if (is_open) {
+			setIsClosing(true);
+		} else {
+			setIsOpening(true);
+		}
+	};
+
 	return (
-		<nav
-			className={className}
-			onClick={() => {
-				if (is_opening || is_closing) return;
-
-				setIsOpen(!is_open);
-
-				if (is_open) {
-					setIsClosing(true);
-				} else {
-					setIsOpening(true);
-				}
-			}}
-		>
+		<nav className={className} onClick={toggle}>
 			<div
 				ref={$overlay}
 				className={styles.overlay}
@@ -51,8 +50,28 @@ export const Sidebar: FunctionComponent = () => {
 			></div>
 
 			<div className={styles.list_container}>
-				<List />
+				<List sidebar_is_open={is_open} />
 			</div>
+
+			<button
+				className={styles.button}
+				style={{ backgroundColor: sidebar_background_color }}
+				onClick={toggle}
+			>
+				{is_open ? (
+					/* https://material.io/tools/icons/?icon=close */
+					<svg width="22" height="22" viewBox="0 0 24 24">
+						<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+						<path d="M0 0h24v24H0z" fill="none" />
+					</svg>
+				) : (
+					/* https://material.io/tools/icons/?icon=menu */
+					<svg width="26" height="26" viewBox="0 0 24 24">
+						<path d="M0 0h24v24H0z" fill="none" />
+						<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+					</svg>
+				)}
+			</button>
 		</nav>
 	);
 };

@@ -11,43 +11,55 @@ $sidebar_width_closed = 9rem
 	position relative
 	cursor pointer
 
-	.is_open &
-	.is_closing &
+	&.is_open
+	&.is_closing
 		width 100vw
 
-	ul
-		width $sidebar_width_open
-
-	li:first-child > a
+	&.is_open a
 		opacity 1
-		pointer-events auto
 
-	a
-		height $sidebar_width_closed
-		display flex
-		align-items center
-		opacity .06
-		transition opacity .6s var(--ease_standard)
+	&.is_closed a
+	&.is_opening a
+	&.is_closing a
+		pointer-events none
 
-		.is_open&
-			opacity 1
+	@media screen and (max-width: 600px)
+		position absolute
+		top 0
+		right 0
+		overflow hidden
+		transition width .6s var(--ease_standard), max-height .6s var(--ease_standard)
 
-		.no-is_open&
-		.is_opening&
-		.is_closing&
-			pointer-events none
+		&.is_open
+			max-height 100%
 
-		> div:last-child
-			flex 1
-			height 100%
-			align-items center
-			display flex
-			padding 0 3.5rem
-
-		> div:first-child
+		&
+		&.is_closing
+			max-height $sidebar_width_closed
 			width $sidebar_width_closed
-			padding-bottom $sidebar_width_closed
-			flex-shrink 0
+
+.button
+	position absolute
+	top 0
+	right 0
+	display none
+	align-items center
+	justify-content center
+	width $sidebar_width_closed
+	height $sidebar_width_closed
+	background none
+	border none
+	cursor pointer
+	color rgba(255,255,255,0.7)
+	fill currentColor
+
+	&
+	&:hover
+	&:focus
+		outline none
+
+	@media screen and (max-width: 600px)
+		display flex
 
 .list_container
 	width $sidebar_width_closed
@@ -58,6 +70,16 @@ $sidebar_width_closed = 9rem
 
 	.is_open &
 		width $sidebar_width_open
+
+	@media screen and (max-width: 600px)
+		position absolute
+		top 0
+		right 0
+		height 100vh
+
+		&
+		.is_open &
+			width 100vw
 
 .overlay
 	position absolute

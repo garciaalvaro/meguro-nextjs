@@ -1,9 +1,4 @@
-import React, {
-	FunctionComponent,
-	useState,
-	useContext,
-	useEffect,
-} from "react";
+import React, { FunctionComponent, useContext } from "react";
 import Link from "next/link";
 
 import { Context } from "@context";
@@ -13,10 +8,11 @@ interface Props {
 	url_path: Entry["url_path"];
 	frontmatter: Entry["frontmatter"];
 	background_color: string;
+	sidebar_is_open: boolean;
 }
 
 export const ListItem: FunctionComponent<Props> = props => {
-	const { background_color, url_path, frontmatter } = props;
+	const { background_color, url_path, frontmatter, sidebar_is_open } = props;
 
 	const { active_url_path, setActiveUrlPath } = useContext(Context);
 
