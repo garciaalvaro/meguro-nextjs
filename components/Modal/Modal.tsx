@@ -52,9 +52,9 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 		<div
 			className={styles.container}
 			onClick={event => {
-				if (event.clientX < window.innerWidth * 0.45) {
+				if (event.clientX < window.innerWidth * 0.5) {
 					goLeft();
-				} else if (event.clientX > window.innerWidth * 0.55) {
+				} else if (event.clientX > window.innerWidth * 0.5) {
 					goRight();
 				}
 			}}
