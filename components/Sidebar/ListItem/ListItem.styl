@@ -60,6 +60,11 @@
 	height 0
 	padding-bottom 100%
 
+.text_container
+	white-space nowrap
+	overflow hidden
+	text-overflow ellipsis
+
 .image
 	position absolute
 	top 0
@@ -73,10 +78,12 @@
 	margin-top 0
 	font-size 1.3rem
 	flex-shrink 0
+	text-overflow ellipsis
+	overflow hidden
 
 .subtitle
-	display flex
-	align-items center
+	text-overflow ellipsis
+	overflow hidden
 	opacity 0
 	transition opacity .3s var(--ease_standard)
 
