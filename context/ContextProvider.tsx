@@ -3,15 +3,13 @@ import React, { FunctionComponent, useState, useEffect } from "react";
 import { Context } from "./Context";
 
 interface Props {
-	slug: Entry["slug"];
-	file_path: Entry["file_path"];
-	is_page: Entry["is_page"];
-	pages: Entry[];
-	projects: Entry[];
+	slug: Page["slug"];
+	file_path: Page["file_path"];
+	pages: Page[];
 }
 
 export const ContextProvider: FunctionComponent<Props> = props => {
-	const { slug, file_path, is_page, pages, projects } = props;
+	const { slug, file_path, pages } = props;
 
 	const [md_is_loading, setMdIsLoading] = useState(false);
 
@@ -26,9 +24,7 @@ export const ContextProvider: FunctionComponent<Props> = props => {
 			value={{
 				slug,
 				file_path,
-				is_page,
 				pages,
-				projects,
 				setMdIsLoading,
 				md_is_loading,
 				active_url_path,

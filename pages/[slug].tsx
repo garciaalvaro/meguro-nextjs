@@ -5,27 +5,19 @@ import { Main } from "@/Main";
 import { Page } from "@/Page";
 import { Content } from "@/Content";
 import { Sidebar } from "@/Sidebar";
-import { getEntries } from "@utils";
+import { getPages } from "@utils";
 
 interface Props {
-	slug: Entry["slug"];
-	file_path: Entry["file_path"];
-	is_page: Entry["is_page"];
-	projects: Entry[];
-	pages: Entry[];
+	slug: Page["slug"];
+	file_path: Page["file_path"];
+	pages: Page[];
 }
 
 const Single: FunctionComponent<Props> = props => {
-	const { slug, file_path, is_page, projects, pages } = props;
+	const { slug, file_path, pages } = props;
 
 	return (
-		<Page
-			slug={slug}
-			file_path={file_path}
-			is_page={is_page}
-			pages={pages}
-			projects={projects}
-		>
+		<Page slug={slug} file_path={file_path} pages={pages}>
 			<Main>
 				<Content />
 			</Main>
@@ -39,37 +31,22 @@ export default Single;
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
 	const slug = context.params?.slug as string;
-
-	const projects = process.env.projects_dir
-		? getEntries(process.env.projects_dir)
-		: [];
-
-	const pages = process.env.pages_dir
-		? getEntries(process.env.pages_dir)
-		: [];
-
-	let entry = pages.find(entry => entry.slug === slug);
-
-	const is_page = !!entry;
-
-	entry = entry || projects.find(entry => entry.slug === slug);
+	const pages = process.env.pages_dir ? getPages(process.env.pages_dir) : [];
+	const page = pages.find(page => page.slug === slug);
 
 	return {
 		props: {
-			slug: entry?.slug || "",
-			file_path: entry?.file_path || "",
-			is_page,
-			projects,
+			slug: page?.slug || "",
+			file_path: page?.file_path || "",
 			pages,
 		},
 	};
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const projects = getEntries(process.env.projects_dir);
-	const pages = getEntries(process.env.pages_dir);
+	const pages = getPages(process.env.pages_dir);
 
-	const url_paths = [...projects, ...pages].reduce<string[]>(
+	const url_paths = pages.reduce<string[]>(
 		(acc, { url_path }) => (url_path === "/" ? acc : [...acc, url_path]),
 		[]
 	);

@@ -5,8 +5,8 @@ import { Context } from "@context";
 import styles from "./ListItem.styl";
 
 interface Props {
-	url_path: Entry["url_path"];
-	frontmatter: Entry["frontmatter"];
+	url_path: Page["url_path"];
+	frontmatter: Page["frontmatter"];
 	background_color: string;
 	sidebar_is_open: boolean;
 }
