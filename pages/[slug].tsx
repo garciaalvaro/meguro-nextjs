@@ -31,7 +31,7 @@ export default Single;
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
 	const slug = context.params?.slug as string;
-	const pages = process.env.pages_dir ? getPages(process.env.pages_dir) : [];
+	const pages = getPages(process.env.pages_dir);
 	const page = pages.find(page => page.slug === slug);
 
 	return {

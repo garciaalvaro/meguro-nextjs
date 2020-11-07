@@ -1,15 +1,19 @@
-import React, { FunctionComponent, useContext } from "react";
+import React, { FunctionComponent } from "react";
 import Link from "next/link";
 
-import { Context } from "@context";
+import { usePages } from "@utils";
 import styles from "./PagesList.styl";
 
-export const PagesList: FunctionComponent = () => {
-	const { pages } = useContext(Context);
+interface Props {
+	pages: Page["slug"][] | undefined;
+}
+
+export const PagesList: FunctionComponent<Props> = props => {
+	const pages_sorted = usePages(props.pages || []);
 
 	return (
 		<ul className={styles.container}>
-			{pages.map(({ url_path, frontmatter }) => (
+			{pages_sorted.map(({ url_path, frontmatter }) => (
 				<li key={url_path} className={styles.item}>
 					<Link href={url_path}>
 						<a className={styles.link}>

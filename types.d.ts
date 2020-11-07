@@ -17,12 +17,15 @@ declare module "*.styl" {
 
 declare namespace NodeJS {
 	export interface ProcessEnv {
+		font_family_url: string;
 		site_title: string;
 		site_description: string;
 		site_logo: string | null;
-		content_dir: string;
 		pages_dir: string;
-		font_family_url: string;
+		sidebar_color: string;
+		sidebar_background_color: string;
+		sidebar_menu_pages: Page["slug"][];
+		custom_css_file: string;
 	}
 }
 

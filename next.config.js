@@ -19,19 +19,19 @@ const {
 	site_logo,
 	sidebar_color,
 	sidebar_background_color,
+	sidebar_menu_pages,
 	font_family_url,
 } = config;
 
 module.exports = withStylus({
 	env: {
+		font_family_url: font_family_url || "",
 		site_title: site_title || "",
 		site_description: site_description || "",
 		site_logo: site_logo || null,
 		sidebar_color: sidebar_color || "",
 		sidebar_background_color: sidebar_background_color || "",
-		font_family_url: font_family_url || "",
-
-		content_dir,
+		sidebar_menu_pages: sidebar_menu_pages || [],
 
 		custom_css_file: existsSync(
 			path.resolve(content_dir, "assets/css/index.styl")
