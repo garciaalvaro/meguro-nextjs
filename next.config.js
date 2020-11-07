@@ -39,10 +39,8 @@ module.exports = withStylus({
 				? false
 				: open_external_links_in_new_tab,
 
-		custom_css_file: existsSync(
-			path.resolve(content_dir, "assets/css/index.styl")
-		)
-			? path.resolve(content_dir, "assets/css/index.styl")
+		custom_css_file: existsSync(path.resolve(content_dir, "src/index.styl"))
+			? path.resolve(content_dir, "src/index.styl")
 			: null,
 
 		pages_dir: existsSync(path.resolve(content_dir, "pages"))
