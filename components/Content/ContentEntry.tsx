@@ -40,6 +40,7 @@ export const ContentEntry: FunctionComponent = () => {
 
 		setEntry(
 			dynamic(() => import(`${process.env.pages_dir}/${file_path}`), {
+				// @ts-expect-error TODO
 				loading: Loading,
 			})
 		);
