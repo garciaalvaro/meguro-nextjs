@@ -14,13 +14,14 @@ const config = use_demo
 	: require("./content/config");
 
 const {
+	font_family_url,
+	open_external_links_in_new_tab,
 	site_title,
 	site_description,
 	site_logo,
 	sidebar_color,
 	sidebar_background_color,
 	sidebar_menu_pages,
-	font_family_url,
 } = config;
 
 module.exports = withStylus({
@@ -32,6 +33,11 @@ module.exports = withStylus({
 		sidebar_color: sidebar_color || "",
 		sidebar_background_color: sidebar_background_color || "",
 		sidebar_menu_pages: sidebar_menu_pages || [],
+
+		open_external_links_in_new_tab:
+			open_external_links_in_new_tab === undefined
+				? false
+				: open_external_links_in_new_tab,
 
 		custom_css_file: existsSync(
 			path.resolve(content_dir, "assets/css/index.styl")

@@ -18,6 +18,7 @@ declare module "*.styl" {
 declare namespace NodeJS {
 	export interface ProcessEnv {
 		font_family_url: string;
+		open_external_links_in_new_tab: boolean;
 		site_title: string;
 		site_description: string;
 		site_logo: string | null;

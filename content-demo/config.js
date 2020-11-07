@@ -1,5 +1,6 @@
 module.exports = {
 	"font_family_url": "https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif&display=swap",
+	"open_external_links_in_new_tab": true,
 	"site_title": "Meguro",
 	"site_description": "Portfolio",
 	"site_logo": "/img/logo.png",

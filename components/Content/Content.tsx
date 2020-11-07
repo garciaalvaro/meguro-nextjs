@@ -16,6 +16,15 @@ const components: MDXProviderComponents = {
 
 	// eslint-disable-next-line react/display-name
 	img: props => <Image {...props} />,
+
+	...(process.env.open_external_links_in_new_tab
+		? {
+				// eslint-disable-next-line react/display-name
+				a: props => (
+					<a {...props} target="_blank" rel="noreferrer noopener" />
+				),
+		  }
+		: {}),
 };
 
 export const Content: FunctionComponent = () => {
