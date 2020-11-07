@@ -11,10 +11,10 @@ interface Props {
 export const List: FunctionComponent<Props> = props => {
 	const background_color = process.env.sidebar_background_color || "";
 
-	const { pages, projects } = useContext(Context);
+	const { pages } = useContext(Context);
 
 	const { current: entries } = useRef(
-		[...pages, ...projects].sort(a => {
+		pages.sort(a => {
 			if (a.url_path === "/") {
 				return -1;
 			}

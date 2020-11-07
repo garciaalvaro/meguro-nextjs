@@ -19,7 +19,7 @@ const assets_dir = existsSync(path.resolve(content_dir, "assets"))
 	? path.resolve(content_dir, "assets")
 	: null;
 
-const assets_dirs = glob.sync(`${content_dir}/{projects,pages}/*/assets`);
+const assets_dirs = glob.sync(`${content_dir}/pages/*/assets`);
 
 // We use a custom server to be able to add a custom static directory
 app.prepare().then(() => {

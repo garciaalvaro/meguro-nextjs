@@ -5,11 +5,11 @@ import { Context } from "@context";
 import styles from "./ProjectsList.styl";
 
 export const ProjectsList: FunctionComponent = () => {
-	const { projects } = useContext(Context);
+	const { pages } = useContext(Context);
 
 	return (
 		<ul className={styles.container}>
-			{projects.map(({ url_path, frontmatter }) => (
+			{pages.map(({ url_path, frontmatter }) => (
 				<li key={url_path} className={styles.item}>
 					<Link href={url_path}>
 						<a className={styles.link}>

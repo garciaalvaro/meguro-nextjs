@@ -3,9 +3,7 @@ import { createContext } from "react";
 export const initial_props: ContextProps = {
 	slug: "",
 	file_path: "",
-	is_page: true,
 	pages: [],
-	projects: [],
 
 	// eslint-disable-next-line
 	setMdIsLoading: () => {},

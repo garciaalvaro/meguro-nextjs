@@ -1,33 +1,32 @@
 import matter from "gray-matter";
 import { readdirSync, readFileSync, existsSync } from "fs";
 
-export const getEntries = (directory: string): Entry[] => {
+export const getPages = (directory: string): Page[] => {
 	const slugs = readdirSync(directory, { withFileTypes: true });
 
-	const entries = slugs.reduce<Entry[]>((acc, entity) => {
+	const pages = slugs.reduce<Page[]>((acc, entity) => {
 		const filename = entity.name;
-		let entry;
+		let page;
 		let file_path;
 
 		if (entity.isDirectory()) {
 			file_path = `${filename}/index.md`;
 
 			if (existsSync(`${directory}/${file_path}`)) {
-				entry = readFileSync(`${directory}/${file_path}`, "utf8");
+				page = readFileSync(`${directory}/${file_path}`, "utf8");
 			}
 		} else if (new RegExp(".md$").test(`${directory}/${filename}`)) {
 			file_path = filename;
-			entry = readFileSync(`${directory}/${file_path}`, "utf8");
+			page = readFileSync(`${directory}/${file_path}`, "utf8");
 		}
 
-		if (!entry || !file_path) {
+		if (!page || !file_path) {
 			return acc;
 		}
 
-		const { data: frontmatter } = matter(entry);
+		const { data: frontmatter } = matter(page);
 		const slug = filename.replace(/\.md$/, "");
 		const url_path = `/${slug === "home" ? "" : slug}`;
-		const is_page = directory.includes("/pages/");
 
 		const thumb_img =
 			!frontmatter.thumb_img || /^\/|^http/.test(frontmatter?.thumb_img)
@@ -37,17 +36,16 @@ export const getEntries = (directory: string): Entry[] => {
 		return [
 			...acc,
 			{
-				is_page,
 				slug,
 				url_path,
 				file_path,
 				frontmatter: {
-					...(frontmatter as Entry["frontmatter"]),
+					...(frontmatter as Page["frontmatter"]),
 					thumb_img,
 				},
 			},
 		];
 	}, []);
 
-	return entries;
+	return pages;
 };

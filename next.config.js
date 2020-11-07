@@ -39,10 +39,6 @@ module.exports = withStylus({
 			? path.resolve(content_dir, "assets/css/index.styl")
 			: null,
 
-		projects_dir: existsSync(path.resolve(content_dir, "projects"))
-			? path.resolve(content_dir, "projects")
-			: null,
-
 		pages_dir: existsSync(path.resolve(content_dir, "pages"))
 			? path.resolve(content_dir, "pages")
 			: null,
