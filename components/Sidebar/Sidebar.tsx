@@ -50,7 +50,7 @@ export const Sidebar: FunctionComponent = () => {
 			></div>
 
 			<div className={styles.list_container}>
-				<List sidebar_is_open={is_open} />
+				<List />
 			</div>
 
 			<button

@@ -8,11 +8,10 @@ interface Props {
 	url_path: Page["url_path"];
 	frontmatter: Page["frontmatter"];
 	background_color: string;
-	sidebar_is_open: boolean;
 }
 
 export const ListItem: FunctionComponent<Props> = props => {
-	const { background_color, url_path, frontmatter, sidebar_is_open } = props;
+	const { background_color, url_path, frontmatter } = props;
 
 	const { active_url_path, setActiveUrlPath } = useContext(Context);
 
