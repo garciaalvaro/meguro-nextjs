@@ -21,6 +21,6 @@ Con culpa qui officia deserunt mollit anim id est *laborum*. Duisaute irure in e
 
 <Column2>
 
-<ProjectsList />
+<PagesList />
 
 </Column2>

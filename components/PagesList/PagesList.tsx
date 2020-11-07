@@ -2,9 +2,9 @@ import React, { FunctionComponent, useContext } from "react";
 import Link from "next/link";
 
 import { Context } from "@context";
-import styles from "./ProjectsList.styl";
+import styles from "./PagesList.styl";
 
-export const ProjectsList: FunctionComponent = () => {
+export const PagesList: FunctionComponent = () => {
 	const { pages } = useContext(Context);
 
 	return (
