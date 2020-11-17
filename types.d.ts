@@ -7,6 +7,7 @@ interface Page {
 		subtitle?: string;
 		thumb_img: string;
 		layout?: string;
+		path: string;
 	};
 }
 

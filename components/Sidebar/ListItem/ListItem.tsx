@@ -2,6 +2,7 @@ import React, { FunctionComponent, useContext } from "react";
 import Link from "next/link";
 
 import { Context } from "@context";
+import { Image } from "@/Image";
 import styles from "./ListItem.styl";
 
 interface Props {
@@ -38,9 +39,10 @@ export const ListItem: FunctionComponent<Props> = props => {
 					}}
 				>
 					<div className={styles.image_container}>
-						<img
+						<Image
 							className={styles.image}
 							src={frontmatter.thumb_img}
+							path={frontmatter.path}
 						/>
 					</div>
 

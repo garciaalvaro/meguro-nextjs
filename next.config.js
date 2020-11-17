@@ -57,20 +57,29 @@ module.exports = withStylus({
 	},
 
 	webpack: (config, { isServer }) => {
-		config.resolveLoader.modules = [
-			...config.resolveLoader.modules,
-			path.resolve(__dirname, "webpack-loaders"),
-		];
-
 		config.module.rules.push({
 			test: /\.mdx?$/,
 			use: [
 				"babel-loader",
+
+				{
+					loader: path.join(
+						__dirname,
+						"webpack-loaders/image-data.js"
+					),
+				},
+
 				{
 					loader: "@mdx-js/loader",
 					options: { remarkPlugins: [unwrap] },
 				},
-				"mdx-frontmatter",
+
+				{
+					loader: path.join(
+						__dirname,
+						"webpack-loaders/mdx-frontmatter.js"
+					),
+				},
 			],
 		});
 
@@ -78,7 +87,12 @@ module.exports = withStylus({
 			test: /\.(png|jpe?g|gif)$/i,
 			use: [
 				{
-					loader: "file-loader",
+					loader: "responsive-loader",
+					options: {
+						adapter: require("responsive-loader/sharp"),
+						outputPath: "static/qqq", //TODO
+						name: "[name]-[width].[ext]",
+					},
 				},
 			],
 		});
@@ -93,6 +107,10 @@ module.exports = withStylus({
 		config.resolve.alias["@context"] = path.join(__dirname, "context");
 		config.resolve.alias["@layouts"] = path.join(__dirname, "layouts");
 		config.resolve.alias["@utils"] = path.join(__dirname, "utils");
+		config.resolve.alias["@content"] = path.join(
+			__dirname,
+			use_demo ? "content-demo" : "content"
+		);
 
 		return config;
 	},
