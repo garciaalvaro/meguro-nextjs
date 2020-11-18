@@ -5,7 +5,7 @@ import styles from "./Image.styl";
 interface Props {
 	path: string;
 	src: string;
-	className?: string;
+	alt?: string;
 }
 
 interface ResponsiveLoader {
@@ -19,19 +19,32 @@ export const Image: FunctionComponent<Props> = props => {
 	const {
 		current: { src, srcSet },
 	} = useRef<ResponsiveLoader>(
-		require("@content/" + props.path + "/" + props.src)
+		(() => {
+			const data: Record<string, string> = require("@content/" +
+				props.path +
+				"/" +
+				props.src);
+
+			const src = data.src.replace("/_next/responsive-images", "");
+
+			const srcSet = data.srcSet
+				.split(",")
+				.map(item => item.replace("/_next/responsive-images", ""))
+				.join(",");
+
+			return { srcSet, src };
+		})()
 	);
 
 	const className = [
 		styles.container,
 		...(is_loading ? [styles.is_loading] : []),
-		...(props.className ? [props.className] : []),
 	].join(" ");
 
 	return (
 		<div className={className}>
 			<img
-				{...props}
+				alt={props?.alt}
 				src={src}
 				srcSet={srcSet}
 				className={styles.image}

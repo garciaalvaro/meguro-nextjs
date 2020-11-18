@@ -28,7 +28,16 @@ app.prepare().then(() => {
 	assets_dirs.forEach(dir => {
 		const root = dir.split("/").slice(-2)[0];
 
-		server.use(`/${root}/assets`, express.static(dir));
+		server.use(
+			`/${root}/assets`,
+
+			express.static(
+				path.resolve(
+					__dirname,
+					`.next/responsive-images/${root}/assets`
+				)
+			)
+		);
 	});
 
 	if (assets_dir) {

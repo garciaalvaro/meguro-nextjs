@@ -90,8 +90,13 @@ module.exports = withStylus({
 					loader: "responsive-loader",
 					options: {
 						adapter: require("responsive-loader/sharp"),
-						outputPath: "static/qqq", //TODO
-						name: "[name]-[width].[ext]",
+						context: path.resolve(content_dir, "pages"),
+						outputPath: "responsive-images",
+						name: "[path][name]-[width].[ext]",
+
+						// Values taken from:
+						// https://nextjs.org/docs/basic-features/image-optimization#device-sizes
+						sizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
 					},
 				},
 			],
