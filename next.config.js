@@ -10,6 +10,10 @@ const content_dir = use_demo
 	? path.resolve(__dirname, "./content-demo")
 	: path.resolve(__dirname, "./content");
 
+const has_custom_layouts = !!existsSync(
+	path.resolve(content_dir, "layouts/index.ts")
+);
+
 const config = use_demo
 	? require("./content-demo/config")
 	: require("./content/config");
@@ -34,6 +38,7 @@ module.exports = withStylus({
 		sidebar_color: sidebar_color || "",
 		sidebar_background_color: sidebar_background_color || "",
 		sidebar_menu_pages: sidebar_menu_pages || [],
+		has_custom_layouts,
 
 		open_external_links_in_new_tab:
 			open_external_links_in_new_tab === undefined
@@ -54,7 +59,7 @@ module.exports = withStylus({
 		localIdentName:
 			process.env.NODE_ENV === "production"
 				? "[hash:base64]"
-				: "[name]__[local]-[hash:base64:2]",
+				: "[folder]__[local]-[hash:base64:2]",
 	},
 
 	webpack: (config, { isServer }) => {
