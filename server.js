@@ -9,7 +9,8 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const use_demo = !existsSync(path.resolve(__dirname, "./content"));
+const use_demo =
+	!existsSync(path.resolve(__dirname, "./content")) || process.env.USE_DEMO;
 
 const content_dir = use_demo
 	? path.resolve(__dirname, "./content-demo")

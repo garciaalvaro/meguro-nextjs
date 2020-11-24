@@ -3,7 +3,8 @@ const { existsSync } = require("fs");
 const path = require("path");
 const unwrap = require("remark-unwrap-images");
 
-const use_demo = !existsSync(path.resolve(__dirname, "./content"));
+const use_demo =
+	!existsSync(path.resolve(__dirname, "./content")) || process.env.USE_DEMO;
 
 const content_dir = use_demo
 	? path.resolve(__dirname, "./content-demo")

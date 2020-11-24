@@ -8,7 +8,9 @@
 	"scripts": {
 		"start": "npm run dev",
 		"build": "next build",
+		"build:demo": "env USE_DEMO=1 next build",
 		"dev": "node server.js",
+		"dev:demo": "env USE_DEMO=1 node server.js",
 		"serve": "cross-env NODE_ENV=production node server.js",
 		"test": "npm run test:types && npm run test:lint && npm run test:prettier && npm run test:unit",
 		"test:lint": "eslint \"**/*.{js,ts,tsx}\"",
