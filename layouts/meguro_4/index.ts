@@ -1,1 +1,7 @@
-export { Column1, Column2 } from "./components";
+import { Column1, Column2 } from "./components";
+
+export const meguro_4 = {
+	components: { Column1, Column2 },
+	breakpoint: 400 + 200 + 200 + 90 - 1,
+	number_of_columns: 2,
+};

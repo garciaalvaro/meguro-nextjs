@@ -7,17 +7,18 @@ import { Content } from "@/Content";
 import { getPages } from "@utils";
 
 interface Props {
+	layout: Page["frontmatter"]["layout"];
 	file_path: Page["file_path"];
 	pages: Page[];
 }
 
 const Home: FunctionComponent<Props> = props => {
-	const { file_path, pages } = props;
+	const { layout, file_path, pages } = props;
 
 	return (
 		<Page slug="home" file_path={file_path} pages={pages}>
 			<Main is_home={true}>
-				<Content />
+				<Content layout={layout} />
 			</Main>
 		</Page>
 	);
@@ -32,6 +33,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	return {
 		props: {
 			file_path: page?.file_path || "",
+			layout: page?.frontmatter.layout || "",
 			pages,
 		},
 	};

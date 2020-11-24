@@ -8,7 +8,7 @@ interface Props {
 	style?: CSSProperties;
 }
 
-const breakpoint = 800 - 1;
+export const breakpoint = 800 - 1;
 
 export const Column1: FunctionComponent<Props> = props => {
 	return (

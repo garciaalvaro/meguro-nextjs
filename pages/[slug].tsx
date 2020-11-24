@@ -8,18 +8,19 @@ import { Sidebar } from "@/Sidebar";
 import { getPages } from "@utils";
 
 interface Props {
+	layout: Page["frontmatter"]["layout"];
 	slug: Page["slug"];
 	file_path: Page["file_path"];
 	pages: Page[];
 }
 
 const Single: FunctionComponent<Props> = props => {
-	const { slug, file_path, pages } = props;
+	const { layout, slug, file_path, pages } = props;
 
 	return (
 		<Page slug={slug} file_path={file_path} pages={pages}>
 			<Main>
-				<Content />
+				<Content layout={layout} />
 			</Main>
 
 			<Sidebar />
@@ -38,6 +39,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 		props: {
 			slug: page?.slug || "",
 			file_path: page?.file_path || "",
+			layout: page?.frontmatter.layout || "",
 			pages,
 		},
 	};

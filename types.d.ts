@@ -6,7 +6,7 @@ interface Page {
 		title: string;
 		subtitle?: string;
 		thumb_img: string;
-		layout?: string;
+		layout: string;
 		path: string;
 	};
 }
@@ -39,4 +39,10 @@ interface ContextProps {
 	md_is_loading: boolean;
 	setActiveUrlPath: (active_url_path: string) => void;
 	active_url_path: Page["url_path"];
+}
+
+interface Layout {
+	components: Record<string, React.ComponentType>;
+	breakpoint: number;
+	number_of_columns: number;
 }
