@@ -1,7 +1,7 @@
 ---
 title: "Project 4"
 subtitle: "Minim veniam"
-thumb_img: "/project-4/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg"
+thumb_img: "joel-filipe-TmSYx44Y0QY-unsplash.jpg"
 ---
 
 import { Column1, Column2 } from "@layouts/meguro_4"
@@ -41,8 +41,8 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 	use_modal={true}
 >
 
-![This is the image description](/project-4/assets/joel-filipe-SIyGeJeWAcY-unsplash.jpg)
-![This is the image description](/project-4/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
-![This is the image description](/project-4/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
+![This is the image description](joel-filipe-SIyGeJeWAcY-unsplash.jpg)
+![This is the image description](joel-filipe-TmSYx44Y0QY-unsplash.jpg)
+![This is the image description](joel-filipe-2BLsWpau-GQ-unsplash.jpg)
 
 </Column2>
