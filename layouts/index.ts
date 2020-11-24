@@ -6,6 +6,7 @@ import { meguro_4 } from "./meguro_4";
 const custom_layouts = require("@content/layouts/index.ts").layouts || {};
 
 export const layouts = {
+	meguro_home,
 	meguro_1,
 	meguro_2,
 	meguro_3,
