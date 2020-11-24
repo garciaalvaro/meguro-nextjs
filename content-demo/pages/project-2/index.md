@@ -2,14 +2,8 @@
 title: "Project 2"
 subtitle: "Ut enim veniam"
 thumb_img: "joel-filipe-SIyGeJeWAcY-unsplash.jpg"
+layout: "meguro_2"
 ---
-
-import {
-	Column1,
-	Column2,
-	Title,
-	Description,
-} from "@layouts/meguro_2";
 
 <Column1
 	use_modal={true}

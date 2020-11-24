@@ -1,9 +1,8 @@
 ---
 title: "Meguro"
 thumb_img: "logo.png"
+layout: "meguro_home"
 ---
-
-import { Column1, Column2 } from "@layouts/meguro_home"
 
 <Column1>
 

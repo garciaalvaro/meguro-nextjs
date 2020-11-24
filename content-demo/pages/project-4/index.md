@@ -2,9 +2,8 @@
 title: "Project 4"
 subtitle: "Minim veniam"
 thumb_img: "joel-filipe-TmSYx44Y0QY-unsplash.jpg"
+layout: "meguro_4"
 ---
-
-import { Column1, Column2 } from "@layouts/meguro_4"
 
 <Column1>
 
