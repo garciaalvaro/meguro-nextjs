@@ -1,7 +1,7 @@
-import { Column1, Column2 } from "./components";
+import { breakpoint, Column1, Column2 } from "./components";
 
-export const meguro_home = {
+export const meguro_home: Layout = {
 	components: { Column1, Column2 },
-	breakpoint: 350 + 350 - 1,
+	breakpoint,
 	number_of_columns: 2,
 };
