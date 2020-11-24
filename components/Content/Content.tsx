@@ -81,6 +81,13 @@ export const Content: FunctionComponent<Props> = props => {
 	);
 
 	useEffect(() => {
+		setComponents(components => ({
+			...getComponents(layout),
+			...components,
+		}));
+	}, [layout]);
+
+	useEffect(() => {
 		if (md_is_loading) return;
 
 		setComponents(getComponents(layout));
