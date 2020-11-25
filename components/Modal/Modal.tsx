@@ -66,6 +66,7 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 			/>
 
 			<img
+				sizes="100vw"
 				className={[
 					styles.image,
 					...(direction ? [styles[`direction_${direction}`]] : []),

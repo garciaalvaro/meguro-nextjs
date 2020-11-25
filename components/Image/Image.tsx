@@ -5,6 +5,8 @@ import styles from "./Image.styl";
 interface Props {
 	path: string;
 	src: string;
+	className?: string;
+	sizes?: string;
 }
 
 interface ResponsiveLoader {
@@ -37,6 +39,7 @@ export const Image: FunctionComponent<Props> = props => {
 
 	const className = [
 		styles.container,
+		...(props.className ? [props.className] : []),
 		...(is_loading ? [styles.is_loading] : []),
 	].join(" ");
 
