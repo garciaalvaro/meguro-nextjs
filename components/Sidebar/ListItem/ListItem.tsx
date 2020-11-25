@@ -43,6 +43,7 @@ export const ListItem: FunctionComponent<Props> = props => {
 							className={styles.image}
 							src={frontmatter.thumb_img}
 							path={frontmatter.path}
+							set_padding_bottom={false}
 						/>
 					</div>
 
