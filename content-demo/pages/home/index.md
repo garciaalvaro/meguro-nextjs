@@ -20,6 +20,13 @@ Con culpa qui officia deserunt mollit anim id est *laborum*. Duisaute irure in e
 
 <Column2>
 
-<PagesList />
+<PagesList
+	pages={[
+		"project-1",
+		"project-2",
+		"project-3",
+		"project-4",
+	]}
+/>
 
 </Column2>
