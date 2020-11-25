@@ -1,6 +1,3 @@
 .next
-/content
-/content-demo
 node_modules
 public
-out
