@@ -91,9 +91,7 @@ export const Column: FunctionComponent<Props> = props => {
 					disableTracksWidthCompensation={true}
 					trackYProps={{ className: styles.scrollbar }}
 				>
-					<div className={className_content} style={style}>
-						{children}
-					</div>
+					<div className={className_content}>{children}</div>
 				</Scrollbar>
 			)}
 		</div>
