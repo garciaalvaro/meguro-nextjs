@@ -31,7 +31,7 @@ const {
 } = config;
 
 module.exports = withStylus({
-	basePath: `/${url_path_prefix}`,
+	basePath: url_path_prefix ? `/${url_path_prefix}` : undefined,
 
 	env: {
 		font_family_url: font_family_url || "",

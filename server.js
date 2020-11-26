@@ -22,7 +22,7 @@ const assets_dir = existsSync(path.resolve(content_dir, "assets"))
 
 const assets_dirs = glob.sync(`${content_dir}/pages/*/assets`);
 
-const config = use_demo
+const { url_path_prefix } = use_demo
 	? require("./content-demo/config")
 	: require("./content/config");
 
@@ -34,7 +34,9 @@ app.prepare().then(() => {
 		const root = dir.split("/").slice(-2)[0];
 
 		server.use(
-			`/${config.url_path_prefix}/${root}/assets`,
+			url_path_prefix
+				? `/${url_path_prefix}/${root}/assets`
+				: `/${root}/assets`,
 
 			express.static(
 				path.resolve(
