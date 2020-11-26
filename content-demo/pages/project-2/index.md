@@ -7,6 +7,7 @@ layout: "meguro_2"
 
 <Column1
 	use_modal={true}
+	style={{ backgroundColor: "#41474a" }}
 >
 
 ![This is the image description](joel-filipe-FrSDv3rVG-E-unsplash.jpg)
@@ -16,16 +17,9 @@ layout: "meguro_2"
 
 </Column1>
 
-<Column2>
+<Column2 style={{ backgroundColor: "#c3c4c5" }}>
 
-<Title
-	padding={50}
-	padding_top={150}
-	child_separation={25}
-	content_max_width={500}
-	content_align="center"
-	background_color="#c3c4c5"
->
+<Title style={{ backgroundColor: "#c3c4c5" }}>
 
 # [Project 2](/project-2)
 
@@ -44,13 +38,7 @@ layout: "meguro_2"
 
 </Title>
 
-<Description
-	padding={50}
-	child_separation={25}
-	content_max_width={500}
-	content_align="center"
-	background_color="#c3c4c5"
->
+<Description style={{ backgroundColor: "#c3c4c5" }}>
 
 Duisaute irure in [minim](https://example.com) et velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 

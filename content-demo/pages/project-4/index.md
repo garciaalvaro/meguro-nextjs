@@ -1,6 +1,6 @@
 ---
 title: "Project 4"
-subtitle: "Minim veniam"
+subtitle: "Duisaute irure"
 thumb_img: "joel-filipe-TmSYx44Y0QY-unsplash.jpg"
 layout: "meguro_4"
 ---
@@ -36,9 +36,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 </Column1>
 
-<Column2
-	use_modal={true}
->
+<Column2 use_modal={true}>
 
 ![This is the image description](joel-filipe-SIyGeJeWAcY-unsplash.jpg)
 ![This is the image description](joel-filipe-TmSYx44Y0QY-unsplash.jpg)

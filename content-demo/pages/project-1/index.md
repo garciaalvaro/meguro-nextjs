@@ -5,7 +5,7 @@ thumb_img: "joel-filipe-2BLsWpau-GQ-unsplash.jpg"
 layout: "meguro_1"
 ---
 
-<Column1>
+<Column1 style={{ backgroundColor: "#b4b9bf" }}>
 
 # [Project 1](/project-1)
 
@@ -36,9 +36,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 </Column1>
 
-<Column2
-	use_modal={true}
->
+<Column2 use_modal={true}>
 
 ![This is the image description](joel-filipe-TmSYx44Y0QY-unsplash.jpg)
 ![This is the image description](joel-filipe-2BLsWpau-GQ-unsplash.jpg)
