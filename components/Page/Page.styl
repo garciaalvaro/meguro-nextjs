@@ -1,0 +1,41 @@
+/**
+ * Page
+ */
+
+@import "_reset"
+@import "_variables"
+@import "_globals"
+
+:root
+	font-size 10px
+	font-family Arial, sans-serif
+
+	@media screen and (max-width: 600px)
+		font-size 8px
+
+body
+	color var(--color)
+	font-size 13px
+	line-height 1.9
+	overflow hidden
+
+html
+body
+:global(#__next)
+	height 100%
+
+
+:global(#__next)
+	display grid
+	grid-template-columns 9rem auto
+	grid-template-areas 'sidebar main'
+
+	> nav
+		grid-area sidebar
+
+	> main
+		grid-area main
+
+	@media screen and (max-width: 600px)
+		grid-template-columns auto
+		grid-template-areas none

@@ -1,72 +1,60 @@
 import React, { FunctionComponent } from "react";
-import ReactMarkdown from "react-markdown";
 import { GetStaticProps, GetStaticPaths } from "next";
 
-import { Layout } from "@/Layout";
-import { Sidebar } from "@/Sidebar";
 import { Main } from "@/Main";
+import { Page } from "@/Page";
 import { Content } from "@/Content";
-import { getEntries, code } from "@utils";
+import { Sidebar } from "@/Sidebar";
+import { getPages } from "@utils";
 
-type Props = {
-	projects: Entry[];
-	pages: Entry[];
-	frontmatter: Entry["frontmatter"];
-	content: Entry["content"];
-};
+interface Props {
+	layout: Page["frontmatter"]["layout"];
+	slug: Page["slug"];
+	file_path: Page["file_path"];
+	pages: Page[];
+}
 
-const Page: FunctionComponent<Props> = props => {
-	const { content, frontmatter, projects, pages } = props;
+const Single: FunctionComponent<Props> = props => {
+	const { layout, slug, file_path, pages } = props;
 
 	return (
-		<Layout page_title={frontmatter.title}>
-			<Sidebar entries={[...pages, ...projects]} />
-
+		<Page slug={slug} file_path={file_path} pages={pages}>
 			<Main>
-				<Content>
-					<ReactMarkdown
-						source={content}
-						escapeHtml={false}
-						renderers={{
-							code,
-						}}
-					/>
-				</Content>
+				<Content layout={layout} />
 			</Main>
-		</Layout>
+
+			<Sidebar />
+		</Page>
 	);
 };
 
-export default Page;
+export default Single;
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-	const { params } = context;
-
-	const projects = getEntries(process.env.projects_dir);
-
-	const pages = getEntries(process.env.pages_dir);
-
-	const { content, frontmatter } = [...pages, ...projects].find(
-		({ slug }) => slug === params?.slug
-	) as Entry;
+	const slug = context.params?.slug as string;
+	const pages = getPages(process.env.pages_dir);
+	const page = pages.find(page => page.slug === slug);
 
 	return {
 		props: {
-			projects,
-			pages: pages.filter(({ slug }) => slug !== "home"),
-			content,
-			frontmatter,
+			slug: page?.slug || "",
+			file_path: page?.file_path || "",
+			layout: page?.frontmatter.layout || "",
+			pages,
 		},
 	};
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const projects = getEntries(process.env.projects_dir);
+	const pages = getPages(process.env.pages_dir);
 
-	const pages = getEntries(process.env.pages_dir);
+	const url_paths = pages.reduce<string[]>(
+		(acc, { url_path }) => (url_path === "/" ? acc : [...acc, url_path]),
+		[]
+	);
 
 	return {
-		paths: [...projects, ...pages].map(({ path }) => path),
+		paths: url_paths,
 		fallback: false,
 	};
 };

@@ -1,0 +1,83 @@
+import React, { FunctionComponent, useEffect } from "react";
+
+import styles from "./Navigation.styl";
+
+export interface ModalProps {
+	closeModal: () => void;
+	goLeft: () => void;
+	goRight: () => void;
+}
+
+export const Navigation: FunctionComponent<ModalProps> = props => {
+	const { closeModal, goLeft, goRight } = props;
+
+	useEffect(() => {
+		const keyDownHandler = (event: KeyboardEvent) => {
+			if (event.key === "Escape") {
+				closeModal();
+			} else if (event.key === "ArrowLeft" || event.key === "a") {
+				goLeft();
+			} else if (event.key === "ArrowRight" || event.key === "d") {
+				goRight();
+			}
+		};
+
+		document.addEventListener("keydown", keyDownHandler);
+
+		return () => document.removeEventListener("keydown", keyDownHandler);
+	}, []);
+
+	return (
+		<nav className={styles.container}>
+			<button
+				className={[styles.button, styles.button_right].join(" ")}
+				onClick={event => {
+					goLeft();
+
+					event.stopPropagation();
+				}}
+			>
+				{/* https://material.io/tools/icons/?icon=chevron_left */}
+				<svg width="24" height="24" viewBox="0 0 24 24">
+					<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+					<path d="M0 0h24v24H0z" fill="none" />
+				</svg>
+			</button>
+
+			<button
+				className={[styles.button, styles.button_left].join(" ")}
+				onClick={event => {
+					goRight();
+
+					event.stopPropagation();
+				}}
+			>
+				{/* https://material.io/tools/icons/?icon=chevron_right */}
+				<svg width="24" height="24" viewBox="0 0 24 24">
+					<path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+					<path d="M0 0h24v24H0z" fill="none" />
+				</svg>
+			</button>
+
+			<button
+				className={[styles.button, styles.button_close].join(" ")}
+				onClick={closeModal}
+			>
+				<svg width="24" height="24" viewBox="0 0 24 24">
+					<path
+						d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+						style={{
+							transform: "translateX(-3px)",
+						}}
+					/>
+					<path
+						d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+						style={{
+							transform: "translateX(2px)",
+						}}
+					/>
+				</svg>
+			</button>
+		</nav>
+	);
+};

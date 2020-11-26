@@ -1,0 +1,45 @@
+/**
+ * List
+ */
+
+$sidebar_width_open = 44rem
+$sidebar_width_closed = 9rem
+
+.container
+	width $sidebar_width_open
+	list-style none
+	overflow auto
+	height 100vh
+	color var(--color_inv_05)
+
+	body ul&
+		padding-left 0
+
+	li:first-child > a
+		opacity 1
+		pointer-events auto
+
+	a
+		height $sidebar_width_closed
+		display flex
+		align-items center
+		opacity .06
+		transition opacity .6s var(--ease_standard)
+
+		> div:last-child
+			flex 1
+			height 100%
+			align-items center
+			display flex
+			padding 0 3.5rem
+
+		> div:first-child
+			width $sidebar_width_closed
+			padding-bottom $sidebar_width_closed
+			flex-shrink 0
+
+	@media screen and (max-width: 600px)
+		position absolute
+		top 0
+		right 0
+		width 100%

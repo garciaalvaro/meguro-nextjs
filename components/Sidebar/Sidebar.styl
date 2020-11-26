@@ -2,5 +2,107 @@
  * Sidebar
  */
 
+$sidebar_width_open = 44rem
+$sidebar_width_closed = 9rem
+
 .container
-	color red
+	width $sidebar_width_closed
+	height 100%
+	position relative
+	cursor pointer
+
+	&.is_open
+	&.is_closing
+		width 100vw
+
+	&.is_open a
+		opacity 1
+
+	&.is_closed a
+	&.is_opening a
+	&.is_closing a
+		pointer-events none
+
+	@media screen and (max-width: 600px)
+		position absolute
+		top 0
+		right 0
+		overflow hidden
+		transition width .6s var(--ease_standard), max-height .6s var(--ease_standard)
+
+		&.is_open
+			max-height 100%
+
+		&
+		&.is_closing
+			max-height $sidebar_width_closed
+			width $sidebar_width_closed
+
+.button
+	position absolute
+	top 0
+	right 0
+	display none
+	align-items center
+	justify-content center
+	width $sidebar_width_closed
+	height $sidebar_width_closed
+	background none
+	border none
+	cursor pointer
+	color rgba(255,255,255,0.7)
+	fill currentColor
+
+	&
+	&:hover
+	&:focus
+		outline none
+
+	@media screen and (max-width: 600px)
+		display flex
+
+.list_container
+	width $sidebar_width_closed
+	height 100%
+	overflow hidden
+	transition width .6s var(--ease_standard)
+	transform translateZ(0)
+
+	.is_open &
+		width $sidebar_width_open
+
+	@media screen and (max-width: 600px)
+		position absolute
+		top 0
+		right 0
+		height 100vh
+
+		&
+		.is_open &
+			width 100vw
+
+.overlay
+	position absolute
+	top 0
+	left 0
+	width 100vw
+	height 100%
+	opacity 0
+	transition opacity .6s var(--ease_standard)
+	display none
+
+	.is_open &
+		opacity .8
+		animation appear .6s var(--ease_standard)
+
+	.is_open &
+	.is_closing &
+		display block
+
+@keyframes appear
+
+	0%
+		opacity 0
+
+	100%
+		opacity .8

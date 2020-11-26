@@ -1,8 +1,7 @@
 .DS_Store
 .next
 .env*
-.todo
+_todo.md
 /content
 node_modules
 public
-out
