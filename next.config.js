@@ -1,7 +1,7 @@
 const withStylus = require("@zeit/next-stylus");
+const unwrap = require("remark-unwrap-images");
 const { existsSync } = require("fs");
 const path = require("path");
-const unwrap = require("remark-unwrap-images");
 
 const use_demo =
 	!existsSync(path.resolve(__dirname, "./content")) || process.env.USE_DEMO;
