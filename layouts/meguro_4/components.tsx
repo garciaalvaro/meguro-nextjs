@@ -1,17 +1,24 @@
-import React, { FunctionComponent, CSSProperties } from "react";
+import React, { FunctionComponent, CSSProperties, Fragment } from "react";
 
 import { Column } from "@/Column";
 import styles from "./components.styl";
+import { useIsMobile } from "@utils";
 
 interface Props {
 	style?: CSSProperties;
 	use_modal?: boolean;
 }
 
-export const breakpoint = 400 + 250 + 90 - 1;
+// column_1_width + column_2_width + sidebar_width
+export const breakpoint = 450 + 450 + 90;
 
 export const Column1: FunctionComponent<Props> = props => {
-	const { style, use_modal, children } = props;
+	const { children, style, use_modal } = props;
+	const is_mobile = useIsMobile(breakpoint);
+
+	if (is_mobile) {
+		return <Fragment>{children}</Fragment>;
+	}
 
 	return (
 		<Column
@@ -27,7 +34,7 @@ export const Column1: FunctionComponent<Props> = props => {
 };
 
 export const Column2: FunctionComponent<Props> = props => {
-	const { style, use_modal, children } = props;
+	const { children, style, use_modal } = props;
 
 	return (
 		<Column
@@ -39,5 +46,21 @@ export const Column2: FunctionComponent<Props> = props => {
 		>
 			{children}
 		</Column>
+	);
+};
+
+export const Title: FunctionComponent<Props> = props => {
+	return (
+		<div className={styles.column_1_title} style={props.style}>
+			<div>{props.children}</div>
+		</div>
+	);
+};
+
+export const Description: FunctionComponent<Props> = props => {
+	return (
+		<div className={styles.column_1_description} style={props.style}>
+			<div>{props.children}</div>
+		</div>
 	);
 };
