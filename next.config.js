@@ -19,6 +19,7 @@ const config = use_demo
 	: require("./content/config");
 
 const {
+	url_path_prefix,
 	font_family_url,
 	open_external_links_in_new_tab,
 	site_title,
@@ -30,6 +31,8 @@ const {
 } = config;
 
 module.exports = withStylus({
+	basePath: `/${url_path_prefix}`,
+
 	env: {
 		font_family_url: font_family_url || "",
 		site_title: site_title || "",

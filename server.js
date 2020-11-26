@@ -22,6 +22,10 @@ const assets_dir = existsSync(path.resolve(content_dir, "assets"))
 
 const assets_dirs = glob.sync(`${content_dir}/pages/*/assets`);
 
+const config = use_demo
+	? require("./content-demo/config")
+	: require("./content/config");
+
 // We use a custom server to be able to add a custom static directory
 app.prepare().then(() => {
 	const server = express();
@@ -30,7 +34,7 @@ app.prepare().then(() => {
 		const root = dir.split("/").slice(-2)[0];
 
 		server.use(
-			`/${root}/assets`,
+			`/${config.url_path_prefix}/${root}/assets`,
 
 			express.static(
 				path.resolve(
