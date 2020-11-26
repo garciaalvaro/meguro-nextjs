@@ -7,8 +7,12 @@
 	"private": true,
 	"scripts": {
 		"start": "npm run dev",
+		"prebuild": "npm run test:types",
 		"build": "next build",
+		"prebuild:demo": "npm run test:types",
 		"build:demo": "env USE_DEMO=1 next build",
+		"export": "npm run build && next export",
+		"export:demo": "npm run build:demo && next export",
 		"dev": "node server.js",
 		"dev:demo": "env USE_DEMO=1 node server.js",
 		"serve": "cross-env NODE_ENV=production node server.js",
@@ -19,7 +23,7 @@
 		"test:unit": "jest --watch",
 		"prettier": "prettier --write \"**/*.{js,ts,tsx,json}\"",
 		"predeploy": "rm -rf .next",
-		"deploy": "npm run build:demo && gh-pages -d .next"
+		"deploy": "npm run export:demo && gh-pages -d out"
 	},
 	"dependencies": {
 		"@mdx-js/loader": "^1.6.21",

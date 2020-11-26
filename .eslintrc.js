@@ -1,7 +1,7 @@
 module.exports = {
 	parser: "@typescript-eslint/parser",
 
-	ignorePatterns: [".next", "node_modules", "public"],
+	ignorePatterns: [".next", "node_modules", "public", "out"],
 
 	rules: {
 		"react/prop-types": "off",
