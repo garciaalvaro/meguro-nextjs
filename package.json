@@ -17,7 +17,9 @@
 		"test:prettier": "prettier --check \"**/*.{js,ts,tsx,json}\"",
 		"test:types": "tsc",
 		"test:unit": "jest --watch",
-		"prettier": "prettier --write \"**/*.{js,ts,tsx,json}\""
+		"prettier": "prettier --write \"**/*.{js,ts,tsx,json}\"",
+		"predeploy": "rm -rf .next",
+		"deploy": "npm run build:demo && gh-pages -d .next"
 	},
 	"dependencies": {
 		"@mdx-js/loader": "^1.6.21",
@@ -58,6 +60,7 @@
 		"eslint-config-prettier": "^6.15.0",
 		"eslint-plugin-prettier": "^3.1.4",
 		"eslint-plugin-react": "^7.21.5",
+		"gh-pages": "^3.1.0",
 		"prettier": "^2.2.0"
 	}
 }
