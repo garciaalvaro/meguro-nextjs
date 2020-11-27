@@ -7,10 +7,13 @@
 	"private": true,
 	"scripts": {
 		"start": "npm run dev",
-		"prebuild": "npm run test:types",
+		"prebuild": "npm run clean:next & npm run test:types",
 		"build": "next build",
-		"prebuild:demo": "npm run test:types",
+		"prebuild:demo": "npm run clean:next & npm run test:types",
 		"build:demo": "env USE_DEMO=1 next build",
+		"clean:next": "rm -rf .next",
+		"clean:out": "rm -rf out",
+		"preexport": "npm run clean:out",
 		"export": "npm run build && next export",
 		"export:demo": "npm run build:demo && next export",
 		"dev": "node server.js",
@@ -22,7 +25,6 @@
 		"test:types": "tsc",
 		"test:unit": "jest --watch",
 		"prettier": "prettier --write \"**/*.{js,ts,tsx,json}\"",
-		"predeploy": "rm -rf .next",
 		"deploy": "npm run export:demo && gh-pages -d out"
 	},
 	"dependencies": {
