@@ -26,21 +26,19 @@ export const Image: FunctionComponent<Props> = props => {
 		current: { src, srcSet, ratio },
 	} = useRef<ResponsiveLoader>(
 		(() => {
-			const data: {
+			const {
+				src,
+				srcSet,
+				width,
+				height,
+			}: {
 				src: string;
 				srcSet: string;
 				width: number;
 				height: number;
 			} = require("@content/" + props.path + "/" + props.src);
 
-			const src = data.src.replace("/_next/responsive-images", "");
-
-			const srcSet = data.srcSet
-				.split(",")
-				.map(item => item.replace("/_next/responsive-images", ""))
-				.join(",");
-
-			return { srcSet, src, ratio: data.width / data.height };
+			return { srcSet, src, ratio: width / height };
 		})()
 	);
 

@@ -7,7 +7,7 @@ module.exports = function (src) {
 	if (Object.keys(frontmatter).length) {
 		const file_path = path.relative(
 			path.resolve(__dirname, "../components/Image"),
-			path.resolve(this.context, "assets")
+			this.context
 		);
 
 		const frontmatter_updated = JSON.stringify({

@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = function (src) {
 	const relative_path = path.relative(
 		path.resolve(__dirname, "../components/Image"),
-		path.resolve(this.context, "assets")
+		this.context
 	);
 
 	const src_updated = src.replace(

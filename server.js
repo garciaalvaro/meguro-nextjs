@@ -20,7 +20,7 @@ const assets_dir = existsSync(path.resolve(content_dir, "assets"))
 	? path.resolve(content_dir, "assets")
 	: null;
 
-const assets_dirs = glob.sync(`${content_dir}/pages/*/assets`);
+const assets_dirs = glob.sync(`${content_dir}/pages/*`);
 
 const { url_path_prefix } = use_demo
 	? require("./content-demo/config")
@@ -34,15 +34,12 @@ app.prepare().then(() => {
 		const root = dir.split("/").slice(-2)[0];
 
 		server.use(
-			url_path_prefix
-				? `/${url_path_prefix}/${root}/assets`
-				: `/${root}/assets`,
+			// Needs to be the file path to work in the static site
+			(url_path_prefix ? `/${url_path_prefix}` : "") +
+				`/_next/static/images/${root}`,
 
 			express.static(
-				path.resolve(
-					__dirname,
-					`.next/responsive-images/${root}/assets`
-				)
+				path.resolve(__dirname, `.next/static/images/${root}`)
 			)
 		);
 	});

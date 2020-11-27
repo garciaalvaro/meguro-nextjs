@@ -100,7 +100,7 @@ module.exports = withStylus({
 					options: {
 						adapter: require("responsive-loader/sharp"),
 						context: path.resolve(content_dir, "pages"),
-						outputPath: "responsive-images",
+						outputPath: "static/images",
 						name: "[path][name]-[width].[ext]",
 
 						// Values taken from:

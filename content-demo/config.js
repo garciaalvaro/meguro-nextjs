@@ -4,7 +4,7 @@ module.exports = {
 	open_external_links_in_new_tab: true,
 	site_title: "Meguro",
 	site_description: "Portfolio",
-	site_logo: "/home/assets/logo.png",
+	site_logo: "/home/logo.png",
 	sidebar_color: "rgba(255,255,255,0.85)",
 	sidebar_background_color: "#191a1b",
 	url_path_prefix: "meguro-nextjs",
