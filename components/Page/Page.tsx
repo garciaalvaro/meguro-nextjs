@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent } from "react";
+import React, { Fragment, FunctionComponent, useRef } from "react";
 import Head from "next/head";
 
 import { ContextProvider } from "@context";
@@ -25,6 +25,16 @@ export const Page: FunctionComponent<Props> = props => {
 	const { file_path, page_title, slug, pages } = props;
 	const title = page_title ? `${site_title} | ${page_title}` : site_title;
 
+	const { current: favicon_src } = useRef<string>(
+		(() => {
+			const {
+				src,
+			}: { src: string } = require("@content/assets/favicon.png");
+
+			return src;
+		})()
+	);
+
 	// TODO: Complete meta tags
 
 	return (
@@ -33,6 +43,7 @@ export const Page: FunctionComponent<Props> = props => {
 				<title>{title}</title>
 				<meta property="description" content={site_description} />
 				<meta property="og:title" content={title} />
+				<link rel="icon" href={favicon_src}></link>
 
 				{font_family_url && (
 					<Fragment>

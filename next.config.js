@@ -86,6 +86,7 @@ module.exports = withStylus({
 
 		config.module.rules.push({
 			test: /\.(png|jpe?g|gif)$/i,
+			include: getContentDir("pages"),
 			use: [
 				{
 					loader: "responsive-loader",
@@ -98,6 +99,20 @@ module.exports = withStylus({
 						// Values taken from:
 						// https://nextjs.org/docs/basic-features/image-optimization#device-sizes
 						sizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+					},
+				},
+			],
+		});
+
+		config.module.rules.push({
+			test: /\.(png|jpe?g|gif)$/i,
+			include: getContentDir("assets"),
+			use: [
+				{
+					loader: "responsive-loader",
+					options: {
+						...config.module.rules.slice(-1)[0].use[0].options,
+						context: getContentDir("assets"),
 					},
 				},
 			],
