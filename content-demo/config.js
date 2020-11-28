@@ -7,7 +7,7 @@ module.exports = {
 	site_logo: "/home/logo.png",
 	sidebar_color: "rgba(255,255,255,0.85)",
 	sidebar_background_color: "#191a1b",
-	url_path_prefix: "meguro-nextjs",
+	base_url_prefix: "meguro-nextjs",
 	sidebar_menu_pages: [
 		"home",
 		"project-1",

@@ -3,23 +3,17 @@ const unwrap = require("remark-unwrap-images");
 const { existsSync } = require("fs");
 const path = require("path");
 
-const use_demo =
-	!existsSync(path.resolve(__dirname, "./content")) || process.env.USE_DEMO;
+const {
+	getContentDir: getContentDirRaw,
+	config,
+	base_url_path,
+} = require("./config");
 
-const content_dir = use_demo
-	? path.resolve(__dirname, "./content-demo")
-	: path.resolve(__dirname, "./content");
+const getContentDir = extra => getContentDirRaw(__dirname, extra);
 
-const has_custom_layouts = !!existsSync(
-	path.resolve(content_dir, "layouts/index.ts")
-);
-
-const config = use_demo
-	? require("./content-demo/config")
-	: require("./content/config");
+const has_custom_layouts = !!existsSync(getContentDir("layouts/index.ts"));
 
 const {
-	url_path_prefix,
 	font_family_url,
 	open_external_links_in_new_tab,
 	site_title,
@@ -31,7 +25,7 @@ const {
 } = config;
 
 module.exports = withStylus({
-	basePath: url_path_prefix ? `/${url_path_prefix}` : undefined,
+	basePath: config.base_url_prefix ? base_url_path : undefined,
 
 	env: {
 		font_family_url: font_family_url || "",
@@ -48,12 +42,12 @@ module.exports = withStylus({
 				? false
 				: open_external_links_in_new_tab,
 
-		custom_css_file: existsSync(path.resolve(content_dir, "src/index.styl"))
-			? path.resolve(content_dir, "src/index.styl")
+		custom_css_file: existsSync(getContentDir("src/index.styl"))
+			? getContentDir("src/index.styl")
 			: null,
 
-		pages_dir: existsSync(path.resolve(content_dir, "pages"))
-			? path.resolve(content_dir, "pages")
+		pages_dir: existsSync(getContentDir("pages"))
+			? getContentDir("pages")
 			: null,
 	},
 
@@ -72,7 +66,7 @@ module.exports = withStylus({
 				"babel-loader",
 
 				{
-					loader: path.join(
+					loader: path.resolve(
 						__dirname,
 						"webpack-loaders/image-data.js"
 					),
@@ -84,7 +78,7 @@ module.exports = withStylus({
 				},
 
 				{
-					loader: path.join(
+					loader: path.resolve(
 						__dirname,
 						"webpack-loaders/mdx-frontmatter.js"
 					),
@@ -99,7 +93,7 @@ module.exports = withStylus({
 					loader: "responsive-loader",
 					options: {
 						adapter: require("responsive-loader/sharp"),
-						context: path.resolve(content_dir, "pages"),
+						context: getContentDir("pages"),
 						outputPath: "static/images",
 						name: "[path][name]-[width].[ext]",
 
@@ -117,14 +111,11 @@ module.exports = withStylus({
 			};
 		}
 
-		config.resolve.alias["@"] = path.join(__dirname, "components");
-		config.resolve.alias["@context"] = path.join(__dirname, "context");
-		config.resolve.alias["@layouts"] = path.join(__dirname, "layouts");
-		config.resolve.alias["@utils"] = path.join(__dirname, "utils");
-		config.resolve.alias["@content"] = path.join(
-			__dirname,
-			use_demo ? "content-demo" : "content"
-		);
+		config.resolve.alias["@"] = path.resolve(__dirname, "components");
+		config.resolve.alias["@context"] = path.resolve(__dirname, "context");
+		config.resolve.alias["@layouts"] = path.resolve(__dirname, "layouts");
+		config.resolve.alias["@utils"] = path.resolve(__dirname, "utils");
+		config.resolve.alias["@content"] = getContentDir();
 
 		return config;
 	},
