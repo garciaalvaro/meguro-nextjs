@@ -22,7 +22,6 @@ declare namespace NodeJS {
 		open_external_links_in_new_tab: boolean;
 		site_title: string;
 		site_description: string;
-		site_logo: string | null;
 		pages_dir: string;
 		sidebar_color: string;
 		sidebar_background_color: string;
