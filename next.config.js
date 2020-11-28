@@ -9,7 +9,7 @@ const {
 	base_url_path,
 } = require("./config");
 
-const getContentDir = extra => getContentDirRaw(__dirname, extra);
+const getContentDir = extra => getContentDirRaw(extra);
 
 const has_custom_layouts = !!existsSync(getContentDir("layouts/index.ts"));
 

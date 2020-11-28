@@ -19,8 +19,12 @@ const base_url_path_with_slash = config.base_url_prefix
 	? `/${config.base_url_prefix}/`
 	: "/";
 
-const getContentDir = (dir, extra = "") => {
-	return path.resolve(dir, use_demo ? "content-demo" : "content", extra);
+const getContentDir = (extra = "") => {
+	return path.resolve(
+		__dirname,
+		use_demo ? "content-demo" : "content",
+		extra
+	);
 };
 
 module.exports = {
