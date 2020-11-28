@@ -5,9 +5,9 @@ const glob = require("glob");
 const path = require("path");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
-const dev = process.env.NODE_ENV !== "production";
-const app = next({ dev });
-const handle = app.getRequestHandler();
+const is_development = process.env.NODE_ENV !== "production";
+const server = next({ dev: is_development });
+const handle = server.getRequestHandler();
 
 const use_demo =
 	!existsSync(path.resolve(__dirname, "./content")) || process.env.USE_DEMO;
@@ -27,7 +27,7 @@ const { url_path_prefix } = use_demo
 	: require("./content/config");
 
 // We use a custom server to be able to add a custom static directory
-app.prepare().then(() => {
+server.prepare().then(() => {
 	const server = express();
 
 	assets_dirs.forEach(dir => {
