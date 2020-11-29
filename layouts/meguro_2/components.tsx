@@ -9,7 +9,8 @@ interface Props {
 	use_modal?: boolean;
 }
 
-export const breakpoint = 800 - 1;
+// column_1_width + column_2_width + sidebar_width
+export const breakpoint = 800;
 
 export const Column1: FunctionComponent<Props> = props => {
 	const { style, use_modal, children } = props;
