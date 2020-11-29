@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useRef, useState, useEffect } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
-import { useIsMobile } from "@utils";
+import { useIsMobile, useIsFirstRender } from "@utils";
 import { List } from "./List";
 import styles from "./Sidebar.styl";
 
@@ -11,6 +11,7 @@ export const Sidebar: FunctionComponent = () => {
 	const [is_closing, setIsClosing] = useState(false);
 	const $overlay = useRef<HTMLDivElement | null>(null);
 	const is_mobile = useIsMobile(600);
+	const is_first_render = useIsFirstRender();
 
 	useEffect(() => {
 		if (!$overlay.current) return;
@@ -48,7 +49,7 @@ export const Sidebar: FunctionComponent = () => {
 			<div ref={$overlay} className={styles.overlay}></div>
 
 			<div className={styles.list_container}>
-				{is_mobile ? (
+				{is_first_render || is_mobile ? (
 					<List />
 				) : (
 					<Scrollbar
