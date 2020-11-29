@@ -2,7 +2,8 @@ const express = require("express");
 const { existsSync } = require("fs");
 const path = require("path");
 
-const { base_url_path, base_url_path_with_slash, port } = require("../config");
+const { base_url_path, port } = require("../config");
+const base_url_path_with_slash = base_url_prefix ? `/${base_url_prefix}/` : "/";
 
 const server = express();
 const page_404 = path.resolve(__dirname, "../out/404.html");
@@ -28,5 +29,5 @@ server.use(
 server.listen(port, err => {
 	if (err) throw err;
 
-	console.log(`> Ready on http://localhost:${port}`);
+	console.log(`> Ready on http://localhost:${port}${base_url_path}`);
 });

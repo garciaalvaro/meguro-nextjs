@@ -15,10 +15,6 @@ const base_url_path = config.base_url_prefix
 	? `/${config.base_url_prefix}`
 	: "/";
 
-const base_url_path_with_slash = config.base_url_prefix
-	? `/${config.base_url_prefix}/`
-	: "/";
-
 const getContentDir = (extra = "") => {
 	return path.resolve(
 		__dirname,
@@ -30,7 +26,6 @@ const getContentDir = (extra = "") => {
 module.exports = {
 	config,
 	base_url_path,
-	base_url_path_with_slash,
 	getContentDir,
 	port,
 	use_demo,
