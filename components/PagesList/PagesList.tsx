@@ -20,6 +20,7 @@ export const PagesList: FunctionComponent<Props> = props => {
 						<a className={styles.link}>
 							<div className={styles.image_container}>
 								<Image
+									alt={frontmatter.title}
 									src={frontmatter.thumb_img}
 									set_padding_bottom={false}
 								/>
