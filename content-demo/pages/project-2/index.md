@@ -23,7 +23,7 @@ layout: "meguro_2"
 
 # [Project 2](/project-2)
 
-### Ut enim veniam
+## Ut enim veniam
 
 ---
 
