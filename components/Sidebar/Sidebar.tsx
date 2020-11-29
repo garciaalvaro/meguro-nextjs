@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useRef, useState, useEffect } from "react";
+import Scrollbar from "react-scrollbars-custom";
 
 import styles from "./Sidebar.styl";
 import { List } from "./List";
@@ -45,7 +46,14 @@ export const Sidebar: FunctionComponent = () => {
 			<div ref={$overlay} className={styles.overlay}></div>
 
 			<div className={styles.list_container}>
-				<List />
+				<Scrollbar
+					noScrollX={true}
+					removeTrackXWhenNotUsed={true}
+					disableTracksWidthCompensation={true}
+					trackYProps={{ className: styles.scrollbar }}
+				>
+					<List />
+				</Scrollbar>
 			</div>
 
 			<button className={styles.button} onClick={toggle}>
