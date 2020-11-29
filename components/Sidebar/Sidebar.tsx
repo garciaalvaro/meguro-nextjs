@@ -4,7 +4,6 @@ import styles from "./Sidebar.styl";
 import { List } from "./List";
 
 export const Sidebar: FunctionComponent = () => {
-	const sidebar_background_color = process.env.sidebar_background_color;
 	const [is_open, setIsOpen] = useState(false);
 	const [is_opening, setIsOpening] = useState(false);
 	const [is_closing, setIsClosing] = useState(false);
@@ -43,21 +42,13 @@ export const Sidebar: FunctionComponent = () => {
 
 	return (
 		<nav className={className} onClick={toggle}>
-			<div
-				ref={$overlay}
-				className={styles.overlay}
-				style={{ backgroundColor: sidebar_background_color }}
-			></div>
+			<div ref={$overlay} className={styles.overlay}></div>
 
 			<div className={styles.list_container}>
 				<List />
 			</div>
 
-			<button
-				className={styles.button}
-				style={{ backgroundColor: sidebar_background_color }}
-				onClick={toggle}
-			>
+			<button className={styles.button} onClick={toggle}>
 				{is_open ? (
 					/* https://material.io/tools/icons/?icon=close */
 					<svg width="22" height="22" viewBox="0 0 24 24">

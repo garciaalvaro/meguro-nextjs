@@ -27,8 +27,6 @@ declare namespace NodeJS {
 		site_favicon: string;
 		site_author: string;
 		pages_dir: string;
-		sidebar_color: string;
-		sidebar_background_color: string;
 		sidebar_menu_pages: Page["slug"][];
 		custom_css_file: string;
 	}

@@ -8,11 +8,10 @@ import styles from "./ListItem.styl";
 interface Props {
 	url_path: Page["url_path"];
 	frontmatter: Page["frontmatter"];
-	background_color: string;
 }
 
 export const ListItem: FunctionComponent<Props> = props => {
-	const { background_color, url_path, frontmatter } = props;
+	const { url_path, frontmatter } = props;
 
 	const { active_url_path, setActiveUrlPath } = useContext(Context);
 
@@ -24,7 +23,7 @@ export const ListItem: FunctionComponent<Props> = props => {
 	].join(" ");
 
 	return (
-		<li style={{ backgroundColor: background_color }} className={className}>
+		<li className={className}>
 			<Link href={url_path}>
 				<a
 					className={styles.link}
@@ -54,7 +53,7 @@ export const ListItem: FunctionComponent<Props> = props => {
 
 						{frontmatter.subtitle && (
 							<span className={styles.subtitle}>
-								{frontmatter.subtitle}
+								<span>{frontmatter.subtitle}</span>
 							</span>
 						)}
 					</div>

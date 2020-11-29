@@ -8,8 +8,6 @@ module.exports = {
 	site_logo: "assets/logo.png",
 	site_favicon: "assets/favicon.png",
 	site_author: "My Name",
-	sidebar_color: "rgba(255,255,255,0.85)",
-	sidebar_background_color: "#191a1b",
 	base_url_prefix: "meguro-nextjs",
 	sidebar_menu_pages: [
 		"home",

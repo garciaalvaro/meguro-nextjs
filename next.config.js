@@ -22,8 +22,6 @@ const {
 	site_favicon,
 	site_logo,
 	site_author,
-	sidebar_color,
-	sidebar_background_color,
 	sidebar_menu_pages,
 } = config;
 
@@ -35,8 +33,6 @@ module.exports = withStylus({
 		font_family_url: font_family_url || "",
 		site_title: site_title || "",
 		site_description: site_description || "",
-		sidebar_color: sidebar_color || "",
-		sidebar_background_color: sidebar_background_color || "",
 		sidebar_menu_pages: sidebar_menu_pages || [],
 		site_logo: site_logo || "",
 		site_favicon: site_favicon || "",

@@ -10,6 +10,7 @@ $sidebar_width_closed = 9rem
 	height 100%
 	position relative
 	cursor pointer
+	color var(--sidebar_color)
 
 	&.is_open
 	&.is_closing
@@ -90,6 +91,7 @@ $sidebar_width_closed = 9rem
 	opacity 0
 	transition opacity .6s var(--ease_standard)
 	display none
+	background-color var(--sidebar_background_color)
 
 	.is_open &
 		opacity .8

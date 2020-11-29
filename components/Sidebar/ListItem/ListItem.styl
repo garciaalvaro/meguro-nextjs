@@ -12,13 +12,14 @@
 
 	&:hover
 
-		.subtitle
+		.title
 			opacity 1
-			transition-delay .1s
+
+		.subtitle
+			opacity .6
 
 			span
-				transform none
-				transition-delay .1s
+				transform translateZ(0)
 
 .is_active
 
@@ -26,24 +27,22 @@
 		opacity 1
 
 	.title
-		color var(--color_inv)
+		opacity 1
+
+	.subtitle
+		opacity .6
+
+		span
+			transform none
 
 	.text_container
 		background-color rgba(255,255,255,.05)
 		border-top 1px solid rgba(0,0,0,.4)
 		border-bottom 1px solid rgba(0,0,0,.4)
 
-	.subtitle
-		opacity 1
-
-		span
-			transform none
-
 .title
 	margin-top .7em
-
-.subtitle
-	font-weight normal
+	opacity .6
 
 .link
 	display block
@@ -84,18 +83,22 @@
 	flex-shrink 0
 	text-overflow ellipsis
 	overflow hidden
+	transition opacity .3s .05s var(--ease_deceleration)
 
 .subtitle
+	font-weight normal
+	font-size .95em
 	text-overflow ellipsis
 	overflow hidden
 	opacity 0
-	transition opacity .3s var(--ease_standard)
+	transition opacity .3s .05s var(--ease_deceleration)
 
 	&:before
 		content '|'
-		padding 0 1em
+		padding 0 .6em 0 .7em
 		line-height 0
 
 	span
+		display inline-block
 		transform translateX(-1rem)
-		transition transform .3s var(--ease_standard)
+		transition transform .3s .05s var(--ease_deceleration)
