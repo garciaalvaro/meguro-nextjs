@@ -39,12 +39,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 <Column2 use_modal={true}>
 
 ![This is the image description](/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
-
-<Columns>
-
 ![This is the image description](/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
 ![This is the image description](/assets/joel-filipe-HiOgJdpg0qo-unsplash.jpg)
-
-</Columns>
 
 </Column2>
