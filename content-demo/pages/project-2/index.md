@@ -1,7 +1,7 @@
 ---
 title: "Project 2"
 subtitle: "Ut enim veniam"
-thumb_img: "joel-filipe-SIyGeJeWAcY-unsplash.jpg"
+thumb_img: "/assets/joel-filipe-SIyGeJeWAcY-unsplash.jpg"
 layout: "meguro_2"
 ---
 
@@ -10,10 +10,10 @@ layout: "meguro_2"
 	style={{ backgroundColor: "#41474a" }}
 >
 
-![This is the image description](joel-filipe-FrSDv3rVG-E-unsplash.jpg)
-![This is the image description](joel-filipe-2BLsWpau-GQ-unsplash.jpg)
-![This is the image description](joel-filipe-SIyGeJeWAcY-unsplash.jpg)
-![This is the image description](joel-filipe-TmSYx44Y0QY-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-FrSDv3rVG-E-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-SIyGeJeWAcY-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
 
 </Column1>
 
@@ -23,7 +23,7 @@ layout: "meguro_2"
 
 # [Project 2](/project-2)
 
-### Ut enim veniam
+## Ut enim veniam
 
 ---
 

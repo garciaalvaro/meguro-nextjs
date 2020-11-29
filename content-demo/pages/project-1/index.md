@@ -1,7 +1,7 @@
 ---
 title: "Project 1"
 subtitle: "Aconsec adipiscin"
-thumb_img: "joel-filipe-2BLsWpau-GQ-unsplash.jpg"
+thumb_img: "/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg"
 layout: "meguro_1"
 ---
 
@@ -9,7 +9,7 @@ layout: "meguro_1"
 
 # [Project 1](/project-1)
 
-### Aconsec adipiscin
+## Aconsec adipiscin
 
 ---
 
@@ -38,13 +38,8 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 <Column2 use_modal={true}>
 
-![This is the image description](joel-filipe-TmSYx44Y0QY-unsplash.jpg)
-
-<Columns>
-
-![This is the image description](joel-filipe-2BLsWpau-GQ-unsplash.jpg)
-![This is the image description](joel-filipe-HiOgJdpg0qo-unsplash.jpg)
-
-</Columns>
+![This is the image description](/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-HiOgJdpg0qo-unsplash.jpg)
 
 </Column2>

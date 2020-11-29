@@ -1,14 +1,17 @@
 import React, { FunctionComponent, useRef, useState, useEffect } from "react";
+import Scrollbar from "react-scrollbars-custom";
 
-import styles from "./Sidebar.styl";
+import { useIsMobile, useIsFirstRender } from "@utils";
 import { List } from "./List";
+import styles from "./Sidebar.styl";
 
 export const Sidebar: FunctionComponent = () => {
-	const sidebar_background_color = process.env.sidebar_background_color;
 	const [is_open, setIsOpen] = useState(false);
 	const [is_opening, setIsOpening] = useState(false);
 	const [is_closing, setIsClosing] = useState(false);
 	const $overlay = useRef<HTMLDivElement | null>(null);
+	const is_mobile = useIsMobile(600);
+	const is_first_render = useIsFirstRender();
 
 	useEffect(() => {
 		if (!$overlay.current) return;
@@ -43,21 +46,24 @@ export const Sidebar: FunctionComponent = () => {
 
 	return (
 		<nav className={className} onClick={toggle}>
-			<div
-				ref={$overlay}
-				className={styles.overlay}
-				style={{ backgroundColor: sidebar_background_color }}
-			></div>
+			<div ref={$overlay} className={styles.overlay}></div>
 
 			<div className={styles.list_container}>
-				<List />
+				{is_first_render || is_mobile ? (
+					<List />
+				) : (
+					<Scrollbar
+						noScrollX={true}
+						removeTrackXWhenNotUsed={true}
+						disableTracksWidthCompensation={true}
+						trackYProps={{ className: styles.scrollbar }}
+					>
+						<List />
+					</Scrollbar>
+				)}
 			</div>
 
-			<button
-				className={styles.button}
-				style={{ backgroundColor: sidebar_background_color }}
-				onClick={toggle}
-			>
+			<button className={styles.button} onClick={toggle}>
 				{is_open ? (
 					/* https://material.io/tools/icons/?icon=close */
 					<svg width="22" height="22" viewBox="0 0 24 24">

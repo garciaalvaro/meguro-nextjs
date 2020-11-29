@@ -1,7 +1,7 @@
 ---
 title: "Project 3"
 subtitle: "Minim veniam"
-thumb_img: "joel-filipe-FrSDv3rVG-E-unsplash.jpg"
+thumb_img: "/assets/joel-filipe-FrSDv3rVG-E-unsplash.jpg"
 layout: "meguro_3"
 ---
 
@@ -12,7 +12,7 @@ layout: "meguro_3"
 
 # [Project 3](/project-3)
 
-### Minim veniam
+## Minim veniam
 
 ---
 
@@ -45,11 +45,11 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 	style={{ backgroundColor: "#e5ebec" }}
 >
 
-![This is the image description](joel-filipe-_Di_gyxSdSk-unsplash.jpg)
-![This is the image description](joel-filipe-TmSYx44Y0QY-unsplash.jpg)
-![This is the image description](joel-filipe-2BLsWpau-GQ-unsplash.jpg)
-![This is the image description](joel-filipe-HiOgJdpg0qo-unsplash.jpg)
-![This is the image description](joel-filipe-FrSDv3rVG-E-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-_Di_gyxSdSk-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-HiOgJdpg0qo-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-FrSDv3rVG-E-unsplash.jpg)
 
 </Column2>
 
@@ -58,10 +58,10 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 	style={{ backgroundColor: "#e5ebec" }}
 >
 
-![This is the image description](joel-filipe-HiOgJdpg0qo-unsplash.jpg)
-![This is the image description](joel-filipe-FrSDv3rVG-E-unsplash.jpg)
-![This is the image description](joel-filipe-2BLsWpau-GQ-unsplash.jpg)
-![This is the image description](joel-filipe-SIyGeJeWAcY-unsplash.jpg)
-![This is the image description](joel-filipe-TmSYx44Y0QY-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-HiOgJdpg0qo-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-FrSDv3rVG-E-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-2BLsWpau-GQ-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-SIyGeJeWAcY-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
 
 </Column3>

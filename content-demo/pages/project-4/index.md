@@ -1,7 +1,7 @@
 ---
 title: "Project 4"
 subtitle: "Duisaute irure"
-thumb_img: "joel-filipe-TmSYx44Y0QY-unsplash.jpg"
+thumb_img: "/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg"
 layout: "meguro_4"
 ---
 
@@ -11,7 +11,7 @@ layout: "meguro_4"
 
 # [Project 4](/project-4)
 
-### Minim veniam
+## Minim veniam
 
 ---
 
@@ -48,15 +48,15 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 <Columns>
 
-![This is the image description](joel-filipe-SIyGeJeWAcY-unsplash.jpg)
-![This is the image description](joel-filipe-vauF_XwNI0c-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-SIyGeJeWAcY-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-vauF_XwNI0c-unsplash.jpg)
 
 </Columns>
 
 <Columns>
 
-![This is the image description](joel-filipe-TmSYx44Y0QY-unsplash.jpg)
-![This is the image description](joel-filipe-_Di_gyxSdSk-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-TmSYx44Y0QY-unsplash.jpg)
+![This is the image description](/assets/joel-filipe-_Di_gyxSdSk-unsplash.jpg)
 
 </Columns>
 

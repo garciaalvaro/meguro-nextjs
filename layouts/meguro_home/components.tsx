@@ -8,13 +8,15 @@ interface Props {
 	use_modal?: boolean;
 }
 
-export const breakpoint = 350 + 350 - 1;
+// column_1_width + column_2_width
+export const breakpoint = 350 + 350;
 
 export const Column1: FunctionComponent<Props> = props => {
 	const { style, use_modal, children } = props;
 
 	return (
 		<Column
+			breakpoint={breakpoint}
 			className_container={styles.column_1_container}
 			className_content={styles.column_1_content}
 			style={style}
@@ -30,6 +32,7 @@ export const Column2: FunctionComponent<Props> = props => {
 
 	return (
 		<Column
+			breakpoint={breakpoint}
 			className_container={styles.column_2_container}
 			className_content={styles.column_2_content}
 			style={style}

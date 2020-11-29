@@ -2,16 +2,12 @@ import React, { Fragment, FunctionComponent, useState } from "react";
 import { createPortal } from "react-dom";
 
 import styles from "./Modal.styl";
+import { Image } from "../Image";
 import { Navigation } from "./Navigation";
 
 export interface ModalProps {
-	data: {
-		src: string;
-		srcset?: string;
-	}[];
-
+	data: string[];
 	initial_src: string;
-
 	closeModal: () => void;
 }
 
@@ -22,13 +18,15 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 
 	const [image_index, setImageIndex] = useState(
 		(() => {
-			const index = data.findIndex(image => image.src === initial_src);
+			const index = data.findIndex(src => src === initial_src);
 
 			return index < 0 ? 0 : index;
 		})()
 	);
 
 	const goLeft = () => {
+		if (direction) return;
+
 		setDirection("left");
 		setImageIndex(index => {
 			return index === 0 ? data.length - 1 : index - 1;
@@ -36,15 +34,17 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 	};
 
 	const goRight = () => {
+		if (direction) return;
+
 		setDirection("right");
 		setImageIndex(index => {
 			return index === data.length - 1 ? 0 : index + 1;
 		});
 	};
 
-	const image = data[image_index];
+	const image_src = data[image_index];
 
-	if (!image) {
+	if (!image_src) {
 		return null;
 	}
 
@@ -65,15 +65,15 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 				goRight={goRight}
 			/>
 
-			<img
+			<Image
+				key={image_src}
 				sizes="100vw"
-				className={[
-					styles.image,
+				className_container={[
+					styles.image_container,
 					...(direction ? [styles[`direction_${direction}`]] : []),
 				].join(" ")}
-				key={image.src}
-				src={image.src}
-				srcSet={image.srcset}
+				src={image_src}
+				set_padding_bottom={false}
 				onAnimationEnd={() => setDirection(null)}
 			/>
 		</div>

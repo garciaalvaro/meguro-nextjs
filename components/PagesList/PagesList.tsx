@@ -20,8 +20,8 @@ export const PagesList: FunctionComponent<Props> = props => {
 						<a className={styles.link}>
 							<div className={styles.image_container}>
 								<Image
+									alt={frontmatter.title}
 									src={frontmatter.thumb_img}
-									path={"pages" + url_path + "/assets"}
 									set_padding_bottom={false}
 								/>
 							</div>

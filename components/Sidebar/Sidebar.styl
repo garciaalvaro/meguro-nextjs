@@ -10,6 +10,7 @@ $sidebar_width_closed = 9rem
 	height 100%
 	position relative
 	cursor pointer
+	color var(--sidebar_color)
 
 	&.is_open
 	&.is_closing
@@ -90,6 +91,7 @@ $sidebar_width_closed = 9rem
 	opacity 0
 	transition opacity .6s var(--ease_standard)
 	display none
+	background-color var(--sidebar_background_color)
 
 	.is_open &
 		opacity .8
@@ -98,6 +100,25 @@ $sidebar_width_closed = 9rem
 	.is_open &
 	.is_closing &
 		display block
+
+.scrollbar
+	width 7px!important
+	background none!important
+	border-radius 0!important
+	height 100%!important
+	top 0!important
+	z-index 2
+
+	> div
+		background-color var(--sidebar_scrollbar_color)!important
+		border-radius 0!important
+
+	.is_open &
+		display block
+
+	&
+	.is_opening &
+		display none
 
 @keyframes appear
 
