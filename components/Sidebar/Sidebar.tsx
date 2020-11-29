@@ -1,14 +1,16 @@
 import React, { FunctionComponent, useRef, useState, useEffect } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
-import styles from "./Sidebar.styl";
+import { useIsMobile } from "@utils";
 import { List } from "./List";
+import styles from "./Sidebar.styl";
 
 export const Sidebar: FunctionComponent = () => {
 	const [is_open, setIsOpen] = useState(false);
 	const [is_opening, setIsOpening] = useState(false);
 	const [is_closing, setIsClosing] = useState(false);
 	const $overlay = useRef<HTMLDivElement | null>(null);
+	const is_mobile = useIsMobile(600);
 
 	useEffect(() => {
 		if (!$overlay.current) return;
@@ -46,14 +48,18 @@ export const Sidebar: FunctionComponent = () => {
 			<div ref={$overlay} className={styles.overlay}></div>
 
 			<div className={styles.list_container}>
-				<Scrollbar
-					noScrollX={true}
-					removeTrackXWhenNotUsed={true}
-					disableTracksWidthCompensation={true}
-					trackYProps={{ className: styles.scrollbar }}
-				>
+				{is_mobile ? (
 					<List />
-				</Scrollbar>
+				) : (
+					<Scrollbar
+						noScrollX={true}
+						removeTrackXWhenNotUsed={true}
+						disableTracksWidthCompensation={true}
+						trackYProps={{ className: styles.scrollbar }}
+					>
+						<List />
+					</Scrollbar>
+				)}
 			</div>
 
 			<button className={styles.button} onClick={toggle}>
