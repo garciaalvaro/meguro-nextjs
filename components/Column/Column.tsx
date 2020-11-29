@@ -50,10 +50,7 @@ export const Column: FunctionComponent<Props> = props => {
 
 		const $images = $container.current.querySelectorAll("img");
 
-		const imagesData = [...$images].map($el => ({
-			src: $el.src,
-			srcset: $el.srcset,
-		}));
+		const imagesData = [...$images].map($el => $el.dataset.src || "");
 
 		setModalData(imagesData);
 
