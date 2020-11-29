@@ -1,6 +1,6 @@
 ---
 title: "Meguro"
-thumb_img: "logo.png"
+thumb_img: "/assets/logo.png"
 layout: "meguro_home"
 ---
 

@@ -21,7 +21,6 @@ export const PagesList: FunctionComponent<Props> = props => {
 							<div className={styles.image_container}>
 								<Image
 									src={frontmatter.thumb_img}
-									path={"pages" + url_path}
 									set_padding_bottom={false}
 								/>
 							</div>

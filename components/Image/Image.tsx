@@ -4,7 +4,6 @@ import styles from "./Image.styl";
 
 interface Props {
 	set_padding_bottom?: boolean;
-	path: string;
 	src: string;
 	className?: string;
 	sizes?: string;
@@ -36,7 +35,7 @@ export const Image: FunctionComponent<Props> = props => {
 				srcSet: string;
 				width: number;
 				height: number;
-			} = require("@content/" + props.path + "/" + props.src);
+			} = require("@content/" + props.src.replace(/^\//, ""));
 
 			return { srcSet, src, ratio: width / height };
 		})()
