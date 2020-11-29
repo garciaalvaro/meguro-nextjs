@@ -25,6 +25,8 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 	);
 
 	const goLeft = () => {
+		if (direction) return;
+
 		setDirection("left");
 		setImageIndex(index => {
 			return index === 0 ? data.length - 1 : index - 1;
@@ -32,6 +34,8 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 	};
 
 	const goRight = () => {
+		if (direction) return;
+
 		setDirection("right");
 		setImageIndex(index => {
 			return index === data.length - 1 ? 0 : index + 1;

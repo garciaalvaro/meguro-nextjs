@@ -16,6 +16,8 @@ export const Navigation: FunctionComponent<ModalProps> = props => {
 			if (event.key === "Escape") {
 				closeModal();
 			} else if (event.key === "ArrowLeft" || event.key === "a") {
+				// TODO: This function is set on the first render,
+				// so it doesnt consider if the transition is running.
 				goLeft();
 			} else if (event.key === "ArrowRight" || event.key === "d") {
 				goRight();
