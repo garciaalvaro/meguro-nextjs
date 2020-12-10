@@ -1,0 +1,12 @@
+{
+	"stylusSupremacy.alwaysUseZeroWithoutUnit": true,
+	"stylusSupremacy.insertColons": false,
+	"stylusSupremacy.insertLeadingZeroBeforeFraction": false,
+	"stylusSupremacy.insertSemicolons": false,
+	"stylusSupremacy.insertBraces": false,
+	"stylusSupremacy.reduceMarginAndPaddingValues": true,
+	"stylusSupremacy.selectorSeparator": "\n",
+	"stylusSupremacy.sortProperties": "grouped",
+	"stylusSupremacy.newLineChar": "\n",
+	"stylusSupremacy.quoteChar": "\""
+}
