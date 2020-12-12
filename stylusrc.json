@@ -1,6 +1,10 @@
 {
 	"stylusSupremacy.alwaysUseZeroWithoutUnit": true,
 	"stylusSupremacy.insertColons": false,
+	"stylusSupremacy.insertNewLineAroundImports": true,
+	"stylusSupremacy.insertNewLineAroundBlocks": "root",
+	"stylusSupremacy.insertNewLineAroundProperties": false,
+	"stylusSupremacy.insertNewLineAroundOthers": "root",
 	"stylusSupremacy.insertLeadingZeroBeforeFraction": false,
 	"stylusSupremacy.insertSemicolons": false,
 	"stylusSupremacy.insertBraces": false,
