@@ -1,20 +1,16 @@
-/**
- * Modal
- */
-
 .container
 	position fixed
 	top 0
 	left 0
-	width 100%
-	height 100%
 	z-index 100
-	background #111314
-	padding 6rem 1rem
 	display flex
 	justify-content center
+	padding 6rem 1rem
+	width 100%
+	height 100%
+	background #111314
 
-	@media screen and (max-height: 600px)
+	@media screen and (max-height 600px)
 		padding 2rem 1rem
 
 div.image_container
@@ -31,17 +27,15 @@ div.image_container
 		animation appear_from_right .6s var(--ease_deceleration)
 
 @keyframes appear_from_left
-
 	0%
-		transform translate3d(-.2rem,0,0)
+		transform translate3d(-.2rem, 0, 0)
 
 	100%
-		transform translate3d(0,0,0)
+		transform translate3d(0, 0, 0)
 
 @keyframes appear_from_right
-
 	0%
-		transform translate3d(.2rem,0,0)
+		transform translate3d(.2rem, 0, 0)
 
 	100%
-		transform translate3d(0,0,0)
+		transform translate3d(0, 0, 0)

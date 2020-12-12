@@ -1,20 +1,17 @@
-/**
- * Layout - meguro_2
- */
-
-// column_1_width + column_2_width + sidebar_width
+$column_width = 40rem
+// column_width + column_width + sidebar_width
 $breakpoint = 800px - 1px
 
 .column_1_container
 	flex 1
 
 .column_1_content
-	padding 8rem
-	grid-row-gap 8rem
-	max-width 60rem
 	margin 0 auto
+	padding 8rem
+	max-width 60rem
+	grid-row-gap 8rem
 
-	@media screen and (max-width: $breakpoint)
+	@media screen and (max-width $breakpoint)
 		padding 6rem
 		grid-row-gap 6rem
 
@@ -22,20 +19,19 @@ $breakpoint = 800px - 1px
 	flex 1
 
 .column_2_content
-	max-width 60rem
 	margin 0 auto
+	max-width 60rem
 
 .column_2_description
 .column_2_title
-	padding 5rem
 	display grid
+	padding 5rem
 	grid-row-gap 2.5rem
 
-	@media screen and (max-width: $breakpoint)
+	@media screen and (max-width $breakpoint)
 		padding 6rem
 
-@media screen and (max-width: $breakpoint)
-
+@media screen and (max-width $breakpoint)
 	.column_1_container
 	.column_2_container
 		overflow visible
@@ -46,13 +42,13 @@ $breakpoint = 800px - 1px
 	padding-top 15rem
 	padding-bottom 0
 
-	@media screen and (max-width: $breakpoint)
-		padding-bottom 6rem
+	@media screen and (max-width $breakpoint)
 		order -1
+		padding-bottom 6rem
 
 .column_2_description
 	flex-basis 100%
 	padding-top 0
 
-	@media screen and (max-width: $breakpoint)
+	@media screen and (max-width $breakpoint)
 		padding-top 6rem

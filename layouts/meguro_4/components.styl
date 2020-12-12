@@ -1,41 +1,35 @@
-/**
- * Layout - meguro_4
- */
-
 $column_1_width = 45rem
 $column_2_width = 45rem
-
 // column_1_width + column_2_width + sidebar_width
 $breakpoint = (450 + 450 + 90 - 1)px
 
 .column_1_container
-	flex-basis $column_1_width
 	flex-grow .5
 	flex-shrink 0
+	flex-basis $column_1_width
 
-	@media screen and (max-width: $breakpoint)
+	@media screen and (max-width $breakpoint)
 		flex-grow 1
 
 .column_1_content
 	grid-row-gap 0
 
 .column_2_container
-	flex-basis $column_2_width
 	flex-grow 4
 	flex-shrink 11
+	flex-basis $column_2_width
 
 .column_2_content
-	grid-row-gap 0
 	padding 8rem
+	grid-row-gap 0
 
 	> div + div
 		padding-top 8rem
 
-	@media screen and (max-width: $breakpoint)
+	@media screen and (max-width $breakpoint)
 		padding 6rem
 
-@media screen and (max-width: $breakpoint)
-
+@media screen and (max-width $breakpoint)
 	.column_1_container
 	.column_2_container
 		overflow visible
@@ -49,7 +43,7 @@ $breakpoint = (450 + 450 + 90 - 1)px
 		display grid
 		grid-row-gap 2.5rem
 
-	@media screen and (max-width: $breakpoint)
+	@media screen and (max-width $breakpoint)
 		padding 6rem
 
 .column_1_title
@@ -59,10 +53,10 @@ $breakpoint = (450 + 450 + 90 - 1)px
 	width 100%
 
 	> div
-		max-width 70rem
 		margin 0 auto
+		max-width 70rem
 
-	@media screen and (max-width: $breakpoint)
+	@media screen and (max-width $breakpoint)
 		padding 6rem
 		padding-top 15rem
 
@@ -72,9 +66,9 @@ $breakpoint = (450 + 450 + 90 - 1)px
 	width 100%
 
 	> div
-		max-width 70rem
 		margin 0 auto
+		max-width 70rem
 
-	@media screen and (max-width: $breakpoint)
-		padding-top 6rem
+	@media screen and (max-width $breakpoint)
 		order 1
+		padding-top 6rem
