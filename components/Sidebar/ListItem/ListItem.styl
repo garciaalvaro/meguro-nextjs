@@ -14,33 +14,15 @@
 		.title
 			opacity 1
 
-		.subtitle
-			opacity .6
-
-			span
-				transform translateZ(0)
-
 .is_active
 	.link
-		opacity 1
-
 	.title
 		opacity 1
-
-	.subtitle
-		opacity .6
-
-		span
-			transform none
 
 	.text_container
 		border-top 1px solid rgba(0, 0, 0, .4)
 		border-bottom 1px solid rgba(0, 0, 0, .4)
 		background-color rgba(255, 255, 255, .05)
-
-.title
-	margin-top .7em
-	opacity .6
 
 .link
 	display block
@@ -76,27 +58,10 @@
 	object-fit cover
 
 .title
-	flex-shrink 0
 	overflow hidden
+	margin-top .7em
 	margin-top 0
 	text-overflow ellipsis
 	font-size 1em
+	opacity .6
 	transition opacity .3s .05s var(--ease_deceleration)
-
-.subtitle
-	overflow hidden
-	text-overflow ellipsis
-	font-weight normal
-	font-size .95em
-	opacity 0
-	transition opacity .3s .05s var(--ease_deceleration)
-
-	&:before
-		padding 0 .6em 0 .7em
-		content "|"
-		line-height 0
-
-	span
-		display inline-block
-		transition transform .3s .05s var(--ease_deceleration)
-		transform translateX(-1rem)
