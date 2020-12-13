@@ -42,7 +42,7 @@ export const ListItem: FunctionComponent<Props> = props => {
 							alt={url_path === "/" ? "Home" : frontmatter.title}
 							className_image={styles.image}
 							src={frontmatter.thumb_img}
-							set_padding_bottom={false}
+							style_image={{}}
 						/>
 					</div>
 

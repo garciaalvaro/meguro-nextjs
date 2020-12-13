@@ -22,7 +22,7 @@ export const PagesList: FunctionComponent<Props> = props => {
 								<Image
 									alt={frontmatter.title}
 									src={frontmatter.thumb_img}
-									set_padding_bottom={false}
+									style_image={{}}
 								/>
 							</div>
 

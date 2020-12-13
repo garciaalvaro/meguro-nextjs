@@ -1,9 +1,18 @@
-import React, { FunctionComponent, useState, useRef } from "react";
+import React, { FunctionComponent, useState, useRef, useEffect } from "react";
 
 import styles from "./Image.styl";
 
+export interface ResponsiveLoader {
+	src: string;
+	srcSet: string;
+	ratio: number;
+	width: number;
+	height: number;
+}
+
 interface Props {
-	set_padding_bottom?: boolean;
+	setImageData?: (data: ResponsiveLoader) => void;
+	style_image?: Record<string, string>;
 	src: string;
 	className_image?: string;
 	className_container?: string;
@@ -13,17 +22,12 @@ interface Props {
 	[key: string]: any;
 }
 
-interface ResponsiveLoader {
-	src: string;
-	srcSet: string;
-	ratio: number;
-}
-
 export const Image: FunctionComponent<Props> = props => {
 	const {
+		setImageData,
+		style_image,
 		sizes,
 		alt,
-		set_padding_bottom,
 		src,
 		className_container,
 		className_image,
@@ -46,24 +50,26 @@ export const Image: FunctionComponent<Props> = props => {
 				height: number;
 			} = require("@content/" + props.src.replace(/^\//, ""));
 
-			return { srcSet, src, ratio: width / height };
+			return { srcSet, src, ratio: width / height, width, height };
 		})()
 	);
+
+	useEffect(() => {
+		if (!setImageData) return;
+
+		setImageData(responsive);
+	}, []);
 
 	return (
 		<div
 			className={[
 				styles.container,
 				...(is_loading ? [styles.is_loading] : []),
-				...(props.className_container
-					? [props.className_container]
-					: []),
+				...(className_container ? [className_container] : []),
 			].join(" ")}
 			style={{
-				paddingBottom:
-					set_padding_bottom === false
-						? undefined
-						: `${(1 / responsive.ratio) * 100}%`,
+				paddingBottom: `${(1 / responsive.ratio) * 100}%`,
+				...(style_image || {}),
 			}}
 			{...rest}
 		>
@@ -75,7 +81,7 @@ export const Image: FunctionComponent<Props> = props => {
 				srcSet={responsive.srcSet}
 				className={[
 					styles.image,
-					...(props.className_image ? [props.className_image] : []),
+					...(className_image ? [className_image] : []),
 				].join(" ")}
 				onLoad={() => setIsLoading(false)}
 				loading="lazy"
