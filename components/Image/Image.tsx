@@ -12,7 +12,7 @@ export interface ResponsiveLoader {
 
 interface Props {
 	setImageData?: (data: ResponsiveLoader) => void;
-	style_image?: Record<string, string>;
+	style_image?: Record<string, string | undefined>;
 	src: string;
 	className_image?: string;
 	className_container?: string;
