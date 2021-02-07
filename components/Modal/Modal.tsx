@@ -8,7 +8,7 @@ import React, {
 import { createPortal } from "react-dom";
 
 import { Image, ResponsiveLoader } from "../Image";
-import { useWindowSize } from "@utils/useWindowSize";
+import { useWindowSize } from "@hooks";
 import { Navigation } from "./Navigation";
 import styles from "./Modal.styl";
 

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 
-import { usePages } from "@utils";
+import { usePages } from "@hooks";
 import { ListItem } from "../ListItem";
 import styles from "./List.styl";
 

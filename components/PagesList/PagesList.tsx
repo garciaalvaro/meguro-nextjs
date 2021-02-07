@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import Link from "next/link";
 
 import { Image } from "../Image";
-import { usePages } from "@utils";
+import { usePages } from "@hooks";
 import styles from "./PagesList.styl";
 
 interface Props {

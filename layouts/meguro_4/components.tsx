@@ -2,7 +2,7 @@ import React, { FunctionComponent, CSSProperties, Fragment } from "react";
 
 import { Column } from "@/Column";
 import styles from "./components.styl";
-import { useIsMobile } from "@utils";
+import { useIsMobile } from "@hooks";
 
 interface Props {
 	style?: CSSProperties;

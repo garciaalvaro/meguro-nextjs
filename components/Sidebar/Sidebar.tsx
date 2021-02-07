@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useRef, useState, useEffect } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
-import { useIsMobile, useIsFirstRender } from "@utils";
+import { useIsMobile, useIsFirstRender } from "@hooks";
 import { List } from "./List";
 import styles from "./Sidebar.styl";
 

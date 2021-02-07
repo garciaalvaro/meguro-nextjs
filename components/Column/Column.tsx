@@ -9,7 +9,7 @@ import Scrollbar from "react-scrollbars-custom";
 
 import styles from "./Column.styl";
 import { Modal, ModalProps } from "@/Modal";
-import { useIsMobile } from "@utils";
+import { useIsMobile } from "@hooks";
 
 interface Props {
 	className_container?: string;

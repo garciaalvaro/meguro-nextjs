@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import Link from "next/link";
 
-import { usePages } from "@utils";
+import { usePages } from "@hooks";
 import { Context } from "@context";
 import styles from "./NextPage.styl";
 
