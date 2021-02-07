@@ -1,6 +1,6 @@
 import React, { Fragment, FunctionComponent, CSSProperties } from "react";
 
-import { Column } from "@/Column";
+import { Column } from "@/utils";
 import styles from "./components.styl";
 import { useIsMobile } from "@hooks";
 

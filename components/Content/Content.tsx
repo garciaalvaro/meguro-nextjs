@@ -7,11 +7,7 @@ import React, {
 import { MDXProvider, MDXProviderComponents } from "@mdx-js/react";
 
 import { layouts } from "@layouts";
-import { PagesList } from "@/PagesList";
-import { Image } from "@/Image";
-import { Column } from "@/Column";
-import { Columns } from "@/Columns";
-import { Info } from "@/Info";
+import { PagesList, Image, Column, Columns, Info } from "../utils";
 import { ContentEntry } from "./ContentEntry";
 import { Context } from "@context";
 
