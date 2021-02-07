@@ -6,7 +6,7 @@ import { Page } from "@/Page";
 import { Content } from "@/Content";
 import { Sidebar } from "@/Sidebar";
 import { NextPage } from "@/NextPage";
-import { getPages } from "@utils";
+import { getPages } from "./utils";
 
 interface Props {
 	layout: Page["frontmatter"]["layout"];
