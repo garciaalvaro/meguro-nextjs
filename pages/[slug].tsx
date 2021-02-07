@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 
-import { Main } from "@/Main";
-import { Page } from "@/Page";
-import { Content } from "@/Content";
-import { Sidebar } from "@/Sidebar";
-import { NextPage } from "@/NextPage";
+import { Main } from "@components/Main";
+import { Page } from "@components/Page";
+import { Content } from "@components/Content";
+import { Sidebar } from "@components/Sidebar";
+import { NextPage } from "@components/NextPage";
 import { getPages } from "./utils";
 
 interface Props {

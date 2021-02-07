@@ -8,7 +8,7 @@ import React, {
 import Scrollbar from "react-scrollbars-custom";
 
 import styles from "./Column.styl";
-import { Modal, ModalProps } from "@/Modal";
+import { Modal, ModalProps } from "@components/Modal";
 import { useIsMobile } from "@hooks";
 
 interface Props {

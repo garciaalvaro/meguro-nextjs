@@ -8,7 +8,7 @@
 		"jsx": "preserve",
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["components/*"],
+			"@components/*": ["components/*"],
 			"@context": ["context"],
 			"@layouts": ["layouts"],
 			"@hooks": ["hooks"],

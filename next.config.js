@@ -128,7 +128,10 @@ module.exports = withStylus({
 			};
 		}
 
-		config.resolve.alias["@"] = path.resolve(__dirname, "components");
+		config.resolve.alias["@components"] = path.resolve(
+			__dirname,
+			"components"
+		);
 		config.resolve.alias["@context"] = path.resolve(__dirname, "context");
 		config.resolve.alias["@layouts"] = path.resolve(__dirname, "layouts");
 		config.resolve.alias["@hooks"] = path.resolve(__dirname, "hooks");

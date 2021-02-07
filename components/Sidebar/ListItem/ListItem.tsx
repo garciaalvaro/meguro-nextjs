@@ -2,7 +2,7 @@ import React, { FunctionComponent, useContext } from "react";
 import Link from "next/link";
 
 import { Context } from "@context";
-import { Image } from "@/utils";
+import { Image } from "@components/utils";
 import styles from "./ListItem.styl";
 
 interface Props {
