@@ -57,9 +57,9 @@ export const Column: FunctionComponent<Props> = props => {
 		const openModal = (event: Event) => {
 			const $target = event.target as HTMLImageElement;
 
-			if ($target.nodeName !== "IMG") return;
+			if ($target.nodeName !== "IMG" || !$target.dataset) return;
 
-			setModalInitialSrc($target.src);
+			setModalInitialSrc($target.dataset.src);
 			setModalIsOpen(true);
 		};
 
