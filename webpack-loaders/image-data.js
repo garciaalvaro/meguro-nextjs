@@ -8,6 +8,11 @@ module.exports = function (src) {
 	let src_updated = src;
 
 	src_updated = src_updated.replace(
+		/(<img[\s\S]+?src=")([^"]+")/g,
+		`$1${relative_path}/$2`
+	);
+
+	src_updated = src_updated.replace(
 		/(<img[\s\S]+?"src": ")([^"/]+")/g,
 		`$1${relative_path}/$2`
 	);

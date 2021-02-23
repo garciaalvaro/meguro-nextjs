@@ -7,24 +7,29 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 
-import { Image } from "../utils";
-import type { ResponsiveLoader } from "../utils";
+import { ImageWithContainer } from "../utils";
 import { useWindowSize } from "@hooks";
 import { Navigation } from "./Navigation";
 import styles from "./Modal.styl";
 
+interface ImageData {
+	src: string;
+	src_set: string;
+	width: number;
+	height: number;
+	modal_width?: number;
+}
+
 export interface ModalProps {
-	data: string[];
+	images_data: ImageData[];
 	initial_src: string;
 	closeModal: () => void;
 }
 
 export const ModalContent: FunctionComponent<ModalProps> = props => {
-	const { data, initial_src, closeModal } = props;
+	const { images_data, initial_src, closeModal } = props;
 
 	const [direction, setDirection] = useState<"left" | "right" | null>(null);
-
-	const [image_data, setImageData] = useState<ResponsiveLoader | null>(null);
 
 	const $content = useRef<HTMLDivElement | null>(null);
 
@@ -34,11 +39,15 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 
 	const [image_index, setImageIndex] = useState(
 		(() => {
-			const index = data.findIndex(src => src === initial_src);
+			const index = images_data.findIndex(
+				({ src }) => src === initial_src
+			);
 
 			return index < 0 ? 0 : index;
 		})()
 	);
+
+	const image_data = images_data[image_index];
 
 	useEffect(() => {
 		if (!image_data || !$content.current) return;
@@ -46,15 +55,31 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 		const container_ratio =
 			$content.current.clientWidth / $content.current.clientHeight;
 
-		if (container_ratio > image_data.ratio) {
+		const image_ratio = image_data.width / image_data.height;
+
+		if (container_ratio > image_ratio) {
+			const height = image_data.modal_width
+				? Math.min(
+						$content.current.clientHeight,
+						image_data.modal_width / image_ratio
+				  )
+				: $content.current.clientHeight;
+
 			setImageStyle({
-				height: "100%",
-				width: 0,
-				paddingLeft: `${100 * (image_data.ratio / container_ratio)}%`,
+				height,
+				width: height * image_ratio,
 				paddingBottom: undefined,
 			});
 		} else {
-			setImageStyle({});
+			const width = image_data.modal_width
+				? Math.min($content.current.clientWidth, image_data.modal_width)
+				: $content.current.clientWidth;
+
+			setImageStyle({
+				height: width / image_ratio,
+				width,
+				paddingBottom: undefined,
+			});
 		}
 	}, [image_data, window_width, window_height]);
 
@@ -63,7 +88,7 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 
 		setDirection("left");
 		setImageIndex(index => {
-			return index === 0 ? data.length - 1 : index - 1;
+			return index === 0 ? images_data.length - 1 : index - 1;
 		});
 	};
 
@@ -72,13 +97,11 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 
 		setDirection("right");
 		setImageIndex(index => {
-			return index === data.length - 1 ? 0 : index + 1;
+			return index === images_data.length - 1 ? 0 : index + 1;
 		});
 	};
 
-	const image_src = data[image_index];
-
-	if (!image_src) {
+	if (!image_data) {
 		return null;
 	}
 
@@ -100,19 +123,25 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 			/>
 
 			<div ref={$content} className={styles.content}>
-				<Image
-					key={image_src}
-					setImageData={setImageData}
+				<ImageWithContainer
+					key={image_data.src}
+					className={{
+						container: [
+							styles.image_container,
+							...(direction
+								? [styles[`direction_${direction}`]]
+								: []),
+						].join(" "),
+					}}
+					style={{ container: image_style }}
+					attributes={{
+						container: { onAnimationEnd: () => setDirection(null) },
+					}}
+					src={image_data.src}
+					srcSet={image_data.src_set}
+					data-width={image_data.width}
+					data-height={image_data.height}
 					sizes="100vw"
-					className_container={[
-						styles.image_container,
-						...(direction
-							? [styles[`direction_${direction}`]]
-							: []),
-					].join(" ")}
-					src={image_src}
-					style_image={image_style}
-					onAnimationEnd={() => setDirection(null)}
 				/>
 			</div>
 		</div>

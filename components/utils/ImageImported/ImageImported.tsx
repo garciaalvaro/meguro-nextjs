@@ -13,7 +13,7 @@ interface Props {
 
 export const ImageImported: FunctionComponent<Props> = props => {
 	const {
-		current: { srcSet, src, ratio },
+		current: { srcSet, src, width, height },
 	} = useRef(
 		(() => {
 			const {
@@ -28,7 +28,7 @@ export const ImageImported: FunctionComponent<Props> = props => {
 				height: number;
 			} = require("@content/" + props.src.replace(/^\//, ""));
 
-			return { srcSet, src, ratio: width / height };
+			return { srcSet, src, width, height };
 		})()
 	);
 
@@ -37,7 +37,8 @@ export const ImageImported: FunctionComponent<Props> = props => {
 			{...props}
 			src={src}
 			srcSet={srcSet}
-			data-ratio={ratio}
+			data-width={width}
+			data-height={height}
 		/>
 	);
 };

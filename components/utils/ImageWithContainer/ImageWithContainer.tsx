@@ -5,7 +5,8 @@ import styles from "./ImageWithContainer.styl";
 export interface ImageWithContainerProps {
 	src: string;
 	srcSet: string;
-	"data-ratio": number;
+	"data-width": number;
+	"data-height": number;
 	"data-modal_width"?: number;
 	alt?: string;
 	sizes?: string;
@@ -37,7 +38,10 @@ export const ImageWithContainer: FunctionComponent<ImageWithContainerProps> = pr
 				...(className?.container ? [className.container] : []),
 			].join(" ")}
 			style={{
-				paddingBottom: `${(1 / Number(rest["data-ratio"])) * 100}%`,
+				paddingBottom: `${
+					(Number(rest["data-height"]) / Number(rest["data-width"])) *
+					100
+				}%`,
 				...(style?.container ? style.container : {}),
 			}}
 			{...(attributes?.container || {})}
