@@ -7,7 +7,7 @@ import React, {
 import { MDXProvider, MDXProviderComponents } from "@mdx-js/react";
 
 import { layouts } from "@layouts";
-import { PagesList, Image, Column, Columns, Info } from "../utils";
+import { PagesList, ImageImported, Column, Columns, Info } from "../utils";
 import { ContentEntry } from "./ContentEntry";
 import { Context } from "@context";
 
@@ -22,7 +22,7 @@ const components_default: MDXProviderComponents = {
 	PagesList,
 
 	// eslint-disable-next-line react/display-name
-	img: props => <Image {...props} />,
+	img: props => <ImageImported {...props} />,
 
 	// eslint-disable-next-line react/display-name
 	a: props => (
@@ -61,7 +61,7 @@ const getComponents = (layout_name: string) => {
 		...components_custom,
 
 		// eslint-disable-next-line react/display-name
-		img: props => <Image {...props} sizes={image_sizes} />,
+		img: props => <ImageImported {...props} sizes={image_sizes} />,
 	};
 
 	return components;

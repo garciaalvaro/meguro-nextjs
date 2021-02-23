@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import Link from "next/link";
 
-import { Image } from "../Image";
+import { ImageImported } from "../ImageImported";
 import { usePages } from "@hooks";
 import styles from "./PagesList.styl";
 
@@ -19,10 +19,12 @@ export const PagesList: FunctionComponent<Props> = props => {
 					<Link href={url_path}>
 						<a className={styles.link}>
 							<div className={styles.image_container}>
-								<Image
+								<ImageImported
 									alt={frontmatter.title}
 									src={frontmatter.thumb_img}
-									style_image={{ paddingBottom: undefined }}
+									style={{
+										container: { paddingBottom: undefined },
+									}}
 								/>
 							</div>
 

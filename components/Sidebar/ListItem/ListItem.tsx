@@ -2,7 +2,7 @@ import React, { FunctionComponent, useContext } from "react";
 import Link from "next/link";
 
 import { Context } from "@context";
-import { Image } from "@components/utils";
+import { ImageImported } from "@components/utils";
 import styles from "./ListItem.styl";
 
 interface Props {
@@ -38,11 +38,11 @@ export const ListItem: FunctionComponent<Props> = props => {
 					}}
 				>
 					<div className={styles.image_container}>
-						<Image
+						<ImageImported
 							alt={url_path === "/" ? "Home" : frontmatter.title}
-							className_image={styles.image}
+							className={{ image: styles.image }}
 							src={frontmatter.thumb_img}
-							style_image={{ paddingBottom: undefined }}
+							style={{ container: { paddingBottom: undefined } }}
 						/>
 					</div>
 
