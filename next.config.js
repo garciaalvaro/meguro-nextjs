@@ -135,6 +135,10 @@ module.exports = withStylus({
 		config.resolve.alias["@context"] = path.resolve(__dirname, "context");
 		config.resolve.alias["@layouts"] = path.resolve(__dirname, "layouts");
 		config.resolve.alias["@hooks"] = path.resolve(__dirname, "hooks");
+		config.resolve.alias["@pages-utils"] = path.resolve(
+			__dirname,
+			"pages-utils"
+		);
 		config.resolve.alias["@content"] = getContentDir();
 
 		return config;
