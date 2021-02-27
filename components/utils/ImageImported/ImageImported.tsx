@@ -16,17 +16,17 @@ export const ImageImported: FunctionComponent<Props> = props => {
 		current: { srcSet, src, width, height },
 	} = useRef(
 		(() => {
-			const {
-				src,
-				srcSet,
-				width,
-				height,
-			}: {
+			const data: {
 				src: string;
 				srcSet: string;
 				width: number;
 				height: number;
+				images: { width: number; height: number; path: number }[];
 			} = require("@content/" + props.src.replace(/^\//, ""));
+
+			const { src, srcSet, images } = data;
+
+			const { width, height } = images.slice(-1)[0];
 
 			return { srcSet, src, width, height };
 		})()
