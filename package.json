@@ -21,6 +21,7 @@
 		"test": "npm run test:types && npm run test:lint && npm run test:prettier",
 		"test:lint": "eslint \"**/*.{js,ts,tsx}\"",
 		"test:prettier": "prettier --check \"**/*.{js,ts,tsx,json}\"",
+		"prettier": "prettier --write \"**/*.{js,ts,tsx,json}\"",
 		"test:types": "tsc",
 		"test:unit": "jest",
 		"test:unit:watch": "jest --watch",
