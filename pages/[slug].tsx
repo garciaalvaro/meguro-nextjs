@@ -6,7 +6,7 @@ import { Page } from "@components/Page";
 import { Content } from "@components/Content";
 import { Sidebar } from "@components/Sidebar";
 import { NextPage } from "@components/NextPage";
-import { getPages } from "./utils";
+import { getPages } from "@pages-utils";
 
 interface Props {
 	layout: Page["frontmatter"]["layout"];

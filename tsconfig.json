@@ -12,7 +12,8 @@
 			"@context": ["context"],
 			"@layouts": ["layouts"],
 			"@hooks": ["hooks"],
-			"@hooks/*": ["hooks/*"]
+			"@hooks/*": ["hooks/*"],
+			"@pages-utils": ["pages-utils"]
 		},
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
