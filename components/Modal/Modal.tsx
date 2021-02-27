@@ -58,12 +58,10 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 		const image_ratio = image_data.width / image_data.height;
 
 		if (container_ratio > image_ratio) {
-			const height = image_data.modal_width
-				? Math.min(
-						$content.current.clientHeight,
-						image_data.modal_width / image_ratio
-				  )
-				: $content.current.clientHeight;
+			const height = Math.min(
+				$content.current.clientHeight,
+				(image_data.modal_width || image_data.width) / image_ratio
+			);
 
 			setImageStyle({
 				height,
@@ -71,9 +69,10 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 				paddingBottom: undefined,
 			});
 		} else {
-			const width = image_data.modal_width
-				? Math.min($content.current.clientWidth, image_data.modal_width)
-				: $content.current.clientWidth;
+			const width = Math.min(
+				$content.current.clientWidth,
+				image_data.modal_width || image_data.width
+			);
 
 			setImageStyle({
 				height: width / image_ratio,
