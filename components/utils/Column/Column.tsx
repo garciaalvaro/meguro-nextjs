@@ -8,8 +8,8 @@ import React, {
 import Scrollbar from "react-scrollbars-custom";
 
 import styles from "./Column.styl";
-import { Modal, ModalProps } from "@/Modal";
-import { useIsMobile } from "@utils";
+import { Modal, ModalProps } from "@components/Modal";
+import { useIsMobile } from "@hooks";
 
 interface Props {
 	className_container?: string;
@@ -24,7 +24,9 @@ export const Column: FunctionComponent<Props> = props => {
 
 	const $container = useRef<HTMLDivElement | null>(null);
 
-	const [modal_data, setModalData] = useState<ModalProps["data"]>([]);
+	const [images_data, setImagesData] = useState<ModalProps["images_data"]>(
+		[]
+	);
 
 	const [modal_initial_src, setModalInitialSrc] = useState<
 		ModalProps["initial_src"]
@@ -50,9 +52,17 @@ export const Column: FunctionComponent<Props> = props => {
 
 		const $images = $container.current.querySelectorAll("img");
 
-		const imagesData = [...$images].map($el => $el.dataset.src || "");
+		const images_data = [...$images].map($el => ({
+			src: $el.src,
+			src_set: $el.srcset,
+			width: Number($el.dataset.width),
+			height: Number($el.dataset.height),
+			modal_width: $el.dataset.modal_width
+				? Number($el.dataset.modal_width)
+				: undefined,
+		}));
 
-		setModalData(imagesData);
+		setImagesData(images_data);
 
 		const openModal = (event: Event) => {
 			const $target = event.target as HTMLImageElement;
@@ -73,7 +83,7 @@ export const Column: FunctionComponent<Props> = props => {
 		<div ref={$container} className={className_container} style={style}>
 			{modal_is_open && (
 				<Modal
-					data={modal_data}
+					images_data={images_data}
 					initial_src={modal_initial_src}
 					closeModal={() => setModalIsOpen(false)}
 				/>

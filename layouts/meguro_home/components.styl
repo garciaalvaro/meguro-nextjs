@@ -1,41 +1,36 @@
-/**
- * Layout - meguro_home
- */
-
 $column_1_width = 35rem
 $column_2_width = 35rem
-
 // column_1_width + column_2_width
 $breakpoint = (350 + 350 - 1)px
 
 .column_1_container
-	flex-basis $column_1_width
 	flex-grow 1
 	flex-shrink 0
+	flex-basis $column_1_width
 
 .column_1_content
 	padding 5rem
 	padding-top 15rem
 	grid-row-gap 2.5rem
 
-	@media screen and (max-width: $breakpoint)
+	@media screen and (max-width $breakpoint)
 		padding 6rem
 		padding-top 15rem
 
 .column_2_container
-	flex-basis $column_2_width
 	flex-grow 4
 	flex-shrink 11
+	flex-basis $column_2_width
 
 .column_2_content
 	padding 6rem
 
-	@media screen and (max-width: $breakpoint)
+	@media screen and (max-width $breakpoint)
 		padding-top 0
 
-@media screen and (max-width: $breakpoint)
-
+@media screen and (max-width $breakpoint)
 	.column_1_container
 	.column_2_container
+		flex-basis 100%
 		overflow visible
 		height auto

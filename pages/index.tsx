@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from "react";
 import { GetStaticProps } from "next";
 
-import { Main } from "@/Main";
-import { Page } from "@/Page";
-import { Content } from "@/Content";
-import { getPages } from "@utils";
+import { Main } from "@components/Main";
+import { Page } from "@components/Page";
+import { Content } from "@components/Content";
+import { getPages } from "./utils";
 
 interface Props {
 	layout: Page["frontmatter"]["layout"];

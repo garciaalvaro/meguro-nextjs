@@ -8,7 +8,7 @@ import React, {
 import dynamic from "next/dynamic";
 
 import { Context } from "@context";
-import { useIsFirstRender } from "@utils";
+import { useIsFirstRender } from "@hooks";
 
 export const Loading: FunctionComponent = props => {
 	const { setMdIsLoading } = useContext(Context);

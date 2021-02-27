@@ -1,33 +1,28 @@
-/**
- * Column
- */
-
 .container
 	flex-grow 1
 	flex-basis 100%
 	height 100%
 
 .content
-	min-height 100%
 	display grid
+	min-height 100%
 	grid-row-gap 2.5rem
 
 .use_modal img
 	cursor pointer
 
 .scrollbar
-	width 7px!important
-	background none!important
-	border-radius 0!important
-	height 100%!important
-	top 0!important
+	top 0 !important
+	width 7px !important
+	height 100% !important
+	border-radius 0 !important
+	background none !important
 
 	> div
-		background-color var(--scrollbar_color)!important
-		border-radius 0!important
+		border-radius 0 !important
+		background-color var(--scrollbar_color) !important
 
 @keyframes appear
-
 	0%
 		opacity .8
 		transform translateY(.1rem) translateZ(0)

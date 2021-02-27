@@ -1,16 +1,13 @@
-/**
- * Sidebar
- */
-
 $sidebar_width_open = 44rem
 $sidebar_width_closed = 9rem
 
 .container
+	position relative
+	z-index 1
 	width $sidebar_width_closed
 	height 100%
-	position relative
-	cursor pointer
 	color var(--sidebar_color)
+	cursor pointer
 
 	&.is_open
 	&.is_closing
@@ -24,7 +21,7 @@ $sidebar_width_closed = 9rem
 	&.is_closing a
 		pointer-events none
 
-	@media screen and (max-width: 600px)
+	@media screen and (max-width 600px)
 		position absolute
 		top 0
 		right 0
@@ -44,14 +41,14 @@ $sidebar_width_closed = 9rem
 	top 0
 	right 0
 	display none
-	align-items center
 	justify-content center
+	align-items center
 	width $sidebar_width_closed
 	height $sidebar_width_closed
-	background none
 	border none
+	background none
+	color rgba(255, 255, 255, .7)
 	cursor pointer
-	color rgba(255,255,255,0.7)
 	fill currentColor
 
 	&
@@ -59,20 +56,20 @@ $sidebar_width_closed = 9rem
 	&:focus
 		outline none
 
-	@media screen and (max-width: 600px)
+	@media screen and (max-width 600px)
 		display flex
 
 .list_container
+	overflow hidden
 	width $sidebar_width_closed
 	height 100%
-	overflow hidden
 	transition width .6s var(--ease_standard)
 	transform translateZ(0)
 
 	.is_open &
 		width $sidebar_width_open
 
-	@media screen and (max-width: 600px)
+	@media screen and (max-width 600px)
 		position absolute
 		top 0
 		right 0
@@ -86,12 +83,12 @@ $sidebar_width_closed = 9rem
 	position absolute
 	top 0
 	left 0
+	display none
 	width 100vw
 	height 100%
+	background-color var(--sidebar_background_color)
 	opacity 0
 	transition opacity .6s var(--ease_standard)
-	display none
-	background-color var(--sidebar_background_color)
 
 	.is_open &
 		opacity .8
@@ -102,16 +99,16 @@ $sidebar_width_closed = 9rem
 		display block
 
 .scrollbar
-	width 7px!important
-	background none!important
-	border-radius 0!important
-	height 100%!important
-	top 0!important
+	top 0 !important
 	z-index 2
+	width 7px !important
+	height 100% !important
+	border-radius 0 !important
+	background none !important
 
 	> div
-		background-color var(--sidebar_scrollbar_color)!important
-		border-radius 0!important
+		border-radius 0 !important
+		background-color var(--sidebar_scrollbar_color) !important
 
 	.is_open &
 		display block
@@ -121,7 +118,6 @@ $sidebar_width_closed = 9rem
 		display none
 
 @keyframes appear
-
 	0%
 		opacity 0
 
