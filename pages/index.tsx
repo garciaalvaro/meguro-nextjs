@@ -4,7 +4,7 @@ import { GetStaticProps } from "next";
 import { Main } from "@components/Main";
 import { Page } from "@components/Page";
 import { Content } from "@components/Content";
-import { getPages } from "./utils";
+import { getPages } from "../pages-utils";
 
 interface Props {
 	layout: Page["frontmatter"]["layout"];
