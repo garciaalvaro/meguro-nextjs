@@ -13,7 +13,6 @@
 			"@layouts": ["layouts"],
 			"@hooks": ["hooks"],
 			"@hooks/*": ["hooks/*"],
-			"@pages-utils": ["pages-utils"],
 			"@utils": ["utils"]
 		},
 		"lib": ["dom", "dom.iterable", "esnext"],
