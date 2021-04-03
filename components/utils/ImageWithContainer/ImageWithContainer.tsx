@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import type { FunctionComponent } from "react";
+import type { FunctionComponent, CSSProperties } from "react";
 
 import styles from "./ImageWithContainer.styl";
 
@@ -13,16 +13,12 @@ export interface ImageWithContainerProps {
 	sizes?: string;
 	className?: { image?: string; container?: string };
 	style?: {
-		// TODO Improve type
-		image?: Record<string, string | number | undefined>;
-		container?: Record<string, string | number | undefined>;
+		image?: CSSProperties;
+		container?: CSSProperties;
 	};
 	attributes?: {
-		// TODO Improve type
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		image?: Record<string, any>;
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		container?: Record<string, any>;
+		image?: Record<string, unknown>;
+		container?: Record<string, unknown>;
 	};
 }
 
