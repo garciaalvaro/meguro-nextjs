@@ -70,8 +70,11 @@ export const Column: FunctionComponent<Props> = props => {
 
 		$container.current.addEventListener("click", openModal);
 
-		return () =>
+		return () => {
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 			$container.current?.removeEventListener("click", openModal);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (

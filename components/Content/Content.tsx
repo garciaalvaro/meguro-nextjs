@@ -84,6 +84,7 @@ export const Content: FunctionComponent<Props> = props => {
 		if (md_is_loading) return;
 
 		setComponents(getComponents(layout));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [md_is_loading]);
 
 	return (
