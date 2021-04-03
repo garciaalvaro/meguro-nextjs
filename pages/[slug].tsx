@@ -18,6 +18,7 @@ const Single: FunctionComponent<Props> = props => {
 	const { slug } = props;
 
 	const pages = useRef(props.pages).current;
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const page = useMemo(() => pages.find(page => page.slug === slug), [slug]);
 
 	if (!page) {
