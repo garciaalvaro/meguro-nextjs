@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import type { FunctionComponent } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
 import { useIsMobile, useIsFirstRender } from "@hooks";

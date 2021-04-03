@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useContext } from "react";
+import React, { useContext } from "react";
+import type { FunctionComponent } from "react";
 import Link from "next/link";
 
 import { Context } from "@context";

@@ -1,10 +1,5 @@
-import React, {
-	FunctionComponent,
-	useContext,
-	useState,
-	useEffect,
-	Fragment,
-} from "react";
+import React, { useContext, useState, useEffect, Fragment } from "react";
+import type { ComponentType, FunctionComponent } from "react";
 import dynamic from "next/dynamic";
 
 import { Context } from "@context";
@@ -27,11 +22,11 @@ export const ContentEntry: FunctionComponent = () => {
 
 	const is_first_render = useIsFirstRender();
 
-	const [Entry, setEntry] = useState<React.ComponentType>(
+	const [Entry, setEntry] = useState<ComponentType>(
 		dynamic(() => import(`${process.env.pages_dir}/${file_path}`))
 	);
 
-	const [EntryPrev, setEntryPrev] = useState<React.ComponentType>(Entry);
+	const [EntryPrev, setEntryPrev] = useState<ComponentType>(Entry);
 
 	useEffect(() => {
 		if (is_first_render) return;

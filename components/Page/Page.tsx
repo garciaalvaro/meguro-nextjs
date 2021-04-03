@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useRef } from "react";
+import React, { useRef } from "react";
+import type { FunctionComponent } from "react";
 import Head from "next/head";
 
 import { ContextProvider } from "@context";

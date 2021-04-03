@@ -1,10 +1,5 @@
-import React, {
-	Fragment,
-	FunctionComponent,
-	useState,
-	useEffect,
-	useRef,
-} from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
+import type { FunctionComponent } from "react";
 import { createPortal } from "react-dom";
 
 import { ImageWithContainer } from "../utils";

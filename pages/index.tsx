@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from "react";
-import { GetStaticProps } from "next";
+import React from "react";
+import type { FunctionComponent } from "react";
+import type { GetStaticProps } from "next";
 
 import { Main } from "@components/Main";
 import { Page } from "@components/Page";

@@ -1,10 +1,7 @@
-import React, {
-	FunctionComponent,
-	useEffect,
-	useState,
-	useContext,
-} from "react";
-import { MDXProvider, MDXProviderComponents } from "@mdx-js/react";
+import React, { useEffect, useState, useContext } from "react";
+import type { FunctionComponent } from "react";
+import { MDXProvider } from "@mdx-js/react";
+import type { MDXProviderComponents } from "@mdx-js/react";
 
 import { layouts } from "@layouts";
 import { PagesList, ImageImported, Column, Columns, Info } from "../utils";

@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
+import type { FunctionComponent } from "react";
 
 import { Context } from "@context";
 import styles from "./Main.styl";

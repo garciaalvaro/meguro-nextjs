@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import type { FunctionComponent } from "react";
 
 import { Context } from "./Context";
 

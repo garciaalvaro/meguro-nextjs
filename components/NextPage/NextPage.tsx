@@ -1,9 +1,5 @@
-import React, {
-	useState,
-	useContext,
-	useEffect,
-	FunctionComponent,
-} from "react";
+import React, { useState, useContext, useEffect } from "react";
+import type { FunctionComponent } from "react";
 import Link from "next/link";
 
 import { usePages } from "@hooks";

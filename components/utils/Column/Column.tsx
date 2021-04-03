@@ -1,10 +1,5 @@
-import React, {
-	FunctionComponent,
-	CSSProperties,
-	useRef,
-	useState,
-	useEffect,
-} from "react";
+import React, { useRef, useState, useEffect } from "react";
+import type { CSSProperties, FunctionComponent } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
 import styles from "./Column.styl";
