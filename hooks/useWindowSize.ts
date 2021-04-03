@@ -9,25 +9,25 @@ interface WindowSize {
 // Due to SSR we can only use window or document after mount
 export const useWindowSize = (time = 300): WindowSize => {
 	const [width, setWidth] = useState(
-		typeof window !== "undefined" ? window.innerWidth : 1
+		typeof window !== undefined ? window.innerWidth : 1
 	);
 
 	const [height, setHeight] = useState(
-		typeof window !== "undefined" ? window.innerHeight : 1
+		typeof window !== undefined ? window.innerHeight : 1
 	);
 
-	const setSize = () => {
-		setWidth(window.innerWidth);
-
-		setHeight(window.innerHeight);
-	};
-
-	const setSizeThrottled = throttle(setSize, time, {
-		leading: true,
-		trailing: true,
-	});
-
 	useEffect(() => {
+		const setSize = () => {
+			setWidth(window.innerWidth);
+
+			setHeight(window.innerHeight);
+		};
+
+		const setSizeThrottled = throttle(setSize, time, {
+			leading: true,
+			trailing: true,
+		});
+
 		window.addEventListener("resize", setSizeThrottled);
 
 		return () => {
