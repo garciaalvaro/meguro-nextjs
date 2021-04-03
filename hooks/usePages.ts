@@ -1,12 +1,11 @@
-import { useState, useEffect, useContext } from "react";
+import { useMemo, useContext } from "react";
 
 import { Context } from "@context";
 
 export const usePages = (pages_slug: Page["slug"][]): Page[] => {
-	const [pages_sorted, setPagesSorted] = useState<Page[]>([]);
 	const { pages } = useContext(Context);
 
-	useEffect(() => {
+	const pages_sorted = useMemo(() => {
 		const pages_filtered = pages.filter(({ slug }) =>
 			pages_slug.includes(slug)
 		);
@@ -15,8 +14,8 @@ export const usePages = (pages_slug: Page["slug"][]): Page[] => {
 			(a, b) => pages_slug.indexOf(a.slug) - pages_slug.indexOf(b.slug)
 		);
 
-		setPagesSorted(pages_sorted);
-	}, [pages_slug.join("")]);
+		return pages_sorted;
+	}, [pages, pages_slug]);
 
 	return pages_sorted;
 };
