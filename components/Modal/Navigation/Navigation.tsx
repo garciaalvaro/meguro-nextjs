@@ -36,9 +36,9 @@ export const Navigation: FunctionComponent<ModalProps> = props => {
 			<button
 				className={[styles.button, styles.button_right].join(" ")}
 				onClick={event => {
-					goLeft();
-
 					event.stopPropagation();
+
+					goLeft();
 				}}
 			>
 				{/* https://material.io/tools/icons/?icon=chevron_left */}
@@ -51,9 +51,9 @@ export const Navigation: FunctionComponent<ModalProps> = props => {
 			<button
 				className={[styles.button, styles.button_left].join(" ")}
 				onClick={event => {
-					goRight();
-
 					event.stopPropagation();
+
+					goRight();
 				}}
 			>
 				{/* https://material.io/tools/icons/?icon=chevron_right */}

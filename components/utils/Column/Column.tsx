@@ -5,6 +5,7 @@ import Scrollbar from "react-scrollbars-custom";
 import styles from "./Column.styl";
 import { Modal, ModalProps } from "@components/Modal";
 import { useIsMobile } from "@hooks";
+import { className } from "@utils";
 
 interface Props {
 	className_container?: string;
@@ -31,16 +32,16 @@ export const Column: FunctionComponent<Props> = props => {
 
 	const is_mobile = useIsMobile(breakpoint);
 
-	const className_container = [
+	const className_container = className(
 		styles.container,
 		...(props.className_container ? [props.className_container] : []),
-		...(use_modal ? [styles.use_modal] : []),
-	].join(" ");
+		...(use_modal ? [styles.use_modal] : [])
+	);
 
-	const className_content = [
+	const className_content = className(
 		styles.content,
-		...(props.className_content ? [props.className_content] : []),
-	].join(" ");
+		...(props.className_content ? [props.className_content] : [])
+	);
 
 	useEffect(() => {
 		if (!use_modal || !$container.current) return;

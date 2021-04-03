@@ -1,6 +1,7 @@
 import React from "react";
 import type { FunctionComponent } from "react";
 
+import { className } from "@utils";
 import styles from "./Info.styl";
 
 interface Props {
@@ -14,10 +15,14 @@ export const Info: FunctionComponent<Props> = props => {
 			: "2D"
 		: null;
 
-	const className = [
-		styles.container,
-		styles[`li_separator-${li_separator}`],
-	].join(" ");
-
-	return <div className={className}>{props.children}</div>;
+	return (
+		<div
+			className={className(
+				styles.container,
+				styles[`li_separator-${li_separator}`]
+			)}
+		>
+			{props.children}
+		</div>
+	);
 };

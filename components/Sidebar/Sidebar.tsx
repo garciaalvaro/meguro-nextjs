@@ -1,8 +1,9 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 import type { FunctionComponent } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
 import { useIsMobile, useIsFirstRender } from "@hooks";
+import { className } from "@utils";
 import { List } from "./List";
 import styles from "./Sidebar.styl";
 
@@ -10,28 +11,8 @@ export const Sidebar: FunctionComponent = () => {
 	const [is_open, setIsOpen] = useState(false);
 	const [is_opening, setIsOpening] = useState(false);
 	const [is_closing, setIsClosing] = useState(false);
-	const $overlay = useRef<HTMLDivElement | null>(null);
 	const is_mobile = useIsMobile(600);
 	const is_first_render = useIsFirstRender();
-
-	useEffect(() => {
-		if (!$overlay.current) return;
-
-		$overlay.current.addEventListener("transitionend", () =>
-			setIsClosing(false)
-		);
-
-		$overlay.current.addEventListener("animationend", () =>
-			setIsOpening(false)
-		);
-	}, []);
-
-	const className = [
-		styles.container,
-		is_open ? styles.is_open : styles.is_closed,
-		...(is_opening ? [styles.is_opening] : []),
-		...(is_closing ? [styles.is_closing] : []),
-	].join(" ");
 
 	const toggle = () => {
 		if (is_opening || is_closing) return;
@@ -46,8 +27,26 @@ export const Sidebar: FunctionComponent = () => {
 	};
 
 	return (
-		<nav className={className} onClick={toggle}>
-			<div ref={$overlay} className={styles.overlay}></div>
+		<nav
+			className={className(
+				styles.container,
+				is_open ? styles.is_open : styles.is_closed,
+				is_opening ? styles.is_opening : null,
+				is_closing ? styles.is_closing : null
+			)}
+			onClick={toggle}
+		>
+			<div
+				className={styles.overlay}
+				onTransitionEnd={() => {
+					setIsClosing(false);
+					setIsOpening(false);
+				}}
+				onAnimationEnd={() => {
+					setIsClosing(false);
+					setIsOpening(false);
+				}}
+			></div>
 
 			<div className={styles.list_container}>
 				{is_first_render || is_mobile ? (

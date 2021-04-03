@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { Context } from "@context";
 import { ImageImported } from "@components/utils";
+import { className } from "@utils";
 import styles from "./ListItem.styl";
 
 interface Props {
@@ -18,13 +19,13 @@ export const ListItem: FunctionComponent<Props> = props => {
 
 	const is_active = active_url_path === url_path;
 
-	const className = [
-		styles.container,
-		...(is_active ? [styles.is_active] : []),
-	].join(" ");
-
 	return (
-		<li className={className}>
+		<li
+			className={className(
+				styles.container,
+				...(is_active ? [styles.is_active] : [])
+			)}
+		>
 			<Link href={url_path}>
 				<a
 					className={styles.link}

@@ -13,9 +13,7 @@ interface Props {
 }
 
 export const ImageImported: FunctionComponent<Props> = props => {
-	const {
-		current: { srcSet, src, width, height },
-	} = useRef(
+	const { srcSet, src, width, height } = useRef(
 		(() => {
 			const data: {
 				src: string;
@@ -31,7 +29,7 @@ export const ImageImported: FunctionComponent<Props> = props => {
 
 			return { srcSet, src, width, height };
 		})()
-	);
+	).current;
 
 	return (
 		<ImageWithContainer
