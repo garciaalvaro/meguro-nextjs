@@ -139,6 +139,7 @@ module.exports = withStylus({
 			__dirname,
 			"pages-utils"
 		);
+		config.resolve.alias["@utils"] = path.resolve(__dirname, "utils");
 		config.resolve.alias["@content"] = getContentDir();
 
 		return config;
