@@ -2,7 +2,8 @@ const { existsSync } = require("fs");
 const path = require("path");
 
 const use_demo =
-	process.env.USE_DEMO || !existsSync(path.resolve(__dirname, "content"));
+	process.env.USE_DEMO === "yes" ||
+	!existsSync(path.resolve(__dirname, "content"));
 
 // TODO: Cast from schema?
 const config = use_demo
