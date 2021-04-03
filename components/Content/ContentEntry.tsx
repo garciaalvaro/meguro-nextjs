@@ -2,6 +2,7 @@ import React, {
 	useMemo,
 	useContext,
 	useState,
+	useLayoutEffect,
 	useEffect,
 	Fragment,
 } from "react";
@@ -37,7 +38,7 @@ export const ContentEntry: FunctionComponent = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [slug]);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (is_first_render) return;
 
 		setMdIsLoading(true);
@@ -46,7 +47,7 @@ export const ContentEntry: FunctionComponent = () => {
 
 	const [Entry, setEntry] = useState<ComponentType>(EntryNext);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (md_is_loading) return;
 
 		setEntry(EntryNext);

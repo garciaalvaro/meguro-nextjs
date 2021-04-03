@@ -5,8 +5,10 @@ import type { MDXProviderComponents } from "@mdx-js/react";
 
 import { layouts } from "@layouts";
 import { PagesList, ImageImported, Column, Columns, Info } from "../utils";
+import { ContentEntryServerSide } from "./ContentEntryServerSide";
 import { ContentEntry } from "./ContentEntry";
 import { Context } from "@context";
+import { useIsFirstRender } from "@hooks";
 
 interface Props {
 	layout: Page["frontmatter"]["layout"];
@@ -67,6 +69,7 @@ const getComponents = (layout_name: string) => {
 export const Content: FunctionComponent<Props> = props => {
 	const { layout } = props;
 
+	const is_first_render = useIsFirstRender();
 	const { md_is_loading } = useContext(Context);
 
 	const [components, setComponents] = useState<MDXProviderComponents>(
@@ -89,7 +92,7 @@ export const Content: FunctionComponent<Props> = props => {
 
 	return (
 		<MDXProvider components={components}>
-			<ContentEntry />
+			{is_first_render ? <ContentEntryServerSide /> : <ContentEntry />}
 		</MDXProvider>
 	);
 };
