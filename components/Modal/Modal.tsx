@@ -1,9 +1,9 @@
-import React, { Fragment, useState, useEffect, useRef } from "react";
-import type { FunctionComponent } from "react";
+import React, { Fragment, useState, useMemo, useRef } from "react";
+import type { FunctionComponent, CSSProperties } from "react";
 import { createPortal } from "react-dom";
 
 import { ImageWithContainer } from "../utils";
-import { useWindowSize } from "@hooks";
+import { useIsFirstRender, useWindowSize } from "@hooks";
 import { Navigation } from "./Navigation";
 import styles from "./Modal.styl";
 
@@ -28,9 +28,9 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 
 	const $content = useRef<HTMLDivElement | null>(null);
 
-	const [image_style, setImageStyle] = useState({});
-
 	const { window_width, window_height } = useWindowSize();
+
+	const is_first_render = useIsFirstRender();
 
 	const [image_index, setImageIndex] = useState(
 		(() => {
@@ -42,10 +42,15 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 		})()
 	);
 
-	const image_data = images_data[image_index];
+	const image_data = useMemo(() => images_data[image_index], [
+		images_data,
+		image_index,
+	]);
 
-	useEffect(() => {
-		if (!image_data || !$content.current) return;
+	const image_style = useMemo<CSSProperties | undefined>(() => {
+		if (!image_data || !$content.current) {
+			return {};
+		}
 
 		const container_ratio =
 			$content.current.clientWidth / $content.current.clientHeight;
@@ -58,24 +63,27 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 				(image_data.modal_width || image_data.width) / image_ratio
 			);
 
-			setImageStyle({
+			return {
 				height,
 				width: height * image_ratio,
 				paddingBottom: undefined,
-			});
-		} else {
-			const width = Math.min(
-				$content.current.clientWidth,
-				image_data.modal_width || image_data.width
-			);
-
-			setImageStyle({
-				height: width / image_ratio,
-				width,
-				paddingBottom: undefined,
-			});
+			};
 		}
-	}, [image_data, window_width, window_height]);
+
+		const width = Math.min(
+			$content.current.clientWidth,
+			image_data.modal_width || image_data.width
+		);
+
+		return {
+			height: width / image_ratio,
+			width,
+			paddingBottom: undefined,
+		};
+
+		// TODO: Improve logic of useMemo & ref
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [is_first_render, image_data, window_width, window_height]);
 
 	const goLeft = () => {
 		if (direction) return;
