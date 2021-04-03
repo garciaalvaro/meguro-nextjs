@@ -9,11 +9,11 @@ interface WindowSize {
 // Due to SSR we can only use window or document after mount
 export const useWindowSize = (time = 300): WindowSize => {
 	const [width, setWidth] = useState(
-		typeof window !== undefined ? window.innerWidth : 1
+		typeof window !== "undefined" ? window.innerWidth : 1
 	);
 
 	const [height, setHeight] = useState(
-		typeof window !== undefined ? window.innerHeight : 1
+		typeof window !== "undefined" ? window.innerHeight : 1
 	);
 
 	useEffect(() => {
@@ -34,7 +34,7 @@ export const useWindowSize = (time = 300): WindowSize => {
 			window.removeEventListener("resize", setSizeThrottled);
 			setSizeThrottled.cancel();
 		};
-	}, []);
+	}, [time]);
 
 	return { window_width: width, window_height: height };
 };
