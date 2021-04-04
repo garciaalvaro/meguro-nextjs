@@ -1,11 +1,12 @@
-import { useMemo, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import { Context } from "@context";
 
 export const usePages = (pages_slug: Page["slug"][]): Page[] => {
+	const [pages_sorted, setPagesSorted] = useState<Page[]>([]);
 	const { pages } = useContext(Context);
 
-	const pages_sorted = useMemo(() => {
+	useEffect(() => {
 		const pages_filtered = pages.filter(({ slug }) =>
 			pages_slug.includes(slug)
 		);
@@ -14,8 +15,9 @@ export const usePages = (pages_slug: Page["slug"][]): Page[] => {
 			(a, b) => pages_slug.indexOf(a.slug) - pages_slug.indexOf(b.slug)
 		);
 
-		return pages_sorted;
-	}, [pages, pages_slug]);
+		setPagesSorted(pages_sorted);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return pages_sorted;
 };
