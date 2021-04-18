@@ -25,7 +25,6 @@
 		"test:unit": "jest",
 		"test:unit:watch": "jest --watch",
 		"format:prettier": "prettier --write \"**/*.{js,ts,tsx,json}\"",
-		"format:stylus": "stylus-supremacy format **/*.styl --options stylusrc.json --replace",
 		"deploy": "npm run export:demo && touch out/.nojekyll && gh-pages --dotfiles -d out"
 	},
 	"dependencies": {
@@ -63,7 +62,6 @@
 		"eslint-plugin-react": "^7.23.1",
 		"eslint-plugin-react-hooks": "^4.2.0",
 		"gh-pages": "^3.1.0",
-		"prettier": "^2.2.1",
-		"stylus-supremacy": "^2.15.0"
+		"prettier": "^2.2.1"
 	}
 }
