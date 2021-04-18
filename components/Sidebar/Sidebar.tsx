@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import type { FunctionComponent } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
@@ -13,6 +13,7 @@ export const Sidebar: FunctionComponent = () => {
 	const [is_closing, setIsClosing] = useState(false);
 	const is_mobile = useIsMobile(600);
 	const is_first_render = useIsFirstRender();
+	const $scroller = useRef<Scrollbar | null>(null);
 
 	const toggle = () => {
 		if (is_opening || is_closing) return;
@@ -53,12 +54,16 @@ export const Sidebar: FunctionComponent = () => {
 					<List />
 				) : (
 					<Scrollbar
+						// @ts-expect-error TODO
+						ref={($el: Scrollbar) => {
+							$scroller.current = $el;
+						}}
 						noScrollX={true}
 						removeTrackXWhenNotUsed={true}
 						disableTracksWidthCompensation={true}
 						trackYProps={{ className: styles.scrollbar }}
 					>
-						<List />
+						<List $scroller={$scroller} />
 					</Scrollbar>
 				)}
 			</div>

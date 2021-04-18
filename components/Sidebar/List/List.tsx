@@ -1,11 +1,16 @@
 import React from "react";
-import type { FunctionComponent } from "react";
+import type { RefObject, FunctionComponent } from "react";
+import type { Scrollbar } from "react-scrollbars-custom";
 
 import { usePages } from "@hooks";
 import { ListItem } from "../ListItem";
 import styles from "./List.styl";
 
-export const List: FunctionComponent = () => {
+interface Props {
+	$scroller?: RefObject<Scrollbar | null>;
+}
+
+export const List: FunctionComponent<Props> = props => {
 	const pages_sorted = usePages(process.env.sidebar_menu_pages);
 
 	return (
@@ -15,6 +20,7 @@ export const List: FunctionComponent = () => {
 					key={url_path}
 					url_path={url_path}
 					frontmatter={frontmatter}
+					$scroller={props.$scroller}
 				/>
 			))}
 		</ul>
