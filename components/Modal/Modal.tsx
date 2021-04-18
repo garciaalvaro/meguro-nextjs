@@ -128,6 +128,7 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 				<ImageWithContainer
 					key={image_data.src}
 					className={{
+						is_loading: styles.is_loading,
 						container: [
 							styles.image_container,
 							...(direction

@@ -12,7 +12,7 @@ export interface ImageWithContainerProps {
 	"data-modal_width"?: number;
 	alt?: string;
 	sizes?: string;
-	className?: { image?: string; container?: string };
+	className?: { image?: string; container?: string; is_loading?: string };
 	style?: {
 		image?: CSSProperties;
 		container?: CSSProperties;
@@ -37,6 +37,9 @@ export const ImageWithContainer: FunctionComponent<ImageWithContainerProps> = pr
 			className={className(
 				styles.container,
 				...(is_loading ? [styles.is_loading] : []),
+				...(is_loading && props.className?.is_loading
+					? [props.className?.is_loading]
+					: []),
 				...(props.className?.container
 					? [props.className.container]
 					: [])
