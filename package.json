@@ -7,8 +7,8 @@
 	"private": true,
 	"scripts": {
 		"start": "npm run dev",
-		"build": "npm run clean && npm run test && next build",
-		"build:demo": "npm run clean && npm run test && env USE_DEMO=yes npm run build",
+		"build": "npm run clean && next build",
+		"build:demo": "npm run clean && env USE_DEMO=yes npm run build",
 		"clean": "npm run clean:next & npm run clean:out",
 		"clean:next": "rm -rf .next",
 		"clean:out": "rm -rf out",
@@ -25,7 +25,7 @@
 		"test:unit": "jest",
 		"test:unit:watch": "jest --watch",
 		"format:prettier": "prettier --write \"**/*.{js,ts,tsx,json}\"",
-		"deploy": "npm run export:demo && touch out/.nojekyll && gh-pages --dotfiles -d out"
+		"deploy": "npm run test && npm run export:demo && touch out/.nojekyll && gh-pages --dotfiles -d out"
 	},
 	"dependencies": {
 		"@mdx-js/loader": "^1.6.22",
