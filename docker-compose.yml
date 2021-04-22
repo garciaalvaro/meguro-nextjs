@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  meguro-nextjs:
+    build: .
+    image: node:15-alpine
+    container_name: meguro-nextjs
+    restart: unless-stopped
+    ports:
+      - 3000:3000
