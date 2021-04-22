@@ -21,7 +21,8 @@
 		"forceConsistentCasingInFileNames": true,
 		"module": "esnext",
 		"resolveJsonModule": true,
-		"isolatedModules": true
+		"isolatedModules": true,
+		"types": ["cypress"]
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
 	"exclude": ["node_modules"]

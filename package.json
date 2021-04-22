@@ -22,6 +22,8 @@
 		"test:lint": "eslint \"**/*.{js,ts,tsx}\"",
 		"test:prettier": "prettier --check \"**/*.{js,ts,tsx,json}\"",
 		"test:types": "tsc",
+		"test:e2e": "start-server-and-test dev:demo http://localhost:3000/meguro-nextjs \"cypress run\"",
+		"test:e2e:dev": "cypress open",
 		"test:unit": "jest",
 		"test:unit:watch": "jest --watch",
 		"format:prettier": "prettier --write \"**/*.{js,ts,tsx,json}\"",
@@ -56,12 +58,15 @@
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^4.22.0",
 		"@typescript-eslint/parser": "^4.22.0",
+		"cypress": "^7.1.0",
 		"eslint": "^7.24.0",
 		"eslint-config-prettier": "^8.2.0",
+		"eslint-plugin-cypress": "^2.11.2",
 		"eslint-plugin-prettier": "^3.4.0",
 		"eslint-plugin-react": "^7.23.2",
 		"eslint-plugin-react-hooks": "^4.2.0",
 		"gh-pages": "^3.1.0",
-		"prettier": "^2.2.1"
+		"prettier": "^2.2.1",
+		"start-server-and-test": "^1.12.1"
 	}
 }
