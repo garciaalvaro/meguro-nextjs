@@ -40,6 +40,7 @@ export const Navigation: FunctionComponent<ModalProps> = props => {
 
 					goLeft();
 				}}
+				data-testid="modal_navigation_left"
 			>
 				{/* https://material.io/tools/icons/?icon=chevron_left */}
 				<svg width="24" height="24" viewBox="0 0 24 24">
@@ -55,6 +56,7 @@ export const Navigation: FunctionComponent<ModalProps> = props => {
 
 					goRight();
 				}}
+				data-testid="modal_navigation_right"
 			>
 				{/* https://material.io/tools/icons/?icon=chevron_right */}
 				<svg width="24" height="24" viewBox="0 0 24 24">
@@ -66,6 +68,7 @@ export const Navigation: FunctionComponent<ModalProps> = props => {
 			<button
 				className={[styles.button, styles.button_close].join(" ")}
 				onClick={closeModal}
+				data-testid="modal_navigation_close"
 			>
 				<svg width="24" height="24" viewBox="0 0 24 24">
 					<path
