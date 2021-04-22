@@ -117,6 +117,7 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 					goRight();
 				}
 			}}
+			data-testid="modal"
 		>
 			<Navigation
 				closeModal={closeModal}

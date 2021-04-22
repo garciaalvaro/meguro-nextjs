@@ -66,6 +66,7 @@ export const ListItem: FunctionComponent<Props> = props => {
 							setActiveUrlPath(url_path);
 						}
 					}}
+					data-testid="sidebar_link"
 				>
 					<div className={styles.image_container}>
 						<ImageImported

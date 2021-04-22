@@ -36,6 +36,8 @@ export const Sidebar: FunctionComponent = () => {
 				is_closing ? styles.is_closing : null
 			)}
 			onClick={toggle}
+			aria-expanded={is_open}
+			data-testid="sidebar"
 		>
 			<div
 				className={styles.overlay}
@@ -47,6 +49,7 @@ export const Sidebar: FunctionComponent = () => {
 					setIsClosing(false);
 					setIsOpening(false);
 				}}
+				data-testid="sidebar_overlay"
 			></div>
 
 			<div className={styles.list_container}>
@@ -67,7 +70,6 @@ export const Sidebar: FunctionComponent = () => {
 					</Scrollbar>
 				)}
 			</div>
-
 			<button className={styles.button} onClick={toggle}>
 				{is_open ? (
 					/* https://material.io/tools/icons/?icon=close */
