@@ -4,7 +4,14 @@ import { MDXProvider } from "@mdx-js/react";
 import type { MDXProviderComponents } from "@mdx-js/react";
 
 import { layouts } from "@layouts";
-import { PagesList, ImageImported, Column, Columns, Info } from "../utils";
+import {
+	PagesList,
+	ImageImported,
+	Column,
+	Columns,
+	Info,
+	Slider,
+} from "../utils";
 import { ContentEntryServerSide } from "./ContentEntryServerSide";
 import { ContentEntry } from "./ContentEntry";
 import { Context } from "@context";
@@ -15,6 +22,7 @@ interface Props {
 }
 
 const components_default: MDXProviderComponents = {
+	Slider,
 	Column,
 	Columns,
 	Info,
