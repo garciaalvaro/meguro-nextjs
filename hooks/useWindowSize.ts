@@ -16,25 +16,25 @@ export const useWindowSize = (time = 300): WindowSize => {
 		typeof window !== "undefined" ? window.innerHeight : 1
 	);
 
-	const setSize = () => {
-		setWidth(window.innerWidth);
-
-		setHeight(window.innerHeight);
-	};
-
-	const setSizeThrottled = throttle(setSize, time, {
-		leading: true,
-		trailing: true,
-	});
-
 	useEffect(() => {
+		const setSize = () => {
+			setWidth(window.innerWidth);
+
+			setHeight(window.innerHeight);
+		};
+
+		const setSizeThrottled = throttle(setSize, time, {
+			leading: true,
+			trailing: true,
+		});
+
 		window.addEventListener("resize", setSizeThrottled);
 
 		return () => {
 			window.removeEventListener("resize", setSizeThrottled);
 			setSizeThrottled.cancel();
 		};
-	}, []);
+	}, [time]);
 
 	return { window_width: width, window_height: height };
 };

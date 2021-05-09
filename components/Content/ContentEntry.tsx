@@ -1,10 +1,12 @@
 import React, {
-	FunctionComponent,
+	useMemo,
 	useContext,
 	useState,
+	useLayoutEffect,
 	useEffect,
 	Fragment,
 } from "react";
+import type { ComponentType, FunctionComponent } from "react";
 import dynamic from "next/dynamic";
 
 import { Context } from "@context";
@@ -15,6 +17,7 @@ export const Loading: FunctionComponent = props => {
 
 	useEffect(() => {
 		return () => setMdIsLoading(false);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return <Fragment>{props.children}</Fragment>;
@@ -27,36 +30,35 @@ export const ContentEntry: FunctionComponent = () => {
 
 	const is_first_render = useIsFirstRender();
 
-	const [Entry, setEntry] = useState<React.ComponentType>(
-		dynamic(() => import(`${process.env.pages_dir}/${file_path}`))
-	);
+	const EntryNext = useMemo<ComponentType>(() => {
+		return dynamic(() => import(`${process.env.pages_dir}/${file_path}`), {
+			// @ts-expect-error TODO
+			loading: Loading,
+		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [slug]);
 
-	const [EntryPrev, setEntryPrev] = useState<React.ComponentType>(Entry);
-
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (is_first_render) return;
 
 		setMdIsLoading(true);
-
-		setEntry(
-			dynamic(() => import(`${process.env.pages_dir}/${file_path}`), {
-				// @ts-expect-error TODO
-				loading: Loading,
-			})
-		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [slug]);
 
-	useEffect(() => {
+	const [Entry, setEntry] = useState<ComponentType>(EntryNext);
+
+	useLayoutEffect(() => {
 		if (md_is_loading) return;
 
-		setEntryPrev(Entry);
+		setEntry(EntryNext);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [md_is_loading]);
 
 	return (
 		<Fragment>
-			{md_is_loading && <Entry />}
+			{md_is_loading && <EntryNext />}
 
-			<EntryPrev />
+			<Entry />
 		</Fragment>
 	);
 };

@@ -1,0 +1,23 @@
+# Git related files and folders
+.git
+.gitignore
+
+# Documentation
+docs
+
+# dist folder
+dist
+
+# next.js cache and public folders
+.next
+out
+
+# npm related files and folders
+node_modules
+
+# content demo files and folders
+content-demo
+
+# Docker related files
+.dockerignore
+Dockerfile

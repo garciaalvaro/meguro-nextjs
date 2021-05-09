@@ -3,7 +3,6 @@ const { existsSync } = require("fs");
 const path = require("path");
 
 const { base_url_path, port } = require("../config");
-const base_url_path_with_slash = base_url_prefix ? `/${base_url_prefix}/` : "/";
 
 const server = express();
 const page_404 = path.resolve(__dirname, "../out/404.html");
@@ -13,7 +12,7 @@ server.use(base_url_path, express.static(path.resolve(__dirname, "../out")));
 
 // TODO: Improve
 server.use(
-	`${base_url_path_with_slash}:project`,
+	`${base_url_path}:project`,
 
 	({ params: { project } }, res) => {
 		const project_file = path.resolve(__dirname, `../out/${project}.html`);

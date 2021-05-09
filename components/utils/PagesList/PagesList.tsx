@@ -1,4 +1,5 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
+import type { FunctionComponent } from "react";
 import Link from "next/link";
 
 import { ImageImported } from "../ImageImported";
@@ -15,7 +16,11 @@ export const PagesList: FunctionComponent<Props> = props => {
 	return (
 		<ul className={styles.container}>
 			{pages_sorted.map(({ url_path, frontmatter }) => (
-				<li key={url_path} className={styles.item}>
+				<li
+					key={url_path}
+					className={styles.item}
+					data-testid="project"
+				>
 					<Link href={url_path}>
 						<a className={styles.link}>
 							<div className={styles.image_container}>

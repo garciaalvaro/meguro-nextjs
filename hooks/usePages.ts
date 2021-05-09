@@ -16,7 +16,8 @@ export const usePages = (pages_slug: Page["slug"][]): Page[] => {
 		);
 
 		setPagesSorted(pages_sorted);
-	}, [pages_slug.join("")]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return pages_sorted;
 };

@@ -1,9 +1,5 @@
-import React, {
-	useState,
-	useContext,
-	useEffect,
-	FunctionComponent,
-} from "react";
+import React, { useMemo, useContext } from "react";
+import type { FunctionComponent } from "react";
 import Link from "next/link";
 
 import { usePages } from "@hooks";
@@ -29,14 +25,10 @@ export const NextPage: FunctionComponent = () => {
 
 	const { active_url_path } = useContext(Context);
 
-	const [next_page, setNextPage] = useState(
-		getNextPage(pages_sorted, active_url_path)
-	);
-
-	useEffect(() => {
+	const next_page = useMemo(() => {
 		const next_page = getNextPage(pages_sorted, active_url_path);
 
-		setNextPage(next_page);
+		return next_page;
 	}, [pages_sorted, active_url_path]);
 
 	if (!next_page) {
@@ -45,7 +37,7 @@ export const NextPage: FunctionComponent = () => {
 
 	return (
 		<Link href={next_page.url_path}>
-			<a className={styles.link}>
+			<a className={styles.link} data-testid="next_page">
 				<span>next</span>
 				<h5>{next_page.frontmatter.title}</h5>
 			</a>

@@ -1,9 +1,10 @@
 module.exports = {
 	moduleNameMapper: {
 		"\\.(css|styl)$": "identity-obj-proxy",
+		"^@/(.*)$": "<rootDir>/src/$1",
 	},
-
-	setupFilesAfterEnv: ["jest-enzyme"],
-
-	testEnvironment: "enzyme",
+	testMatch: ["<rootDir>/tests/unit/**/*.ts"],
+	moduleNameMapper: {
+		"@utils": "<rootDir>/utils",
+	},
 };

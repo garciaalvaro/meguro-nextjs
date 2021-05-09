@@ -13,15 +13,16 @@
 			"@layouts": ["layouts"],
 			"@hooks": ["hooks"],
 			"@hooks/*": ["hooks/*"],
-			"@pages-utils": ["pages-utils"]
+			"@utils": ["utils"]
 		},
 		"lib": ["dom", "dom.iterable", "esnext"],
-		"allowJs": true,
+		"allowJs": false,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
 		"module": "esnext",
 		"resolveJsonModule": true,
-		"isolatedModules": true
+		"isolatedModules": true,
+		"types": ["cypress"]
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
 	"exclude": ["node_modules"]

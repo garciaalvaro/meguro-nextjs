@@ -2,14 +2,15 @@ const { existsSync } = require("fs");
 const path = require("path");
 
 const use_demo =
-	process.env.USE_DEMO || !existsSync(path.resolve(__dirname, "content"));
+	process.env.USE_DEMO === "yes" ||
+	!existsSync(path.resolve(__dirname, "content"));
 
 // TODO: Cast from schema?
 const config = use_demo
 	? require("./content-demo/config")
 	: require("./content/config");
 
-const port = parseInt(process.env.PORT, 10) || 3000;
+const port = process.env.PORT || 3000;
 
 const base_url_path = config.base_url_prefix
 	? `/${config.base_url_prefix}`

@@ -1,14 +1,9 @@
-import React, {
-	Fragment,
-	FunctionComponent,
-	useState,
-	useEffect,
-	useRef,
-} from "react";
+import React, { Fragment, useState, useMemo, useRef } from "react";
+import type { FunctionComponent, CSSProperties } from "react";
 import { createPortal } from "react-dom";
 
 import { ImageWithContainer } from "../utils";
-import { useWindowSize } from "@hooks";
+import { useIsFirstRender, useWindowSize } from "@hooks";
 import { Navigation } from "./Navigation";
 import styles from "./Modal.styl";
 
@@ -17,25 +12,26 @@ interface ImageData {
 	src_set: string;
 	width: number;
 	height: number;
-	modal_width?: number;
+	max_width?: number;
 }
 
 export interface ModalProps {
 	images_data: ImageData[];
 	initial_src: string;
 	closeModal: () => void;
+	max_width?: number;
 }
 
 export const ModalContent: FunctionComponent<ModalProps> = props => {
-	const { images_data, initial_src, closeModal } = props;
+	const { images_data, initial_src, closeModal, max_width } = props;
 
 	const [direction, setDirection] = useState<"left" | "right" | null>(null);
 
 	const $content = useRef<HTMLDivElement | null>(null);
 
-	const [image_style, setImageStyle] = useState({});
-
 	const { window_width, window_height } = useWindowSize();
+
+	const is_first_render = useIsFirstRender();
 
 	const [image_index, setImageIndex] = useState(
 		(() => {
@@ -47,10 +43,15 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 		})()
 	);
 
-	const image_data = images_data[image_index];
+	const image_data = useMemo(() => images_data[image_index], [
+		images_data,
+		image_index,
+	]);
 
-	useEffect(() => {
-		if (!image_data || !$content.current) return;
+	const image_style = useMemo<CSSProperties | undefined>(() => {
+		if (!image_data || !$content.current) {
+			return {};
+		}
 
 		const container_ratio =
 			$content.current.clientWidth / $content.current.clientHeight;
@@ -60,27 +61,38 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 		if (container_ratio > image_ratio) {
 			const height = Math.min(
 				$content.current.clientHeight,
-				(image_data.modal_width || image_data.width) / image_ratio
+				Math.min(
+					image_data.max_width || Infinity,
+					max_width || Infinity,
+					image_data.width || Infinity
+				) / image_ratio
 			);
 
-			setImageStyle({
+			return {
 				height,
 				width: height * image_ratio,
 				paddingBottom: undefined,
-			});
-		} else {
-			const width = Math.min(
-				$content.current.clientWidth,
-				image_data.modal_width || image_data.width
-			);
-
-			setImageStyle({
-				height: width / image_ratio,
-				width,
-				paddingBottom: undefined,
-			});
+			};
 		}
-	}, [image_data, window_width, window_height]);
+
+		const width = Math.min(
+			$content.current.clientWidth,
+			Math.min(
+				image_data.max_width || Infinity,
+				max_width || Infinity,
+				image_data.width || Infinity
+			)
+		);
+
+		return {
+			height: width / image_ratio,
+			width,
+			paddingBottom: undefined,
+		};
+
+		// TODO: Improve logic of useMemo & ref
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [is_first_render, image_data, window_width, window_height]);
 
 	const goLeft = () => {
 		if (direction) return;
@@ -114,6 +126,7 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 					goRight();
 				}
 			}}
+			data-testid="modal"
 		>
 			<Navigation
 				closeModal={closeModal}
@@ -125,6 +138,7 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 				<ImageWithContainer
 					key={image_data.src}
 					className={{
+						is_loading: styles.is_loading,
 						container: [
 							styles.image_container,
 							...(direction

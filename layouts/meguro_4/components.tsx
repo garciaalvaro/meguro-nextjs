@@ -1,4 +1,5 @@
-import React, { FunctionComponent, CSSProperties, Fragment } from "react";
+import React, { Fragment } from "react";
+import type { FunctionComponent, CSSProperties } from "react";
 
 import { Column } from "@components/utils";
 import styles from "./components.styl";

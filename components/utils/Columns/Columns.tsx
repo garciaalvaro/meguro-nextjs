@@ -1,16 +1,28 @@
-import React, { FunctionComponent, CSSProperties } from "react";
+import React from "react";
+import type { FunctionComponent, CSSProperties } from "react";
 
 import styles from "./Columns.styl";
+import { className } from "@utils";
 
 interface Props {
 	style?: CSSProperties;
-	column_width?: string;
-	column_gap?: string;
-	row_gap?: string;
+	center_column?: boolean;
+	column_min_width?: number;
+	column_max_width?: number;
+	column_gap?: number;
+	row_gap?: number;
 }
 
 export const Columns: FunctionComponent<Props> = props => {
-	const { children, column_gap, column_width, row_gap } = props;
+	const { children, center_column, column_gap, row_gap } = props;
+
+	const column_min_width = props.column_min_width
+		? `${props.column_min_width}px`
+		: "auto";
+
+	const column_max_width = props.column_max_width
+		? `${props.column_max_width}px`
+		: "auto";
 
 	const style = {
 		...(props.style || {}),
@@ -19,13 +31,20 @@ export const Columns: FunctionComponent<Props> = props => {
 
 		rowGap: row_gap ? row_gap : undefined,
 
-		gridTemplateColumns: column_width
-			? `repeat(auto-fit, minmax(${column_width}, auto))`
-			: undefined,
+		gridTemplateColumns:
+			props.column_min_width || props.column_max_width
+				? `repeat(auto-fit, minmax(${column_min_width}, ${column_max_width}))`
+				: undefined,
 	};
 
 	return (
-		<div className={styles.container} style={style}>
+		<div
+			className={className(
+				styles.container,
+				center_column ? styles.center_column : null
+			)}
+			style={style}
+		>
 			{children}
 		</div>
 	);

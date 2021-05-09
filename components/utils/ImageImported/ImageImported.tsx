@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useRef } from "react";
+import React, { useRef } from "react";
+import type { FunctionComponent } from "react";
 
 import { ImageWithContainer } from "../ImageWithContainer";
 import type { ImageWithContainerProps } from "../ImageWithContainer";
@@ -12,9 +13,7 @@ interface Props {
 }
 
 export const ImageImported: FunctionComponent<Props> = props => {
-	const {
-		current: { srcSet, src, width, height },
-	} = useRef(
+	const { srcSet, src, width, height } = useRef(
 		(() => {
 			const data: {
 				src: string;
@@ -30,7 +29,7 @@ export const ImageImported: FunctionComponent<Props> = props => {
 
 			return { srcSet, src, width, height };
 		})()
-	);
+	).current;
 
 	return (
 		<ImageWithContainer

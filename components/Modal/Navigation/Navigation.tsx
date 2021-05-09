@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, { useEffect } from "react";
+import type { FunctionComponent } from "react";
 
 import styles from "./Navigation.styl";
 
@@ -27,6 +28,7 @@ export const Navigation: FunctionComponent<ModalProps> = props => {
 		document.addEventListener("keydown", keyDownHandler);
 
 		return () => document.removeEventListener("keydown", keyDownHandler);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
@@ -34,10 +36,11 @@ export const Navigation: FunctionComponent<ModalProps> = props => {
 			<button
 				className={[styles.button, styles.button_right].join(" ")}
 				onClick={event => {
-					goLeft();
-
 					event.stopPropagation();
+
+					goLeft();
 				}}
+				data-testid="modal_navigation_left"
 			>
 				{/* https://material.io/tools/icons/?icon=chevron_left */}
 				<svg width="24" height="24" viewBox="0 0 24 24">
@@ -49,10 +52,11 @@ export const Navigation: FunctionComponent<ModalProps> = props => {
 			<button
 				className={[styles.button, styles.button_left].join(" ")}
 				onClick={event => {
-					goRight();
-
 					event.stopPropagation();
+
+					goRight();
 				}}
+				data-testid="modal_navigation_right"
 			>
 				{/* https://material.io/tools/icons/?icon=chevron_right */}
 				<svg width="24" height="24" viewBox="0 0 24 24">
@@ -64,6 +68,7 @@ export const Navigation: FunctionComponent<ModalProps> = props => {
 			<button
 				className={[styles.button, styles.button_close].join(" ")}
 				onClick={closeModal}
+				data-testid="modal_navigation_close"
 			>
 				<svg width="24" height="24" viewBox="0 0 24 24">
 					<path

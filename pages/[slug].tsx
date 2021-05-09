@@ -1,27 +1,34 @@
-import React, { FunctionComponent } from "react";
-import { GetStaticProps, GetStaticPaths } from "next";
+import React, { useRef, useMemo } from "react";
+import type { FunctionComponent } from "react";
+import type { GetStaticProps, GetStaticPaths } from "next";
 
 import { Main } from "@components/Main";
 import { Page } from "@components/Page";
 import { Content } from "@components/Content";
 import { Sidebar } from "@components/Sidebar";
 import { NextPage } from "@components/NextPage";
-import { getPages } from "@pages-utils";
+import { getPages } from "@utils";
 
 interface Props {
-	layout: Page["frontmatter"]["layout"];
 	slug: Page["slug"];
-	file_path: Page["file_path"];
 	pages: Page[];
 }
 
 const Single: FunctionComponent<Props> = props => {
-	const { layout, slug, file_path, pages } = props;
+	const { slug } = props;
+
+	const pages = useRef(props.pages).current;
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const page = useMemo(() => pages.find(page => page.slug === slug), [slug]);
+
+	if (!page) {
+		return null;
+	}
 
 	return (
-		<Page slug={slug} file_path={file_path} pages={pages}>
+		<Page slug={slug} file_path={page.file_path} pages={pages}>
 			<Main>
-				<Content layout={layout} />
+				<Content layout={page?.frontmatter.layout || ""} />
 			</Main>
 
 			<Sidebar />
@@ -36,15 +43,9 @@ export default Single;
 export const getStaticProps: GetStaticProps<Props> = async context => {
 	const slug = context.params?.slug as string;
 	const pages = getPages(process.env.pages_dir);
-	const page = pages.find(page => page.slug === slug);
 
 	return {
-		props: {
-			slug: page?.slug || "",
-			file_path: page?.file_path || "",
-			layout: page?.frontmatter.layout || "",
-			pages,
-		},
+		props: { pages, slug },
 	};
 };
 

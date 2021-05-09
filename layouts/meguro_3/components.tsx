@@ -1,4 +1,5 @@
-import React, { FunctionComponent, CSSProperties } from "react";
+import React from "react";
+import type { FunctionComponent, CSSProperties } from "react";
 
 import { Column } from "@components/utils";
 import styles from "./components.styl";

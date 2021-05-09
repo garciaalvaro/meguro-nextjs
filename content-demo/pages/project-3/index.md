@@ -41,7 +41,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 </Column1>
 
 <Column2
-	use_modal={true}
+	use_modal
 	style={{ backgroundColor: "#e5ebec" }}
 >
 
@@ -54,7 +54,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 </Column2>
 
 <Column3
-	use_modal={true}
+	use_modal
 	style={{ backgroundColor: "#e5ebec" }}
 >
 

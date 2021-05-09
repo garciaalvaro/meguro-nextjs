@@ -1,5 +1,7 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { useState } from "react";
+import type { FunctionComponent, CSSProperties } from "react";
 
+import { className } from "@utils";
 import styles from "./ImageWithContainer.styl";
 
 export interface ImageWithContainerProps {
@@ -10,38 +12,40 @@ export interface ImageWithContainerProps {
 	"data-modal_width"?: number;
 	alt?: string;
 	sizes?: string;
-	className?: { image?: string; container?: string };
+	className?: { image?: string; container?: string; is_loading?: string };
 	style?: {
-		// TODO Improve type
-		image?: Record<string, string | number | undefined>;
-		container?: Record<string, string | number | undefined>;
+		image?: CSSProperties;
+		container?: CSSProperties;
 	};
 	attributes?: {
-		// TODO Improve type
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		image?: Record<string, any>;
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		container?: Record<string, any>;
+		image?: Record<string, unknown>;
+		container?: Record<string, unknown>;
 	};
 }
 
 export const ImageWithContainer: FunctionComponent<ImageWithContainerProps> = props => {
-	const { attributes, className, style, ...rest } = props;
+	const { attributes, style, ...rest } = props;
 
 	const [is_loading, setIsLoading] = useState(true);
 
+	const paddingBottom = `${
+		(Number(rest["data-height"]) / Number(rest["data-width"])) * 100
+	}%`;
+
 	return (
 		<div
-			className={[
+			className={className(
 				styles.container,
 				...(is_loading ? [styles.is_loading] : []),
-				...(className?.container ? [className.container] : []),
-			].join(" ")}
+				...(is_loading && props.className?.is_loading
+					? [props.className?.is_loading]
+					: []),
+				...(props.className?.container
+					? [props.className.container]
+					: [])
+			)}
 			style={{
-				paddingBottom: `${
-					(Number(rest["data-height"]) / Number(rest["data-width"])) *
-					100
-				}%`,
+				paddingBottom,
 				...(style?.container ? style.container : {}),
 			}}
 			{...(attributes?.container || {})}
@@ -49,10 +53,10 @@ export const ImageWithContainer: FunctionComponent<ImageWithContainerProps> = pr
 			<img
 				{...(attributes?.image || {})}
 				{...rest}
-				className={[
+				className={className(
 					styles.image,
-					...(className?.image ? [className.image] : []),
-				].join(" ")}
+					...(props.className?.image ? [props.className.image] : [])
+				)}
 				style={style?.image ? style.image : {}}
 				onLoad={() => setIsLoading(false)}
 				loading="lazy"

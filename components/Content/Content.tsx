@@ -1,21 +1,30 @@
-import React, {
-	FunctionComponent,
-	useEffect,
-	useState,
-	useContext,
-} from "react";
-import { MDXProvider, MDXProviderComponents } from "@mdx-js/react";
+import React, { useEffect, useState, useContext } from "react";
+import type { FunctionComponent } from "react";
+import { MDXProvider } from "@mdx-js/react";
+import type { MDXProviderComponents } from "@mdx-js/react";
 
 import { layouts } from "@layouts";
-import { PagesList, ImageImported, Column, Columns, Info } from "../utils";
+import {
+	PagesList,
+	ImageImported,
+	Column,
+	Columns,
+	Info,
+	Slider,
+	Container,
+} from "../utils";
+import { ContentEntryServerSide } from "./ContentEntryServerSide";
 import { ContentEntry } from "./ContentEntry";
 import { Context } from "@context";
+import { useIsFirstRender } from "@hooks";
 
 interface Props {
 	layout: Page["frontmatter"]["layout"];
 }
 
 const components_default: MDXProviderComponents = {
+	Slider,
+	Container,
 	Column,
 	Columns,
 	Info,
@@ -70,6 +79,7 @@ const getComponents = (layout_name: string) => {
 export const Content: FunctionComponent<Props> = props => {
 	const { layout } = props;
 
+	const is_first_render = useIsFirstRender();
 	const { md_is_loading } = useContext(Context);
 
 	const [components, setComponents] = useState<MDXProviderComponents>(
@@ -87,11 +97,12 @@ export const Content: FunctionComponent<Props> = props => {
 		if (md_is_loading) return;
 
 		setComponents(getComponents(layout));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [md_is_loading]);
 
 	return (
 		<MDXProvider components={components}>
-			<ContentEntry />
+			{is_first_render ? <ContentEntryServerSide /> : <ContentEntry />}
 		</MDXProvider>
 	);
 };

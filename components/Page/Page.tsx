@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useRef } from "react";
+import React, { useRef } from "react";
+import type { FunctionComponent } from "react";
 import Head from "next/head";
 
 import { ContextProvider } from "@context";
@@ -16,17 +17,18 @@ interface Props {
 	pages: Page[];
 }
 
+// process can't be destructured as Webpack replaces
+// the string using the DefinePlugin.
+const site_title = process.env.site_title;
+const site_description = process.env.site_description;
+const site_author = process.env.site_author;
+const font_family_url = process.env.font_family_url;
+
 export const Page: FunctionComponent<Props> = props => {
-	// process can't be destructured as Webpack replaces
-	// the string using the DefinePlugin.
-	const site_title = process.env.site_title;
-	const site_description = process.env.site_description;
-	const site_author = process.env.site_author;
-	const font_family_url = process.env.font_family_url;
 	const { file_path, page_title, slug, pages } = props;
 	const title = page_title ? `${site_title} | ${page_title}` : site_title;
 
-	const { current: site_logo } = useRef<string>(
+	const site_logo = useRef<string>(
 		(() => {
 			if (!process.env.site_logo) {
 				return "";
@@ -37,9 +39,9 @@ export const Page: FunctionComponent<Props> = props => {
 
 			return src;
 		})()
-	);
+	).current;
 
-	const { current: site_favicon } = useRef<string>(
+	const site_favicon = useRef<string>(
 		(() => {
 			if (!process.env.site_favicon) {
 				return "";
@@ -50,7 +52,7 @@ export const Page: FunctionComponent<Props> = props => {
 
 			return src;
 		})()
-	);
+	).current;
 
 	return (
 		<ContextProvider slug={slug} file_path={file_path} pages={pages}>
