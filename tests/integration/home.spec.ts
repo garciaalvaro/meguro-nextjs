@@ -51,3 +51,6 @@ describe("Home page", () => {
 			});
 	});
 });
+
+// Needed for TypeScript
+export {};

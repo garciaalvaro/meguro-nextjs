@@ -56,3 +56,6 @@ describe("Sidebar", () => {
 		cy.get("[data-testid=sidebar_overlay]").should("not.be.visible");
 	});
 });
+
+// Needed for TypeScript
+export {};

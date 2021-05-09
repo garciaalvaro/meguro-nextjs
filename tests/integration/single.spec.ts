@@ -41,3 +41,6 @@ describe("Single page", () => {
 			});
 	});
 });
+
+// Needed for TypeScript
+export {};

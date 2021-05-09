@@ -19,3 +19,6 @@ describe.only("Next button", () => {
 		cy.url().should("eq", Cypress.config().baseUrl + "/project-4");
 	});
 });
+
+// Needed for TypeScript
+export {};

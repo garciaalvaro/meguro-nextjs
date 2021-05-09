@@ -69,3 +69,6 @@ describe("Modal", () => {
 		cy.get("[data-testid=modal]").should("not.exist");
 	});
 });
+
+// Needed for TypeScript
+export {};
