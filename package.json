@@ -29,7 +29,7 @@
 		"test:e2e:dev": "cypress open",
 		"test:unit": "jest",
 		"test:unit:watch": "jest --watch",
-		"format:prettier": "prettier --write \"**/*.{js,ts,tsx,json}\"",
+		"prettier": "prettier --write \"**/*.{js,ts,tsx,json}\"",
 		"deploy": "npm run test && npm run export:demo && touch out/.nojekyll && gh-pages --dotfiles -d out"
 	},
 	"dependencies": {
