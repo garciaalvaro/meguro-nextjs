@@ -11,6 +11,7 @@ import {
 	Columns,
 	Info,
 	Slider,
+	Container,
 } from "../utils";
 import { ContentEntryServerSide } from "./ContentEntryServerSide";
 import { ContentEntry } from "./ContentEntry";
@@ -23,6 +24,7 @@ interface Props {
 
 const components_default: MDXProviderComponents = {
 	Slider,
+	Container,
 	Column,
 	Columns,
 	Info,

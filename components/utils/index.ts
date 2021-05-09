@@ -6,3 +6,4 @@ export type { ImageWithContainerProps } from "./ImageWithContainer";
 export { Info } from "./Info";
 export { PagesList } from "./PagesList";
 export { Slider } from "./Slider";
+export { Container } from "./Container";
