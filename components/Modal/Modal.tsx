@@ -12,17 +12,18 @@ interface ImageData {
 	src_set: string;
 	width: number;
 	height: number;
-	modal_width?: number;
+	max_width?: number;
 }
 
 export interface ModalProps {
 	images_data: ImageData[];
 	initial_src: string;
 	closeModal: () => void;
+	max_width?: number;
 }
 
 export const ModalContent: FunctionComponent<ModalProps> = props => {
-	const { images_data, initial_src, closeModal } = props;
+	const { images_data, initial_src, closeModal, max_width } = props;
 
 	const [direction, setDirection] = useState<"left" | "right" | null>(null);
 
@@ -60,7 +61,11 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 		if (container_ratio > image_ratio) {
 			const height = Math.min(
 				$content.current.clientHeight,
-				(image_data.modal_width || image_data.width) / image_ratio
+				Math.min(
+					image_data.max_width || Infinity,
+					max_width || Infinity,
+					image_data.width || Infinity
+				) / image_ratio
 			);
 
 			return {
@@ -72,7 +77,11 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 
 		const width = Math.min(
 			$content.current.clientWidth,
-			image_data.modal_width || image_data.width
+			Math.min(
+				image_data.max_width || Infinity,
+				max_width || Infinity,
+				image_data.width || Infinity
+			)
 		);
 
 		return {

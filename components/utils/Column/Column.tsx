@@ -3,6 +3,7 @@ import type { CSSProperties, FunctionComponent } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
 import styles from "./Column.styl";
+import container_styles from "../Container/Container.styl";
 import { Modal, ModalProps } from "@components/Modal";
 import { useIsMobile } from "@hooks";
 import { className } from "@utils";
@@ -13,10 +14,11 @@ interface Props {
 	breakpoint?: number;
 	style?: CSSProperties;
 	use_modal?: boolean;
+	modal_max_width?: number;
 }
 
 export const Column: FunctionComponent<Props> = props => {
-	const { breakpoint, children, use_modal, style } = props;
+	const { breakpoint, children, use_modal, modal_max_width, style } = props;
 
 	const $container = useRef<HTMLDivElement | null>(null);
 
@@ -48,15 +50,30 @@ export const Column: FunctionComponent<Props> = props => {
 
 		const $images = $container.current.querySelectorAll("img");
 
-		const images_data = [...$images].map($el => ({
-			src: $el.src,
-			src_set: $el.srcset,
-			width: Number($el.dataset.width),
-			height: Number($el.dataset.height),
-			modal_width: $el.dataset.modal_width
-				? Number($el.dataset.modal_width)
-				: undefined,
-		}));
+		const images_data = [...$images].map($el => {
+			let max_width;
+
+			if (
+				$el.parentElement?.parentElement?.classList.contains(
+					container_styles.container
+				)
+			) {
+				max_width =
+					$el.parentElement.parentElement.style.maxWidth || undefined;
+
+				max_width = max_width
+					? Number(max_width.replace(/px$/, "").replace(/rem$/, "0"))
+					: undefined;
+			}
+
+			return {
+				src: $el.src,
+				src_set: $el.srcset,
+				width: Number($el.dataset.width),
+				height: Number($el.dataset.height),
+				max_width,
+			};
+		});
 
 		setImagesData(images_data);
 
@@ -82,6 +99,7 @@ export const Column: FunctionComponent<Props> = props => {
 		<div ref={$container} className={className_container} style={style}>
 			{modal_is_open && (
 				<Modal
+					max_width={modal_max_width}
 					images_data={images_data}
 					initial_src={modal_initial_src}
 					closeModal={() => setModalIsOpen(false)}
