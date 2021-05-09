@@ -21,7 +21,7 @@
 		"docker:stop": "docker-compose down",
 		"serve": "next start",
 		"serve:static": "node scripts/server-static.js",
-		"test": "npm run test:types && npm run test:lint && npm run test:prettier",
+		"test": "npm run test:types && npm run test:lint && npm run test:e2e && npm run test:unit && npm run test:prettier",
 		"test:lint": "eslint \"**/*.{js,ts,tsx}\"",
 		"test:prettier": "prettier --check \"**/*.{js,ts,tsx,json}\"",
 		"test:types": "tsc",
