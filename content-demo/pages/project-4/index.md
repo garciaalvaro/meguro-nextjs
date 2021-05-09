@@ -44,7 +44,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 </Column1>
 
-<Column2 use_modal={true}>
+<Column2 use_modal>
 
 <Columns>
 

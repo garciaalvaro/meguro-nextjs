@@ -6,7 +6,7 @@ layout: "meguro_2"
 ---
 
 <Column1
-	use_modal={true}
+	use_modal
 	style={{ backgroundColor: "#41474a" }}
 >
 
