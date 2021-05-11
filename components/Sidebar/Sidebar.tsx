@@ -52,7 +52,14 @@ export const Sidebar: FunctionComponent = () => {
 				data-testid="sidebar_overlay"
 			></div>
 
-			<div className={styles.list_container}>
+			<div
+				className={className({
+					[styles.list_container]: true,
+					[styles.can_scroll]:
+						(!is_first_render && !is_mobile) ||
+						(!is_closing && !is_opening && is_open),
+				})}
+			>
 				{is_first_render || is_mobile ? (
 					<List />
 				) : (
