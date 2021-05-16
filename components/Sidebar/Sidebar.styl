@@ -28,6 +28,9 @@ $sidebar_width_closed = 9rem
 		overflow hidden
 		transition width .6s var(--ease_standard), max-height .6s var(--ease_standard)
 
+		&.is_resizing
+			transition none
+
 		&.is_open
 			max-height 100%
 
@@ -66,6 +69,9 @@ $sidebar_width_closed = 9rem
 	transition width .6s var(--ease_standard)
 	transform translateZ(0)
 
+	.is_resizing &
+		transition none
+
 	.is_open &
 		width $sidebar_width_open
 
@@ -92,6 +98,9 @@ $sidebar_width_closed = 9rem
 	background-color var(--sidebar_background_color)
 	opacity 0
 	transition opacity .6s var(--ease_standard)
+
+	.is_resizing &
+		transition none
 
 	.is_open &
 		opacity .8
