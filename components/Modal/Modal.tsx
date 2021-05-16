@@ -43,10 +43,10 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 		})()
 	);
 
-	const image_data = useMemo(() => images_data[image_index], [
-		images_data,
-		image_index,
-	]);
+	const image_data = useMemo(
+		() => images_data[image_index],
+		[images_data, image_index]
+	);
 
 	const image_style = useMemo<CSSProperties | undefined>(() => {
 		if (!image_data || !$content.current) {

@@ -24,9 +24,8 @@ export const Loading: FunctionComponent = props => {
 };
 
 export const ContentEntry: FunctionComponent = () => {
-	const { slug, file_path, md_is_loading, setMdIsLoading } = useContext(
-		Context
-	);
+	const { slug, file_path, md_is_loading, setMdIsLoading } =
+		useContext(Context);
 
 	const is_first_render = useIsFirstRender();
 

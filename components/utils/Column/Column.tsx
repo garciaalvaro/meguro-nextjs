@@ -26,9 +26,8 @@ export const Column: FunctionComponent<Props> = props => {
 		[]
 	);
 
-	const [modal_initial_src, setModalInitialSrc] = useState<
-		ModalProps["initial_src"]
-	>("");
+	const [modal_initial_src, setModalInitialSrc] =
+		useState<ModalProps["initial_src"]>("");
 
 	const [modal_is_open, setModalIsOpen] = useState(false);
 
