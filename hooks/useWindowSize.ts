@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import debounce from "lodash.debounce";
 import throttle from "lodash.throttle";
 
 interface WindowSize {
+	is_resizing: boolean;
 	window_width: number;
 	window_height: number;
 }
@@ -16,25 +18,41 @@ export const useWindowSize = (time = 300): WindowSize => {
 		typeof window !== "undefined" ? window.innerHeight : 1
 	);
 
+	const [is_resizing, setIsResizing] = useState(false);
+
 	useEffect(() => {
-		const setSize = () => {
-			setWidth(window.innerWidth);
+		const resizeThrottle = throttle(
+			() => {
+				setWidth(window.innerWidth);
+				setHeight(window.innerHeight);
+			},
+			time,
+			{
+				leading: true,
+				trailing: true,
+			}
+		);
 
-			setHeight(window.innerHeight);
-		};
+		const resizeDebounce = debounce(
+			() => setIsResizing(is_resizing => !is_resizing),
+			2 * time,
+			{
+				leading: true,
+				trailing: true,
+			}
+		);
 
-		const setSizeThrottled = throttle(setSize, time, {
-			leading: true,
-			trailing: true,
-		});
-
-		window.addEventListener("resize", setSizeThrottled);
+		window.addEventListener("resize", resizeThrottle);
+		window.addEventListener("resize", resizeDebounce);
 
 		return () => {
-			window.removeEventListener("resize", setSizeThrottled);
-			setSizeThrottled.cancel();
+			resizeThrottle.cancel();
+			window.removeEventListener("resize", resizeThrottle);
+
+			resizeDebounce.cancel();
+			window.removeEventListener("resize", resizeDebounce);
 		};
 	}, [time]);
 
-	return { window_width: width, window_height: height };
+	return { window_width: width, window_height: height, is_resizing };
 };
