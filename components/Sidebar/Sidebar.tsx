@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import type { FunctionComponent } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
-import { useIsMobile, useIsFirstRender, useWindowSize } from "@hooks";
+import { useIsMobile, useIsFirstRender } from "@hooks";
 import { className } from "@utils";
 import { List } from "./List";
 import styles from "./Sidebar.styl";
@@ -14,7 +14,6 @@ export const Sidebar: FunctionComponent = () => {
 	const is_mobile = useIsMobile(600);
 	const is_first_render = useIsFirstRender();
 	const $scroller = useRef<Scrollbar | null>(null);
-	const { is_resizing } = useWindowSize();
 
 	const toggle = () => {
 		if (is_opening || is_closing) return;
@@ -36,7 +35,6 @@ export const Sidebar: FunctionComponent = () => {
 				[styles.is_closed]: !is_open,
 				[styles.is_opening]: is_opening,
 				[styles.is_closing]: is_closing,
-				[styles.is_resizing]: is_resizing,
 			})}
 			onClick={toggle}
 			aria-expanded={is_open}
