@@ -30,7 +30,7 @@ export const Sidebar: FunctionComponent = () => {
 	};
 
 	useEffect(() => {
-		if (scrollbar_width === 0 || !is_one_column) return;
+		if (!is_one_column) return;
 
 		if (is_open || is_closing) {
 			document.body.style.setProperty(

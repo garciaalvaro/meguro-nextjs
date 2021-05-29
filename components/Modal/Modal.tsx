@@ -123,7 +123,7 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 	};
 
 	useEffect(() => {
-		if (scrollbar_width === 0 || !is_one_column) return;
+		if (!is_one_column) return;
 
 		document.body.style.setProperty(
 			"--scrollbar_offset",
