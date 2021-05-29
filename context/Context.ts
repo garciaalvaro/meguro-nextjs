@@ -7,6 +7,10 @@ export const initial_props: ContextProps = {
 	scrollbar_width: 0,
 
 	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	setIsOneColumn: () => {},
+	is_one_column: false,
+
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
 	setMdIsLoading: () => {},
 	md_is_loading: false,
 
