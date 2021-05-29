@@ -8,7 +8,6 @@ $sidebar_width_closed = 9rem
 	height 100%
 	color var(--sidebar_color)
 	cursor pointer
-	padding-left calc(9rem + var(--scrollbar_offset))
 
 	&.is_open
 	&.is_closing
@@ -26,6 +25,7 @@ $sidebar_width_closed = 9rem
 		top 0
 		right 0
 		overflow hidden
+		padding-left calc(9rem + var(--scrollbar_offset))
 		transition width .6s var(--ease_standard), max-height .6s var(--ease_standard)
 
 		&.is_open
@@ -50,7 +50,6 @@ $sidebar_width_closed = 9rem
 	color rgba(255, 255, 255, .7)
 	cursor pointer
 	fill currentColor
-	margin-right var(--scrollbar_offset)
 	transition background-color .2s var(--ease_standard)
 
 	.is_closed &
@@ -67,6 +66,7 @@ $sidebar_width_closed = 9rem
 
 	@media screen and (max-width 600px)
 		display flex
+		margin-right var(--scrollbar_offset)
 
 .list_container
 	overflow hidden
