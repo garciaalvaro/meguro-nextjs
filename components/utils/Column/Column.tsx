@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
 import type { CSSProperties, FunctionComponent } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
@@ -93,6 +93,14 @@ export const Column: FunctionComponent<Props> = props => {
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	useLayoutEffect(() => {
+		if (is_collapsed) {
+			document.body.classList.add(styles.can_scroll);
+		} else {
+			document.body.classList.remove(styles.can_scroll);
+		}
+	}, [is_collapsed]);
 
 	return (
 		<div ref={$container} className={className_container} style={style}>
