@@ -2,7 +2,7 @@ import React, { useState, useRef, useLayoutEffect, useContext } from "react";
 import type { FunctionComponent } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
-import { useIsMobile, useIsFirstRender } from "@hooks";
+import { useIsCollapsed, useIsFirstRender } from "@hooks";
 import { className } from "@utils";
 import { Context } from "@context";
 import { List } from "./List";
@@ -13,7 +13,7 @@ export const Sidebar: FunctionComponent = () => {
 	const [is_open, setIsOpen] = useState(false);
 	const [is_opening, setIsOpening] = useState(false);
 	const [is_closing, setIsClosing] = useState(false);
-	const is_mobile = useIsMobile(600);
+	const is_mobile = useIsCollapsed(600);
 	const is_first_render = useIsFirstRender();
 	const $scroller = useRef<Scrollbar | null>(null);
 
