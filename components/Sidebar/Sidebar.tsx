@@ -9,7 +9,7 @@ import { List } from "./List";
 import styles from "./Sidebar.styl";
 
 export const Sidebar: FunctionComponent = () => {
-	const { scrollbar_width } = useContext(Context);
+	const { scrollbar_width, is_one_column } = useContext(Context);
 	const [is_open, setIsOpen] = useState(false);
 	const [is_opening, setIsOpening] = useState(false);
 	const [is_closing, setIsClosing] = useState(false);
@@ -30,19 +30,19 @@ export const Sidebar: FunctionComponent = () => {
 	};
 
 	useEffect(() => {
-		if (scrollbar_width === 0 || !is_mobile) return;
+		if (scrollbar_width === 0 || !is_one_column) return;
 
 		if (is_open || is_closing) {
 			document.body.style.setProperty(
 				"--scrollbar_offset",
 				`${scrollbar_width}px`
 			);
-			document.body.classList.add(styles.no_scroll);
+			document.body.style.setProperty("overflow", "hidden");
 		} else {
 			document.body.style.setProperty("--scrollbar_offset", "");
-			document.body.classList.remove(styles.no_scroll);
+			document.body.style.setProperty("overflow", "");
 		}
-	}, [is_mobile, is_open, is_closing, scrollbar_width]);
+	}, [is_one_column, is_open, is_closing, scrollbar_width]);
 
 	return (
 		<nav
