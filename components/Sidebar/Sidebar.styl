@@ -51,6 +51,14 @@ $sidebar_width_closed = 9rem
 	cursor pointer
 	fill currentColor
 	margin-right var(--scrollbar_offset)
+	transition background-color .2s var(--ease_standard)
+
+	.is_closed &
+		transition-delay .4s
+
+	.is_closed &
+	.is_closing &
+		background-color var(--sidebar_background_color)
 
 	&
 	&:hover
