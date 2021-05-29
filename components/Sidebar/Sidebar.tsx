@@ -30,7 +30,7 @@ export const Sidebar: FunctionComponent = () => {
 	};
 
 	useEffect(() => {
-		if (scrollbar_width === 0) return;
+		if (scrollbar_width === 0 || !is_mobile) return;
 
 		if (is_open || is_closing) {
 			document.body.style.setProperty(
@@ -42,7 +42,7 @@ export const Sidebar: FunctionComponent = () => {
 			document.body.style.setProperty("--scrollbar_offset", "");
 			document.body.classList.remove(styles.no_scroll);
 		}
-	}, [is_open, is_closing, scrollbar_width]);
+	}, [is_mobile, is_open, is_closing, scrollbar_width]);
 
 	return (
 		<nav
