@@ -32,6 +32,11 @@ export const Sidebar: FunctionComponent = () => {
 	useEffect(() => {
 		if (!is_one_column) return;
 
+		const reset = () => {
+			document.body.style.setProperty("--scrollbar_offset", "");
+			document.body.style.setProperty("overflow", "");
+		};
+
 		if (is_open || is_closing) {
 			document.body.style.setProperty(
 				"--scrollbar_offset",
@@ -39,9 +44,12 @@ export const Sidebar: FunctionComponent = () => {
 			);
 			document.body.style.setProperty("overflow", "hidden");
 		} else {
-			document.body.style.setProperty("--scrollbar_offset", "");
-			document.body.style.setProperty("overflow", "");
+			reset();
 		}
+
+		return () => {
+			reset();
+		};
 	}, [is_one_column, is_open, is_closing, scrollbar_width]);
 
 	return (
