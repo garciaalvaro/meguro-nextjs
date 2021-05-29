@@ -1,2 +1,3 @@
 export { className } from "./className";
-export { getPages } from "../utils/getPages";
+export { getPages } from "./getPages";
+export { getScrollbarWidth } from "./getScrollbarWidth";

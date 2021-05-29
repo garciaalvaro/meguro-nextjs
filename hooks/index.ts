@@ -1,4 +1,4 @@
 export { useIsFirstRender } from "./useIsFirstRender";
-export { useIsMobile } from "./useIsMobile";
+export { useIsCollapsed } from "./useIsCollapsed";
 export { usePages } from "./usePages";
 export { useWindowSize } from "./useWindowSize";

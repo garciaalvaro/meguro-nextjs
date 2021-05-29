@@ -2,7 +2,7 @@ $sidebar_width_open = 44rem
 $sidebar_width_closed = 9rem
 
 .container
-	position relative
+	position fixed
 	z-index 1
 	width $sidebar_width_closed
 	height 100%
@@ -22,14 +22,11 @@ $sidebar_width_closed = 9rem
 		pointer-events none
 
 	@media screen and (max-width 600px)
-		position absolute
 		top 0
 		right 0
 		overflow hidden
+		padding-left calc(9rem + var(--scrollbar_offset))
 		transition width .6s var(--ease_standard), max-height .6s var(--ease_standard)
-
-		&.is_resizing
-			transition none
 
 		&.is_open
 			max-height 100%
@@ -53,6 +50,14 @@ $sidebar_width_closed = 9rem
 	color rgba(255, 255, 255, .7)
 	cursor pointer
 	fill currentColor
+	transition background-color .2s var(--ease_standard)
+
+	.is_closed &
+		transition-delay .4s
+
+	.is_closed &
+	.is_closing &
+		background-color var(--sidebar_background_color)
 
 	&
 	&:hover
@@ -61,6 +66,7 @@ $sidebar_width_closed = 9rem
 
 	@media screen and (max-width 600px)
 		display flex
+		margin-right var(--scrollbar_offset)
 
 .list_container
 	overflow hidden
@@ -68,9 +74,6 @@ $sidebar_width_closed = 9rem
 	height 100%
 	transition width .6s var(--ease_standard)
 	transform translateZ(0)
-
-	.is_resizing &
-		transition none
 
 	.is_open &
 		width $sidebar_width_open
@@ -88,6 +91,9 @@ $sidebar_width_closed = 9rem
 		.is_open &
 			width 100vw
 
+.no_scroll
+	overflow-y hidden
+
 .overlay
 	position absolute
 	top 0
@@ -98,9 +104,6 @@ $sidebar_width_closed = 9rem
 	background-color var(--sidebar_background_color)
 	opacity 0
 	transition opacity .6s var(--ease_standard)
-
-	.is_resizing &
-		transition none
 
 	.is_open &
 		opacity .8

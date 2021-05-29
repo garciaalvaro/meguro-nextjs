@@ -22,10 +22,10 @@ export const Main: FunctionComponent<Props> = props => {
 	return (
 		<main
 			ref={$main}
-			className={className(
-				styles.container,
-				props.is_home ? styles.is_home : null
-			)}
+			className={className({
+				[styles.container]: true,
+				[styles.is_home]: !!props.is_home,
+			})}
 		>
 			{props.children}
 		</main>

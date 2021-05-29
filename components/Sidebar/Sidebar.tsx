@@ -1,20 +1,21 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import type { FunctionComponent } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
-import { useIsMobile, useIsFirstRender, useWindowSize } from "@hooks";
+import { useIsCollapsed, useIsFirstRender } from "@hooks";
 import { className } from "@utils";
+import { Context } from "@context";
 import { List } from "./List";
 import styles from "./Sidebar.styl";
 
 export const Sidebar: FunctionComponent = () => {
+	const { scrollbar_width } = useContext(Context);
 	const [is_open, setIsOpen] = useState(false);
 	const [is_opening, setIsOpening] = useState(false);
 	const [is_closing, setIsClosing] = useState(false);
-	const is_mobile = useIsMobile(600);
+	const is_mobile = useIsCollapsed(600);
 	const is_first_render = useIsFirstRender();
 	const $scroller = useRef<Scrollbar | null>(null);
-	const { is_resizing } = useWindowSize();
 
 	const toggle = () => {
 		if (is_opening || is_closing) return;
@@ -28,6 +29,21 @@ export const Sidebar: FunctionComponent = () => {
 		}
 	};
 
+	useEffect(() => {
+		if (scrollbar_width === 0 || !is_mobile) return;
+
+		if (is_open || is_closing) {
+			document.body.style.setProperty(
+				"--scrollbar_offset",
+				`${scrollbar_width}px`
+			);
+			document.body.classList.add(styles.no_scroll);
+		} else {
+			document.body.style.setProperty("--scrollbar_offset", "");
+			document.body.classList.remove(styles.no_scroll);
+		}
+	}, [is_mobile, is_open, is_closing, scrollbar_width]);
+
 	return (
 		<nav
 			className={className({
@@ -36,7 +52,6 @@ export const Sidebar: FunctionComponent = () => {
 				[styles.is_closed]: !is_open,
 				[styles.is_opening]: is_opening,
 				[styles.is_closing]: is_closing,
-				[styles.is_resizing]: is_resizing,
 			})}
 			onClick={toggle}
 			aria-expanded={is_open}
@@ -80,6 +95,7 @@ export const Sidebar: FunctionComponent = () => {
 					</Scrollbar>
 				)}
 			</div>
+
 			<button className={styles.button} onClick={toggle}>
 				{is_open ? (
 					/* https://material.io/tools/icons/?icon=close */

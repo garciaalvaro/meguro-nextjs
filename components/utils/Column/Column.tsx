@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
 import type { CSSProperties, FunctionComponent } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
 import styles from "./Column.styl";
 import container_styles from "../Container/Container.styl";
 import { Modal, ModalProps } from "@components/Modal";
-import { useIsMobile } from "@hooks";
+import { useIsCollapsed } from "@hooks";
 import { className } from "@utils";
 
 interface Props {
@@ -26,13 +26,12 @@ export const Column: FunctionComponent<Props> = props => {
 		[]
 	);
 
-	const [modal_initial_src, setModalInitialSrc] = useState<
-		ModalProps["initial_src"]
-	>("");
+	const [modal_initial_src, setModalInitialSrc] =
+		useState<ModalProps["initial_src"]>("");
 
 	const [modal_is_open, setModalIsOpen] = useState(false);
 
-	const is_mobile = useIsMobile(breakpoint);
+	const is_collapsed = useIsCollapsed(breakpoint);
 
 	const className_container = className(
 		styles.container,
@@ -95,6 +94,14 @@ export const Column: FunctionComponent<Props> = props => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	useLayoutEffect(() => {
+		if (is_collapsed) {
+			document.body.classList.add(styles.can_scroll);
+		} else {
+			document.body.classList.remove(styles.can_scroll);
+		}
+	}, [is_collapsed]);
+
 	return (
 		<div ref={$container} className={className_container} style={style}>
 			{modal_is_open && (
@@ -106,7 +113,7 @@ export const Column: FunctionComponent<Props> = props => {
 				/>
 			)}
 
-			{is_mobile ? (
+			{is_collapsed ? (
 				<div className={className_content}>{children}</div>
 			) : (
 				<Scrollbar

@@ -3,7 +3,7 @@ import type { FunctionComponent, CSSProperties } from "react";
 
 import { Column } from "@components/utils";
 import styles from "./components.styl";
-import { useIsMobile } from "@hooks";
+import { useIsCollapsed } from "@hooks";
 
 interface Props {
 	style?: CSSProperties;
@@ -31,9 +31,9 @@ export const Column1: FunctionComponent<Props> = props => {
 
 export const Column2: FunctionComponent<Props> = props => {
 	const { style, use_modal, children } = props;
-	const is_mobile = useIsMobile(breakpoint);
+	const is_collapsed = useIsCollapsed(breakpoint);
 
-	if (is_mobile) {
+	if (is_collapsed) {
 		return <Fragment>{children}</Fragment>;
 	}
 

@@ -57,7 +57,7 @@ module.exports = withStylus({
 	cssLoaderOptions: {
 		localIdentName:
 			process.env.NODE_ENV === "production"
-				? "[hash:base64]"
+				? "[hash:base64:5]"
 				: "[folder]__[local]-[hash:base64:2]",
 	},
 
