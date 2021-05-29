@@ -1,4 +1,4 @@
-describe.only("Next button", () => {
+describe("Next button", () => {
 	it("does not render in home", () => {
 		cy.visit("/");
 
@@ -14,7 +14,8 @@ describe.only("Next button", () => {
 	it("loads the next page when clicking the button", () => {
 		cy.visit("/project-3");
 
-		cy.get("[data-testid=next_page]").click();
+		// Click on the left to avoid clicking on the Next.js loader
+		cy.get("[data-testid=next_page]").click("left");
 
 		cy.url().should("eq", Cypress.config().baseUrl + "/project-4");
 	});

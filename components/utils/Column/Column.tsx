@@ -1,4 +1,10 @@
-import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
+import React, {
+	useRef,
+	useState,
+	useEffect,
+	useLayoutEffect,
+	useContext,
+} from "react";
 import type { CSSProperties, FunctionComponent } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
@@ -7,6 +13,7 @@ import container_styles from "../Container/Container.styl";
 import { Modal, ModalProps } from "@components/Modal";
 import { useIsCollapsed } from "@hooks";
 import { className } from "@utils";
+import { Context } from "@context";
 
 interface Props {
 	className_container?: string;
@@ -21,6 +28,8 @@ export const Column: FunctionComponent<Props> = props => {
 	const { breakpoint, children, use_modal, modal_max_width, style } = props;
 
 	const $container = useRef<HTMLDivElement | null>(null);
+
+	const { setIsOneColumn } = useContext(Context);
 
 	const [images_data, setImagesData] = useState<ModalProps["images_data"]>(
 		[]
@@ -43,6 +52,11 @@ export const Column: FunctionComponent<Props> = props => {
 		styles.content,
 		...(props.className_content ? [props.className_content] : [])
 	);
+
+	useEffect(() => {
+		setIsOneColumn(is_collapsed);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [is_collapsed]);
 
 	useEffect(() => {
 		if (!use_modal || !$container.current) return;

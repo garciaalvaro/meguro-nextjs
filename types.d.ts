@@ -40,6 +40,8 @@ interface ContextProps {
 	md_is_loading: boolean;
 	setActiveUrlPath: (active_url_path: string) => void;
 	active_url_path: Page["url_path"];
+	setIsOneColumn: (is_one_column: boolean) => void;
+	is_one_column: boolean;
 }
 
 interface Layout {

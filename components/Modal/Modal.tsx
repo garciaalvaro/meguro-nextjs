@@ -1,9 +1,17 @@
-import React, { Fragment, useState, useMemo, useRef } from "react";
+import React, {
+	Fragment,
+	useState,
+	useMemo,
+	useRef,
+	useEffect,
+	useContext,
+} from "react";
 import type { FunctionComponent, CSSProperties } from "react";
 import { createPortal } from "react-dom";
 
 import { ImageWithContainer } from "../utils";
 import { useIsFirstRender, useWindowSize } from "@hooks";
+import { Context } from "@context";
 import { Navigation } from "./Navigation";
 import styles from "./Modal.styl";
 
@@ -24,6 +32,8 @@ export interface ModalProps {
 
 export const ModalContent: FunctionComponent<ModalProps> = props => {
 	const { images_data, initial_src, closeModal, max_width } = props;
+
+	const { scrollbar_width, is_one_column } = useContext(Context);
 
 	const [direction, setDirection] = useState<"left" | "right" | null>(null);
 
@@ -111,6 +121,21 @@ export const ModalContent: FunctionComponent<ModalProps> = props => {
 			return index === images_data.length - 1 ? 0 : index + 1;
 		});
 	};
+
+	useEffect(() => {
+		if (!is_one_column) return;
+
+		document.body.style.setProperty(
+			"--scrollbar_offset",
+			`${scrollbar_width}px`
+		);
+		document.body.style.setProperty("overflow", "hidden");
+
+		return () => {
+			document.body.style.setProperty("--scrollbar_offset", "");
+			document.body.style.setProperty("overflow", "");
+		};
+	}, [is_one_column, scrollbar_width]);
 
 	if (!image_data) {
 		return null;

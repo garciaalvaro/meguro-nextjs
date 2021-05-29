@@ -13,6 +13,8 @@ interface Props {
 export const ContextProvider: FunctionComponent<Props> = props => {
 	const { slug, file_path, pages } = props;
 
+	const [is_one_column, setIsOneColumn] = useState(false);
+
 	const [md_is_loading, setMdIsLoading] = useState(false);
 
 	const [active_url_path, setActiveUrlPath] = useState(`/${slug}`);
@@ -38,6 +40,8 @@ export const ContextProvider: FunctionComponent<Props> = props => {
 				md_is_loading,
 				active_url_path,
 				setActiveUrlPath,
+				is_one_column,
+				setIsOneColumn,
 			}}
 		>
 			{props.children}
