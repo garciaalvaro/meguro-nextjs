@@ -2,12 +2,13 @@ $sidebar_width_open = 44rem
 $sidebar_width_closed = 9rem
 
 .container
-	position relative
+	position fixed
 	z-index 1
 	width $sidebar_width_closed
 	height 100%
 	color var(--sidebar_color)
 	cursor pointer
+	padding-left calc(9rem + var(--scrollbar_offset))
 
 	&.is_open
 	&.is_closing
@@ -22,7 +23,6 @@ $sidebar_width_closed = 9rem
 		pointer-events none
 
 	@media screen and (max-width 600px)
-		position absolute
 		top 0
 		right 0
 		overflow hidden
@@ -50,6 +50,7 @@ $sidebar_width_closed = 9rem
 	color rgba(255, 255, 255, .7)
 	cursor pointer
 	fill currentColor
+	margin-right var(--scrollbar_offset)
 
 	&
 	&:hover
@@ -81,6 +82,9 @@ $sidebar_width_closed = 9rem
 		&
 		.is_open &
 			width 100vw
+
+.no_scroll
+	overflow-y hidden
 
 .overlay
 	position absolute
