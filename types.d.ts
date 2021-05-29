@@ -35,6 +35,7 @@ interface ContextProps {
 	slug: Page["slug"];
 	file_path: Page["file_path"];
 	pages: Page[];
+	scrollbar_width: number;
 	setMdIsLoading: (is_loading: boolean) => void;
 	md_is_loading: boolean;
 	setActiveUrlPath: (active_url_path: string) => void;

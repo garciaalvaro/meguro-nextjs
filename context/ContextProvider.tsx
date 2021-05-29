@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import type { FunctionComponent } from "react";
 
+import { getScrollbarWidth } from "@utils";
 import { Context } from "./Context";
 
 interface Props {
@@ -16,13 +17,20 @@ export const ContextProvider: FunctionComponent<Props> = props => {
 
 	const [active_url_path, setActiveUrlPath] = useState(`/${slug}`);
 
+	const [scrollbar_width, setScrollbarWidth] = useState(0);
+
 	useEffect(() => {
 		setActiveUrlPath(`/${slug}`);
 	}, [slug]);
 
+	useEffect(() => {
+		setScrollbarWidth(getScrollbarWidth());
+	}, []);
+
 	return (
 		<Context.Provider
 			value={{
+				scrollbar_width,
 				slug,
 				file_path,
 				pages,
