@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect, useContext } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import type { FunctionComponent } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
@@ -29,7 +29,7 @@ export const Sidebar: FunctionComponent = () => {
 		}
 	};
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		if (scrollbar_width === 0) return;
 
 		if (is_open || is_closing) {
