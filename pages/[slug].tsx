@@ -26,7 +26,12 @@ const Single: FunctionComponent<Props> = props => {
 	}
 
 	return (
-		<Page slug={slug} file_path={page.file_path} pages={pages}>
+		<Page
+			slug={slug}
+			page_title={page.frontmatter.title}
+			file_path={page.file_path}
+			pages={pages}
+		>
 			<Main>
 				<Content layout={page?.frontmatter.layout || ""} />
 			</Main>

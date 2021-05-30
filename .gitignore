@@ -4,6 +4,5 @@
 _todo.md
 /content
 node_modules
-public
 out
 tests/cypress

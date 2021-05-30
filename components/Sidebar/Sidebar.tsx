@@ -104,7 +104,11 @@ export const Sidebar: FunctionComponent = () => {
 				)}
 			</div>
 
-			<button className={styles.button} onClick={toggle}>
+			<button
+				className={styles.button}
+				onClick={toggle}
+				aria-label="Toggle sidebar"
+			>
 				{is_open ? (
 					/* https://material.io/tools/icons/?icon=close */
 					<svg width="22" height="22" viewBox="0 0 24 24">

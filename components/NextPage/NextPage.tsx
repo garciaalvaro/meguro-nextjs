@@ -39,7 +39,7 @@ export const NextPage: FunctionComponent = () => {
 		<Link href={next_page.url_path}>
 			<a className={styles.link} data-testid="next_page">
 				<span>next</span>
-				<h5>{next_page.frontmatter.title}</h5>
+				<h3>{next_page.frontmatter.title}</h3>
 			</a>
 		</Link>
 	);
