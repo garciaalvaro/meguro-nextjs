@@ -26,6 +26,7 @@ export const Slider: FunctionComponent = props => {
 							}
 							onClick={() => setActiveIndex(index)}
 							key={index}
+							aria-label={`Image ${index}`}
 						>
 							<svg viewBox="0 0 100 100">
 								<circle r="50" cx="50" cy="50" />
