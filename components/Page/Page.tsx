@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, Fragment } from "react";
 import type { FunctionComponent } from "react";
 import Head from "next/head";
 
@@ -78,11 +78,18 @@ export const Page: FunctionComponent<Props> = props => {
 				<link rel="icon" href={site_favicon}></link>
 
 				{font_family_url && (
-					<link
-						key="font_family_link"
-						href={font_family_url}
-						rel="stylesheet"
-					></link>
+					<Fragment>
+						<link
+							rel="preconnect"
+							href="https://fonts.gstatic.com"
+						></link>
+
+						<link
+							key="font_family_link"
+							href={font_family_url}
+							rel="stylesheet"
+						></link>
+					</Fragment>
 				)}
 			</Head>
 
