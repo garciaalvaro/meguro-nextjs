@@ -8,22 +8,16 @@ import { Content } from "@components/Content";
 import { getPages } from "@utils";
 
 interface Props {
-	title: Page["frontmatter"]["title"];
 	layout: Page["frontmatter"]["layout"];
 	file_path: Page["file_path"];
 	pages: Page[];
 }
 
 const Home: FunctionComponent<Props> = props => {
-	const { layout, file_path, pages, title } = props;
+	const { layout, file_path, pages } = props;
 
 	return (
-		<Page
-			slug="home"
-			page_title={title}
-			file_path={file_path}
-			pages={pages}
-		>
+		<Page slug="home" file_path={file_path} pages={pages}>
 			<Main is_home={true}>
 				<Content layout={layout} />
 			</Main>
@@ -40,7 +34,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	return {
 		props: {
 			file_path: page?.file_path || "",
-			title: page?.frontmatter.title || "",
 			layout: page?.frontmatter.layout || "",
 			pages,
 		},
