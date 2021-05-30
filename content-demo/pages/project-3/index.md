@@ -8,6 +8,7 @@ layout: "meguro_3"
 <Column1 style={{
 	backgroundColor: "#4f5356",
 	color: "rgba(255,255,255,0.9)",
+	"--page_subtitle_color": "rgba(255,255,255,0.6)",
 }}>
 
 # [Project 3](/project-3)
