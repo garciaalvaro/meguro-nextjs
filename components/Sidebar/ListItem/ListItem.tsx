@@ -70,7 +70,11 @@ export const ListItem: FunctionComponent<Props> = props => {
 				>
 					<div className={styles.image_container}>
 						<ImageImported
-							alt={url_path === "/" ? "Home" : frontmatter.title}
+							alt={
+								url_path === "/"
+									? "Logo"
+									: `${frontmatter.title} thumbnail`
+							}
 							className={{ image: styles.image }}
 							src={frontmatter.thumb_img}
 							style={{ container: { paddingBottom: undefined } }}

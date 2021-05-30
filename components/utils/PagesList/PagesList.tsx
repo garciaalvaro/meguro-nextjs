@@ -25,7 +25,7 @@ export const PagesList: FunctionComponent<Props> = props => {
 						<a className={styles.link}>
 							<div className={styles.image_container}>
 								<ImageImported
-									alt={frontmatter.title}
+									alt={`${frontmatter.title} thumbnail`}
 									src={frontmatter.thumb_img}
 									style={{
 										container: { paddingBottom: undefined },
