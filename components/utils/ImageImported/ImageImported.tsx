@@ -6,6 +6,7 @@ import type { ImageWithContainerProps } from "../ImageWithContainer";
 
 interface Props {
 	src: string;
+	sizes?: string;
 	alt?: string;
 	"data-modal_width"?: number;
 	className?: ImageWithContainerProps["className"];

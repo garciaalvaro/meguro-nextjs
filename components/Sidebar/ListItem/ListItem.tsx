@@ -78,6 +78,7 @@ export const ListItem: FunctionComponent<Props> = props => {
 							className={{ image: styles.image }}
 							src={frontmatter.thumb_img}
 							style={{ container: { paddingBottom: undefined } }}
+							sizes="90px"
 						/>
 					</div>
 
