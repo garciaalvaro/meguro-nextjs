@@ -1,4 +1,3 @@
-const withStylus = require("@zeit/next-stylus");
 const unwrap = require("remark-unwrap-images");
 const { existsSync } = require("fs");
 const path = require("path");
@@ -25,7 +24,9 @@ const {
 	sidebar_menu_pages,
 } = config;
 
-module.exports = withStylus({
+module.exports = {
+	webpack5: false,
+
 	basePath: config.base_url_prefix ? base_url_path : undefined,
 
 	env: {
@@ -44,21 +45,13 @@ module.exports = withStylus({
 				? false
 				: open_external_links_in_new_tab,
 
-		custom_css_file: existsSync(getContentDir("src/index.styl"))
-			? getContentDir("src/index.styl")
+		custom_css_file: existsSync(getContentDir("src/index.sass"))
+			? getContentDir("src/index.sass")
 			: null,
 
 		pages_dir: existsSync(getContentDir("pages"))
 			? getContentDir("pages")
 			: null,
-	},
-
-	cssModules: true,
-	cssLoaderOptions: {
-		localIdentName:
-			process.env.NODE_ENV === "production"
-				? "[hash:base64:5]"
-				: "[folder]__[local]-[hash:base64:2]",
 	},
 
 	webpack: (config, { isServer }) => {
@@ -140,4 +133,4 @@ module.exports = withStylus({
 
 		return config;
 	},
-});
+};

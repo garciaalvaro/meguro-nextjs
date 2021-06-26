@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import type { FunctionComponent } from "react";
 
-import styles from "./Slider.styl";
+import styles from "./Slider.module.sass";
 
 export const Slider: FunctionComponent = props => {
 	const { children } = props;

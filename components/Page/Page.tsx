@@ -3,7 +3,6 @@ import type { FunctionComponent } from "react";
 import Head from "next/head";
 
 import { ContextProvider } from "@context";
-import "./Page.styl";
 
 // If there are custom styles import them
 if (process.env.custom_css_file) {

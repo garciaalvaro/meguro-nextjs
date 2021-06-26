@@ -6,7 +6,7 @@ import { useIsCollapsed, useIsFirstRender } from "@hooks";
 import { className } from "@utils";
 import { Context } from "@context";
 import { List } from "./List";
-import styles from "./Sidebar.styl";
+import styles from "./Sidebar.module.sass";
 
 export const Sidebar: FunctionComponent = () => {
 	const { scrollbar_width, is_one_column } = useContext(Context);

@@ -10,7 +10,7 @@ interface Page {
 	};
 }
 
-declare module "*.styl" {
+declare module "*.sass" {
 	const classNames: Record<string, string>;
 	export = classNames;
 }

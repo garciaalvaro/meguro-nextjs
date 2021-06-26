@@ -1,0 +1,41 @@
+$sidebar_width_open: 44rem
+$sidebar_width_closed: 9rem
+
+.container
+	overflow: auto
+	min-height: 100vh
+	width: $sidebar_width_open
+	background-color: var(--sidebar_background_color)
+	list-style: none
+
+	body ul#{&}
+		padding-left: 0
+
+	li:first-child > a
+		opacity: 1
+		pointer-events: auto
+
+	a
+		display: flex
+		align-items: center
+		height: $sidebar_width_closed
+		opacity: .06
+		transition: opacity .6s var(--ease_standard)
+
+		> div:last-child
+			display: flex
+			flex: 1
+			align-items: center
+			padding: 0 3.5rem
+			height: 100%
+
+		> div:first-child
+			flex-shrink: 0
+			padding-bottom: $sidebar_width_closed
+			width: $sidebar_width_closed
+
+	@media screen and (max-width: 600px)
+		position: absolute
+		top: 0
+		right: 0
+		width: 100%

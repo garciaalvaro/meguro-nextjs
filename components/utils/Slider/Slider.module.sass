@@ -1,0 +1,43 @@
+.container
+	flex-grow: 1
+	flex-basis: 100%
+	height: 100%
+
+	&
+		& > div
+			background: none
+
+		& img
+			transition: none
+
+.slider
+	display: flex
+	justify-content: center
+
+	button
+		width: 2rem
+		height: 3rem
+		display: flex
+		justify-content: center
+		align-items: center
+		opacity: .1
+		cursor: pointer
+		transition: opacity .1s var(--ease_standard)
+
+		&:hover,
+		&.is_active
+			opacity: 1
+
+		&:hover
+			transition: opacity .3s .05s var(--ease_standard)
+
+	button,
+	button:hover,
+	button:focus
+		outline: none
+		border: none
+		background: none
+
+	svg
+		fill: currentColor
+		width: .7rem

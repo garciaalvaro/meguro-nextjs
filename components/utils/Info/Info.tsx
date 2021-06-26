@@ -2,7 +2,7 @@ import React from "react";
 import type { FunctionComponent } from "react";
 
 import { className } from "@utils";
-import styles from "./Info.styl";
+import styles from "./Info.module.sass";
 
 interface Props {
 	li_separator?: string;
