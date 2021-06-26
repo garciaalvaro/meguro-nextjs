@@ -4,11 +4,6 @@ import Head from "next/head";
 
 import { ContextProvider } from "@context";
 
-// If there are custom styles import them
-if (process.env.custom_css_file) {
-	require(process.env.custom_css_file);
-}
-
 interface Props {
 	page_title?: string;
 	slug: Page["slug"];
