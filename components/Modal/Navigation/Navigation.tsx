@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import type { FunctionComponent } from "react";
 
-import styles from "./Navigation.styl";
+import styles from "./Navigation.module.sass";
 
 export interface ModalProps {
 	closeModal: () => void;

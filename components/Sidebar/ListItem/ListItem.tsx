@@ -6,7 +6,7 @@ import type { Scrollbar } from "react-scrollbars-custom";
 import { Context } from "@context";
 import { ImageImported } from "@components/utils";
 import { className } from "@utils";
-import styles from "./ListItem.styl";
+import styles from "./ListItem.module.sass";
 
 interface Props {
 	$scroller?: RefObject<Scrollbar | null>;

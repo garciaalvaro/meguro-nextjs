@@ -1,0 +1,38 @@
+@import "reset"
+@import "variables"
+@import "globals"
+@import "main"
+
+:root
+	font-size: 10px
+	font-family: Arial, sans-serif
+
+	@media screen and (max-width: 600px)
+		font-size: 8px
+
+body
+	overflow: hidden
+	color: var(--color)
+	font-size: 13px
+	line-height: 1.9
+	--scrollbar_offset: 0
+	margin-right: var(--scrollbar_offset)
+
+html,
+body
+	height: 100%
+
+#__next
+	min-height: 100%
+	display: grid
+	grid-template-columns: 9rem auto
+	grid-template-areas: "sidebar main"
+
+	> nav
+		grid-area: sidebar
+
+	> main
+		grid-area: main
+
+	@media screen and (max-width: 600px)
+		display: flex

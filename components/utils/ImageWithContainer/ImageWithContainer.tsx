@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import type { FunctionComponent, CSSProperties } from "react";
 
 import { className } from "@utils";
-import styles from "./ImageWithContainer.styl";
+import styles from "./ImageWithContainer.module.sass";
 
 export interface ImageWithContainerProps {
 	src: string;

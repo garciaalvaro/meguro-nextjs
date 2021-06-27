@@ -2,7 +2,7 @@ import React from "react";
 import type { FunctionComponent, CSSProperties } from "react";
 
 import { Column } from "@components/utils";
-import styles from "./components.styl";
+import styles from "./components.module.sass";
 
 interface Props {
 	style?: CSSProperties;

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { ImageImported } from "../ImageImported";
 import { usePages } from "@hooks";
-import styles from "./PagesList.styl";
+import styles from "./PagesList.module.sass";
 
 interface Props {
 	pages: Page["slug"][] | undefined;
