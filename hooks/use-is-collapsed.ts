@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { useWindowSize } from "./useWindowSize";
+import { useWindowSize } from "./use-window-size";
 
 export const useIsCollapsed = (breakpoint = 0): boolean => {
 	const { window_width } = useWindowSize();
