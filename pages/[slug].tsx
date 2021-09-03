@@ -2,11 +2,11 @@ import React, { useRef, useMemo } from "react";
 import type { FunctionComponent } from "react";
 import type { GetStaticProps, GetStaticPaths } from "next";
 
-import { Main } from "@components/Main";
-import { Page } from "@components/Page";
-import { Content } from "@components/Content";
-import { Sidebar } from "@components/Sidebar";
-import { NextPage } from "@components/NextPage";
+import { Main } from "@components/main";
+import { Page } from "@components/page";
+import { Content } from "@components/content";
+import { Sidebar } from "@components/sidebar";
+import { NextPage } from "@components/next-page";
 import { getPages } from "@utils";
 
 interface Props {

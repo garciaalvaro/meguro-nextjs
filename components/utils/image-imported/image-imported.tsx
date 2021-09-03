@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import type { FunctionComponent } from "react";
 
-import { ImageWithContainer } from "../ImageWithContainer";
-import type { ImageWithContainerProps } from "../ImageWithContainer";
+import { ImageWithContainer } from "../image-with-container";
+import type { ImageWithContainerProps } from "../image-with-container";
 
 interface Props {
 	src: string;

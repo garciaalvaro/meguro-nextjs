@@ -12,7 +12,7 @@ import { createPortal } from "react-dom";
 import { ImageWithContainer } from "../utils";
 import { useIsFirstRender, useWindowSize } from "@hooks";
 import { Context } from "@context";
-import { Navigation } from "./Navigation";
+import { Navigation } from "./navigation";
 import styles from "./Modal.module.sass";
 
 interface ImageData {

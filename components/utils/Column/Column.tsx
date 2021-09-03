@@ -10,7 +10,7 @@ import Scrollbar from "react-scrollbars-custom";
 
 import styles from "./Column.module.sass";
 import container_styles from "../Container/Container.module.sass";
-import { Modal, ModalProps } from "@components/Modal";
+import { Modal, ModalProps } from "@components/modal";
 import { useIsCollapsed } from "@hooks";
 import { className } from "@utils";
 import { Context } from "@context";

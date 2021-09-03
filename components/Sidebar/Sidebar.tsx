@@ -5,7 +5,7 @@ import Scrollbar from "react-scrollbars-custom";
 import { useIsCollapsed, useIsFirstRender } from "@hooks";
 import { className } from "@utils";
 import { Context } from "@context";
-import { List } from "./List";
+import { List } from "./list";
 import styles from "./Sidebar.module.sass";
 
 export const Sidebar: FunctionComponent = () => {

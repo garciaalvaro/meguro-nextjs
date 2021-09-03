@@ -2,7 +2,7 @@ import React from "react";
 import type { FunctionComponent } from "react";
 import Link from "next/link";
 
-import { ImageImported } from "../ImageImported";
+import { ImageImported } from "../image-imported";
 import { usePages } from "@hooks";
 import styles from "./PagesList.module.sass";
 
