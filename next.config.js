@@ -1,6 +1,5 @@
-const unwrap = require("remark-unwrap-images");
-const { existsSync } = require("fs");
 const path = require("path");
+const { existsSync } = require("fs");
 
 const {
 	getContentDir: getContentDirRaw,
@@ -54,7 +53,9 @@ module.exports = {
 			: null,
 	},
 
-	webpack: (config, { isServer }) => {
+	webpack: async (config, { isServer }) => {
+		const { default: unwrap } = await import("remark-unwrap-images");
+
 		config.module.rules.push({
 			test: /\.mdx?$/,
 			use: [
