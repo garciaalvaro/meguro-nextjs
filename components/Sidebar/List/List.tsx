@@ -3,7 +3,7 @@ import type { RefObject, FunctionComponent } from "react";
 import type { Scrollbar } from "react-scrollbars-custom";
 
 import { usePages } from "@hooks";
-import { ListItem } from "../ListItem";
+import { ListItem } from "../list-item";
 import styles from "./List.module.sass";
 
 interface Props {

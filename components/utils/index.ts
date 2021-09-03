@@ -1,9 +1,9 @@
-export { Column } from "./Column";
-export { Columns } from "./Columns";
-export { ImageImported } from "./ImageImported";
-export { ImageWithContainer } from "./ImageWithContainer";
-export type { ImageWithContainerProps } from "./ImageWithContainer";
-export { Info } from "./Info";
-export { PagesList } from "./PagesList";
-export { Slider } from "./Slider";
-export { Container } from "./Container";
+export { Column } from "./column";
+export { Columns } from "./columns";
+export { ImageImported } from "./image-imported";
+export { ImageWithContainer } from "./image-with-container";
+export type { ImageWithContainerProps } from "./image-with-container";
+export { Info } from "./info";
+export { PagesList } from "./pages-list";
+export { Slider } from "./slider";
+export { Container } from "./container";

@@ -13,8 +13,8 @@ import {
 	Slider,
 	Container,
 } from "../utils";
-import { ContentEntryServerSide } from "./ContentEntryServerSide";
-import { ContentEntry } from "./ContentEntry";
+import { ContentEntryServerSide } from "./content-entry-server-side";
+import { ContentEntry } from "./content-entry";
 import { Context } from "@context";
 import { useIsFirstRender } from "@hooks";
 

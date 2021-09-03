@@ -2,9 +2,9 @@ import React from "react";
 import type { FunctionComponent } from "react";
 import type { GetStaticProps } from "next";
 
-import { Main } from "@components/Main";
-import { Page } from "@components/Page";
-import { Content } from "@components/Content";
+import { Main } from "@components/main";
+import { Page } from "@components/page";
+import { Content } from "@components/content";
 import { getPages } from "@utils";
 
 interface Props {

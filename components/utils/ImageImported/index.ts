@@ -1,1 +1,0 @@
-export { ImageImported } from "./ImageImported";
