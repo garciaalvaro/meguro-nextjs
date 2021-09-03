@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { usePages } from "@hooks";
 import { Context } from "@context";
-import styles from "./NextPage.module.sass";
+import styles from "./next-page.module.sass";
 
 const getNextPage = (pages: Page[], active_url_path: Page["url_path"]) => {
 	const current_page_index = pages.findIndex(

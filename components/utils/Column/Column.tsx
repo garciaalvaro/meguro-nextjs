@@ -8,8 +8,8 @@ import React, {
 import type { CSSProperties, FunctionComponent } from "react";
 import Scrollbar from "react-scrollbars-custom";
 
-import styles from "./Column.module.sass";
-import container_styles from "../Container/Container.module.sass";
+import styles from "./column.module.sass";
+import container_styles from "../container/container.module.sass";
 import { Modal, ModalProps } from "@components/modal";
 import { useIsCollapsed } from "@hooks";
 import { className } from "@utils";

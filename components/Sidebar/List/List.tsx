@@ -4,7 +4,7 @@ import type { Scrollbar } from "react-scrollbars-custom";
 
 import { usePages } from "@hooks";
 import { ListItem } from "../list-item";
-import styles from "./List.module.sass";
+import styles from "./list.module.sass";
 
 interface Props {
 	$scroller?: RefObject<Scrollbar | null>;

@@ -3,7 +3,7 @@ import type { FunctionComponent } from "react";
 
 import { Context } from "@context";
 import { className } from "@utils";
-import styles from "./Main.module.sass";
+import styles from "./main.module.sass";
 
 interface Props {
 	is_home?: boolean;

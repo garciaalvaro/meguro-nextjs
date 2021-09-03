@@ -13,7 +13,7 @@ import { ImageWithContainer } from "../utils";
 import { useIsFirstRender, useWindowSize } from "@hooks";
 import { Context } from "@context";
 import { Navigation } from "./navigation";
-import styles from "./Modal.module.sass";
+import styles from "./modal.module.sass";
 
 interface ImageData {
 	src: string;

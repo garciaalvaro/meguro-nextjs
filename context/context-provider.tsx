@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import type { FunctionComponent } from "react";
 
 import { getScrollbarWidth } from "@utils";
-import { Context } from "./Context";
+import { Context } from "./context";
 
 interface Props {
 	slug: Page["slug"];

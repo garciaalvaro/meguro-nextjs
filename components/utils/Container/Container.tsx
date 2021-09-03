@@ -1,7 +1,7 @@
 import React from "react";
 import type { FunctionComponent, CSSProperties } from "react";
 
-import styles from "./Container.module.sass";
+import styles from "./container.module.sass";
 import { className } from "@utils";
 
 interface Props {

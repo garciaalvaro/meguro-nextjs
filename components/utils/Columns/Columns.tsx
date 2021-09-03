@@ -1,7 +1,7 @@
 import React from "react";
 import type { FunctionComponent, CSSProperties } from "react";
 
-import styles from "./Columns.module.sass";
+import styles from "./columns.module.sass";
 import { className } from "@utils";
 
 interface Props {
