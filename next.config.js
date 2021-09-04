@@ -64,7 +64,7 @@ module.exports = {
 				{
 					loader: path.resolve(
 						__dirname,
-						"webpack-loaders/image-data.js"
+						"webpack-loaders/image-data"
 					),
 				},
 
@@ -76,7 +76,7 @@ module.exports = {
 				{
 					loader: path.resolve(
 						__dirname,
-						"webpack-loaders/mdx-frontmatter.js"
+						"webpack-loaders/mdx-frontmatter"
 					),
 				},
 			],

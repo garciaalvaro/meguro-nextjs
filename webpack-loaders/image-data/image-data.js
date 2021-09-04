@@ -1,8 +1,8 @@
 const path = require("path");
 
-const { getContentDir } = require("../config");
+const { getContentDir } = require(path.join(process.cwd(), "config"));
 
-module.exports = function (src) {
+module.exports = src => {
 	const relative_path = path.relative(getContentDir(), this.context);
 
 	let src_updated = src;

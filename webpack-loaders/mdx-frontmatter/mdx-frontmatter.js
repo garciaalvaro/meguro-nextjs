@@ -1,6 +1,6 @@
 const matter = require("gray-matter");
 
-module.exports = function (src) {
+module.exports = src => {
 	const { content, data: frontmatter } = matter(src);
 
 	if (Object.keys(frontmatter).length) {
