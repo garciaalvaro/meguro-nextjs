@@ -1,6 +1,8 @@
 import { readdirSync } from "fs";
 
-export const getPages = (directory: string): Page[] => {
+import type { Util } from "./types";
+
+export const getPages: Util = directory => {
 	const slugs = readdirSync(directory, { withFileTypes: true });
 
 	const pages = slugs.reduce<Page[]>((acc, entity) => {

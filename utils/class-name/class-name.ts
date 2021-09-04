@@ -1,6 +1,6 @@
-export type ClassName = string | null | undefined | Record<string, boolean>;
+import type { Util } from "./types";
 
-export const className = (...classNames: ClassName[]): string => {
+export const className: Util = (...classNames) => {
 	return classNames
 		.reduce<string[]>((acc, _className) => {
 			let className = _className;
